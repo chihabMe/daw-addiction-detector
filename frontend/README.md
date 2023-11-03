@@ -1,37 +1,27 @@
-# Project
+# React + TypeScript + Vite
 
-## Description
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-This project is a web application built using the following languages and technologies:
+Currently, two official plugins are available:
 
-## Languages
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-- **JavaScript/TypeScript**
-- **HTML**
-- **CSS**
+## Expanding the ESLint configuration
 
-## Technologies
+If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-- **ReactJS**: A JavaScript library for building user interfaces.
-- **Tailwind CSS**: A utility-first CSS framework for quickly designing and customizing web interfaces.
+- Configure the top-level `parserOptions` property like this:
 
-## Hosting
+```js
+   parserOptions: {
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+    project: ['./tsconfig.json', './tsconfig.node.json'],
+    tsconfigRootDir: __dirname,
+   },
+```
 
-- **ReactJS Hosting**: The ReactJS application for this project is hosted on Vercel, ensuring easy deployment and scalability.
-
-## Getting Started
-
-To start working with this project, follow these steps:
-
-1. Clone the repository. (Use `git clone PROJECT_URL` to clone the repository)
-2. Install the required dependencies using `pnpm install`.
-3. Start the Django development server by running the following commands:
-   - Navigate to the `backend` directory: `cd backend`
-   - Run the Django development server: `python manage.py runserver`
-     (Make sure to have Python installed and run `pip install -r requirements.txt` before starting Django)
-4. Start the React development server by running the following commands:
-   - Navigate to the `frontend` directory: `cd frontend`
-   - Start the development server: `pnpm start dev`
-5. Access the application in your web browser at the provided URL.
-
-Feel free to provide additional details, configuration instructions, or any specific information necessary for users to work with your project.
+- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
+- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
+- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
