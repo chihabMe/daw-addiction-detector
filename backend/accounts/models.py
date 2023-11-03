@@ -26,10 +26,17 @@ class UserManager(BaseUserManager):
         return self.create_user(email, password, **extra_fields)
 
 
+GENDER_CHOICES = [
+    ("M", "male"),
+    ("F", "female"),
+]
+
+
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField("email", unique=True)
     first_name = models.CharField("first name", max_length=200, blank=True)
     last_name = models.CharField("last name", max_length=200, blank=True)
+    gender = models.CharField(max_length=1, choices=GENDER_CHOICES, default="M")
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     is_active = models.BooleanField("active", default=True)
@@ -42,3 +49,6 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     class Meta:
         verbose_name = "user"
         verbose_name_plural = "users"
+
+    def get_full_name(self):
+        return str(self.first_name) + " " + str(self.last_name)
