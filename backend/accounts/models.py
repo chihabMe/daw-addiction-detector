@@ -36,6 +36,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField("email", unique=True)
     first_name = models.CharField("first name", max_length=200, blank=True)
     last_name = models.CharField("last name", max_length=200, blank=True)
+    phone = models.CharField(max_length=12)
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES, default="M")
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
