@@ -2,10 +2,10 @@ from django.contrib import admin
 
 # Register your models here.
 
-from .models import Paitent
+from .models import Patient
 
 
-class PaitentAdmin(admin.ModelAdmin):
+class PatientAdmin(admin.ModelAdmin):
     list_display = (
         "user",
         "addiction_level",
@@ -20,4 +20,4 @@ class PaitentAdmin(admin.ModelAdmin):
     search_fields = ("user",)
 
 
-admin.site.register(Paitent, PaitentAdmin)
+admin.site.register(Patient, PatientAdmin)

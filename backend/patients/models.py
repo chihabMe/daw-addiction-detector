@@ -5,7 +5,7 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 User = get_user_model()
 
 
-class Paitent(models.Model):
+class Patient(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     addiction_level = models.PositiveIntegerField(
         validators=[
