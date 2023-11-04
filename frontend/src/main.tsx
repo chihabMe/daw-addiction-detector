@@ -10,6 +10,7 @@ import PatientsPage from "./pages/patients.tsx";
 import ContactPage from "./pages/contact.tsx";
 import AboutPage from "./pages/about.tsx";
 import HomePage from "./pages/home.tsx";
+import ServicesPage from "./pages/services.tsx";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,11 @@ const router = createBrowserRouter([
       {
         path: "doctors",
         element: <DoctorsPage />,
+      },
+
+      {
+        path: "services",
+        element: <ServicesPage />,
       },
       {
         path: "patients",
