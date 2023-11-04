@@ -8,6 +8,7 @@ import ContactPage from "./pages/contact.tsx";
 import AboutPage from "./pages/about.tsx";
 import HomePage from "./pages/home.tsx";
 import ServicesPage from "./pages/services.tsx";
+import Alert from "./components/ui/Alert.tsx";
 
 const router = createBrowserRouter([
   {
@@ -47,7 +48,12 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <>
+      <Alert />
+      <RouterProvider router={router} />;
+    </>
+  );
 }
 
 export default App;
