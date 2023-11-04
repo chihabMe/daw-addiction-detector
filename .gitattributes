@@ -1,0 +1,5 @@
+
+*.py pre-commit
+
+# Optional: Exclude certain files or folders
+!frontend pre-commit
