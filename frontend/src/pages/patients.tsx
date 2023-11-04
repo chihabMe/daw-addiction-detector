@@ -1,10 +1,9 @@
-
-
-
 const PatientsPage = () => {
-  return (
-    <div>Patients Page</div>
-  )
-}
+  return(
+    <main className="min-h-screen">
+      <div>Patients Page</div>
+    </main>
+  );
+};
 
-export default PatientsPage
+export default PatientsPage;

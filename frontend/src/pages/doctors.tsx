@@ -1,6 +1,6 @@
 const DoctorsPage = () => {
   return (
-    <main>
+    <main className="min-h-screen">
       <h1>doctors page</h1>
     </main>
   );
