@@ -5,6 +5,7 @@
 - **Frontend**: ReactJS
 - **Design**: tailwindcss
 - **Database**: MySQL
+- **Containerization**: Docker
 
 ## Hosting Options
 - **Backend (Django)**:
