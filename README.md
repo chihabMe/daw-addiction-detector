@@ -16,3 +16,4 @@
 - **Database (MySQL)**:
   - Deployment: Render or PlanetScale
 
+![db design image](db.png)
