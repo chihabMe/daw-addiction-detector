@@ -3,12 +3,12 @@ from rest_framework import serializers
 from .models import Patient
 
 class PatientSerializer(ModelSerializer):
-    first_name = serializers.CharField(source="user.first_name")
-    last_name = serializers.CharField(source="user.last_name")
-    gender = serializers.CharField(source="user.gender")
+    first_name = serializers.CharField(source="user.first_name",read_only=True)
+    last_name = serializers.CharField(source="user.last_name",read_only=True)
+    gender = serializers.CharField(source="user.gender",read_only=True)
     # phone = serializers.CharField(source="user.phone")
-    created = serializers.DateTimeField(source="user.created")
-    updated = serializers.DateTimeField(source="user.updated")
+    created = serializers.DateTimeField(source="user.created",read_only=True)
+    updated = serializers.DateTimeField(source="user.updated",read_only=True)
     class Meta:
         model = Patient
         fields = [        
