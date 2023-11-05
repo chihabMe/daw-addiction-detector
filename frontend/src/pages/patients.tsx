@@ -1,7 +1,9 @@
+import PatientsList from "../components/pages/patients/PatientsList/PatientsList";
+
 const PatientsPage = () => {
   return(
-    <main className="min-h-screen">
-      <div>Patients Page</div>
+    <main className="min-h-screen w-full ">
+      <PatientsList/>
     </main>
   );
 };
