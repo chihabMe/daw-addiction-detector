@@ -11,7 +11,6 @@ const PatientItem = ({ patient }: Props) => {
       <p>gender : {patient.gender}</p>
       <p>addicion lever : {patient.addiction_level}</p>
       <p>anxiety score  : {patient.anxiety_score}</p>
-      <p> insomnia score   : {patient.insomnia_score}</p>
     </div>
   );
 };
