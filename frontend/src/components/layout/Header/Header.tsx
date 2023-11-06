@@ -37,8 +37,8 @@ const Header = () => {
         <div className="flex items-center justify-between grow max-w-[900px]">
           <nav className="flex  grow ">
             <ul className="flex gap-10 items-center  ">
-              {links.map((link) => (
-                <li className="font-bold text-lg  text-gray-600 capitalize hover:text-blue-500">
+              {links.map((link,idx) => (
+                <li key={idx} className="font-bold text-lg  text-gray-600 capitalize hover:text-blue-500">
                   <NavLink
                     to={link.href}
                     className={({ isActive, isPending }) =>

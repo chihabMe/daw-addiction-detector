@@ -1,8 +1,9 @@
+import { useState } from "react";
 
 const AboutPage = () => {
   return (
     <main className="min-h-screen">
-      <h1>about page</h1>
+      about page
     </main>
   );
 };

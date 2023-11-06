@@ -1,8 +1,8 @@
 
 export default interface IPatient{
+    id:number;
     first_name :string;
     last_name :string;
-    id:number;
     email:string;
     phone :string;
     gender:string;

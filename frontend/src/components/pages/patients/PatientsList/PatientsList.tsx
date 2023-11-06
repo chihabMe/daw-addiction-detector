@@ -27,7 +27,7 @@ const PatientsList = () => {
     );
   if (error) return <h1 className="text-red-400 font-bold text-xl">{error}</h1>;
   return (
-    <ul className=" w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+    <ul className=" w-full max-w-screen-lg  py-2  gap-2   mx-auto  grid grid-cols-2  lg:grid-cols-2">
       {patients.map((patient) => (
         <PatientItem key={patient.id} patient={patient} />
       ))}
