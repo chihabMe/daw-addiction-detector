@@ -1,4 +1,3 @@
-import React from "react";
 import IPatient from "../../../../interfaces/IPatient";
 interface Props {
   patient: IPatient;

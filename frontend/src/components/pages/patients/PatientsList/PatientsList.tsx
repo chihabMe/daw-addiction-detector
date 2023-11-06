@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import IPatient from "../../../../interfaces/IPatient";
 import PatientItem from "./PatientItem";
 
@@ -14,7 +14,7 @@ const PatientsList = () => {
         setLoading(false);
         setError("");
       })
-      .catch((err) => {
+      .catch(() => {
         setError("failed to fetch data");
         setLoading(false);
       });
