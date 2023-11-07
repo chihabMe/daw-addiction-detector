@@ -3,8 +3,8 @@ import { useFetch } from "../../../../hooks/useFetch";
 import IQuestionResponseOption from "../../../../interfaces/IQuestionResponseOption";
 import { getAllQuestionResponseOptionsPath } from "../../../../utils/constants";
 import ErrorPageContainer from "../../../layout/ErrorPageContainer";
-import Loading from "../../../layout/Loading";
 import QuestionResponseOptionListItem from "./QuestionResponseOptionListItem";
+import QuestionResponsesListSkeleton from "./skeletons/QuestionResponsesListSkeleton";
 
 interface Props {
   questionId: string;
@@ -24,7 +24,7 @@ const QuestionResponseOptionsList = ({ questionId }: Props) => {
         <p>{error.message}</p>
       </ErrorPageContainer>
     );
-  if (!questionOptions) return <Loading />;
+  if (!questionOptions) return <QuestionResponsesListSkeleton />;
   return (
     <ul className="flex flex-col  gap-4 font-medium ">
       {questionOptions.map((option) => (
