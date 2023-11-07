@@ -8,6 +8,8 @@ import QuizPage from "../pages/quiz";
 import ServicesPage from "../pages/services";
 import ErrorPage from "./error-page";
 import { Root } from "./root";
+import LoginPage from "../pages/accounts/login";
+import SignupPage from "../pages/accounts/signup";
 
 export const router = createBrowserRouter([
   {
@@ -45,6 +47,20 @@ export const router = createBrowserRouter([
       {
         path: "quiz",
         element: <QuizPage />,
+      },
+      {
+        path: "accounts",
+        children: [
+          {
+            path: "login",
+            element: <LoginPage />,
+          },
+
+          {
+            path: "signup",
+            element: <SignupPage />,
+          },
+        ],
       },
     ],
   },

@@ -3,6 +3,8 @@ from django.db import models
 from doctors.models import Doctor
 
 User = get_user_model()
+
+
 # Create your models here.
 class QuestionType(models.Model):
     description = models.TextField()
@@ -19,6 +21,7 @@ class QuestionType(models.Model):
 
 class Question(models.Model):
     body = models.TextField()
+    title = models.CharField(max_length=300)
     creator = models.ForeignKey(
         User, related_name="created_questions", on_delete=models.CASCADE
     )

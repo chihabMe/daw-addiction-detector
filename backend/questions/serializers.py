@@ -22,6 +22,7 @@ class QuestionSerializer(serializers.ModelSerializer):
         model = Question
         fields = (
             "id",
+            "title",
             "body",
             "creator",
             "type",

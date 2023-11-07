@@ -1,4 +1,4 @@
-import {  NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Button from "../../ui/Button";
 const links = [
   {
@@ -28,17 +28,20 @@ const links = [
 const Header = () => {
   return (
     <header className="w-full  font-rubik   mx-auto items-center  items-center   flex justify-between">
-      <div className="w-full max-w-[1400px] flex items-center justify-between py-4   mx-auto ">
+      <div className="w-full max-w-[1600px] flex items-center justify-between py-4   mx-auto ">
         <div>
           <h1 className="capitalize font-bold  text-3xl">
             mz<span className="text-blue-700">tol</span>
           </h1>
         </div>
-        <div className="flex items-center justify-between grow max-w-[900px]">
+        <div className="flex items-center justify-between grow max-w-[1200px] ">
           <nav className="flex  grow ">
             <ul className="flex gap-10 items-center  ">
-              {links.map((link,idx) => (
-                <li key={idx} className="font-bold text-lg  text-gray-600 capitalize hover:text-blue-500">
+              {links.map((link, idx) => (
+                <li
+                  key={idx}
+                  className="font-bold text-lg  text-gray-600 capitalize hover:text-blue-500"
+                >
                   <NavLink
                     to={link.href}
                     className={({ isActive, isPending }) =>
@@ -51,8 +54,13 @@ const Header = () => {
               ))}
             </ul>
           </nav>
-          <div>
-            <Button>Sing up</Button>
+          <div className="flex gap-6 items-center">
+            <Link to="/accounts/login">
+              <Button className="rounded-lg ring-2 ring-blue-500">login</Button>
+            </Link>
+            <Link to="/accounts/signup">
+              <Button className="rounded-lg bg-transparent ring-2 ring-blue-500 !text-blue-500">singup</Button>
+            </Link>
           </div>
         </div>
       </div>
