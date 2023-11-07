@@ -11,17 +11,17 @@ const QuestionResponseOptionListItem = ({
   setResponseOption,
 }: Props) => {
   const isActive = option.id == chosedQuestionId;
-  console.log(isActive);
-  console.log(option.id);
-  console.log(chosedQuestionId);
   return (
     <li
       onClick={() => setResponseOption(option.id)}
-      className={` py-6 rounded-lg px-4 transition-all duration-200 cursor-pointer  bg-gray-100 hover:bg-blue-500 hover:text-white font-medium ${
+      className={` py-[22px] rounded-md px-4 transition-all  flex gap-4  items-center duration-400 cursor-pointer  bg-gray-100 hover:bg-blue-500 hover:text-white font-medium ${
         isActive && "!text-white !bg-blue-500"
       }  `}
     >
-      {option.text}
+      <div className={ `w-4 h-4 flex justify-center items-center rounded-full ring-2 ${isActive&&"ring-white"} ring-blue-500 ` }>
+        <div className={` ${isActive&&"bg-white"} rounded-full w-3 h-3  `}></div>
+      </div>
+      <p>{option.text}</p>
     </li>
   );
 };

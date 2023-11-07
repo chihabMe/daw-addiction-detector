@@ -23,7 +23,7 @@ const QuestionListItem = ({ question, index }: Props) => {
           <ChevronDownIcon
             className={` ${
               showQuestionBody && "rotate-180"
-            } transition-all duration-200 w-5 h-5 text-gray-500`}
+            } transition-all duration-200 w-6 h-6 text-gray-500`}
           />
         </div>
       </div>

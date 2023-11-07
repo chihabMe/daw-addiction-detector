@@ -1,5 +1,5 @@
 const SingupPage = () => {
-  return <div>Singup Page</div>;
+  return <main className="w-full min-h-screen">Singup Page</main>;
 };
 
 export default SingupPage;
