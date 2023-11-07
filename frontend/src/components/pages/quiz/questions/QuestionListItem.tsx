@@ -16,8 +16,8 @@ const QuestionListItem = ({ question, index }: Props) => {
         className="py-4 flex gap-2 items-center cursor-pointer justify-between items-center"
         onClick={toggleQuestionBody}
       >
-        <p className=" text-gray-800 text-lg font-bold ">
-          {index} : {question.title}
+        <p className=" text-gray-800 md:text-lg font-bold ">
+          {index}  {question.title}
         </p>
         <div>
           <ChevronDownIcon
@@ -28,7 +28,7 @@ const QuestionListItem = ({ question, index }: Props) => {
         </div>
       </div>
       {showQuestionBody && (
-        <div className=" text-gray-600 py-4 text-sm font-bold ">
+        <div className=" text-gray-600 py-2 md:py-4 text-sm font-bold ">
           <p>{question.body}</p>
         </div>
       )}
