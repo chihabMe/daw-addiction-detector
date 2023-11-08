@@ -2,7 +2,7 @@ import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import IQuestion from "../../../../interfaces/IQuestion";
 import QuestionResponseOptionsList from "../responses/QuestionResponseOptionsList";
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 interface Props {
   question: IQuestion;
@@ -20,10 +20,10 @@ const QuestionListItem = ({ question, index }: Props) => {
       className="flex flex-col   gap-2  rounded-lg p-2"
     >
       <div
-        className="py-4 flex gap-2 items-center cursor-pointer justify-between items-center"
+        className="py-2 flex gap-2 items-center cursor-pointer justify-between items-center"
         onClick={toggleQuestionBody}
       >
-        <p className=" text-gray-800 text-lg md:text-xl font-bold ">
+        <p className=" text-gray-800  text-lg md:text-xl font-bold ">
           {question.title}
         </p>
         <div>
@@ -34,11 +34,20 @@ const QuestionListItem = ({ question, index }: Props) => {
           />
         </div>
       </div>
-      {showQuestionBody && (
-        <div className=" text-gray-600 py-2 md:py-4 text-sm font-bold ">
-          <p>{question.body}</p>
-        </div>
-      )}
+      <AnimatePresence>
+        {showQuestionBody && (
+          <motion.div
+            transition={{ delay: 0.1 }}
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            key="quesiton_body"
+            className=" text-gray-600 py-2 md:py-4 text-sm font-bold "
+          >
+            <p>{question.body}</p>
+          </motion.div>
+        )}
+      </AnimatePresence>
       <QuestionResponseOptionsList questionId={question.id} />
     </motion.div>
   );
