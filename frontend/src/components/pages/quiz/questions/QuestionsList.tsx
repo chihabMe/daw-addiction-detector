@@ -20,7 +20,7 @@ const QuestionsList = () => {
       {data.map((question, idx) => (
         <QuestionListItem
           key={question.id}
-          index={idx + 1}
+          index={idx }
           question={question}
         />
       ))}

@@ -2,6 +2,7 @@ import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import IQuestion from "../../../../interfaces/IQuestion";
 import QuestionResponseOptionsList from "../responses/QuestionResponseOptionsList";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 interface Props {
   question: IQuestion;
@@ -11,13 +12,19 @@ const QuestionListItem = ({ question, index }: Props) => {
   const [showQuestionBody, setShowQuestionBody] = useState(false);
   const toggleQuestionBody = () => setShowQuestionBody((prev) => !prev);
   return (
-    <div className="flex flex-col   gap-2  rounded-lg p-2">
+    <motion.div
+      transition={{ delay: 0.1 * index }}
+      initial={{ opacity: 0.1, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -20 }}
+      className="flex flex-col   gap-2  rounded-lg p-2"
+    >
       <div
         className="py-4 flex gap-2 items-center cursor-pointer justify-between items-center"
         onClick={toggleQuestionBody}
       >
         <p className=" text-gray-800 text-lg md:text-xl font-bold ">
-            {question.title}
+          {question.title}
         </p>
         <div>
           <ChevronDownIcon
@@ -33,7 +40,7 @@ const QuestionListItem = ({ question, index }: Props) => {
         </div>
       )}
       <QuestionResponseOptionsList questionId={question.id} />
-    </div>
+    </motion.div>
   );
 };
 

@@ -27,8 +27,9 @@ const QuestionResponseOptionsList = ({ questionId }: Props) => {
   if (!questionOptions) return <QuestionResponsesListSkeleton />;
   return (
     <ul className="flex flex-col  gap-4 font-medium ">
-      {questionOptions.map((option) => (
+      {questionOptions.map((option,idx) => (
         <QuestionResponseOptionListItem
+          index={idx}
           setResponseOption={changeChosedResponse}
           chosedQuestionId={chosedOption}
           key={option.id}
