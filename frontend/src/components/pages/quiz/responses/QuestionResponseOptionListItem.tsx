@@ -1,4 +1,5 @@
 import { getAlphabitUsingItsIndex } from "../../../../helpers/getAlphabitUsingItsIndex";
+import { useUiContext } from "../../../../hooks/useUiContext";
 import IQuestionResponseOption from "../../../../interfaces/IQuestionResponseOption";
 import { motion } from "framer-motion";
 
@@ -15,6 +16,7 @@ const QuestionResponseOptionListItem = ({
   index,
 }: Props) => {
   const isActive = option.id == chosedQuestionId;
+  const {questionDisplayType} = useUiContext()
   return (
     <motion.li
       transition={{ delay: 0.1 * index }}
@@ -25,8 +27,8 @@ const QuestionResponseOptionListItem = ({
       className={`${isActive && "ring-[3px] ring-blue-500"} p-px rounded-md `}
     >
       <div
-        className={`  py-[22px] group rounded-md px-4 transition-all  flex gap-4  items-center duration-200 cursor-pointer  bg-gray-100  hover:bg-blue-500 hover:!text-white font-medium ${
-          isActive && "!text-white !bg-blue-500"
+        className={`  py-[22px] group rounded-md px-4 transition-all  flex gap-4  items-center duration-200 cursor-pointer  bg-gray-100  hover:bg-primary hover:!text-white font-medium ${
+          isActive && "!text-white !bg-primary"
         }  `}
       >
         <div
@@ -46,9 +48,11 @@ ${
   isActive && "!text-white"
 }   font-medium text-sm md:text-base group-hover:text-white   flex gap-2 items-center`}
         >
+          {questionDisplayType=="letters"&&
           <span className="font-bold">
             {getAlphabitUsingItsIndex(index)} :
           </span>
+          }
           <span>
            {option.text}
           </span>

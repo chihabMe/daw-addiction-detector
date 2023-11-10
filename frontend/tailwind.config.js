@@ -7,6 +7,11 @@ export default {
         "roboto": ['"Roboto"', "sans-serif"],
         "Rubik": ['"Rubik"', "sans-serif"],
       },
+      colors:{
+        "primary":"#3B82F6",
+        "dark":"#304049",
+        "light":"white",
+      }
     },
   },
   plugins: [],

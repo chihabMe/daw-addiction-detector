@@ -1,4 +1,4 @@
-import { QueueListIcon, TableCellsIcon } from "@heroicons/react/20/solid";
+import { QueueListIcon, TableCellsIcon } from "@heroicons/react/24/solid";
 import { useFetch } from "../../../../hooks/useFetch";
 import IQuestion from "../../../../interfaces/IQuestion";
 import { getAllQuestionsPath } from "../../../../utils/constants";
@@ -11,7 +11,7 @@ import Button from "../../../ui/Button";
 
 const QuestionsList = () => {
   const { data, error } = useFetch<IQuestion[]>(getAllQuestionsPath);
-  const {changeQuestionModeToGrid,changeQuestionModeToList,questionMode} =  useUiContext();
+  const {questionDisplayType,toggleQuestionsDisplaytype,changeQuestionModeToGrid,changeQuestionModeToList,questionMode} =  useUiContext();
   if (error)
     return (
       <ErrorPageContainer>
@@ -23,6 +23,11 @@ const QuestionsList = () => {
   return (
     <>
     <div className="flex  gap-2 py-4 justify-end px-2">
+
+        <Button onClick={toggleQuestionsDisplaytype} className={`${` px-6 py-2  text-gray-700 ${questionDisplayType=="letters"&&"text-blue-600 bg-blue-50"} p-2 rounded-md cursor-pointer   bg-transparent`} p-2 rounded-md  cursor-pointer `}  >
+          A-z
+        </Button>
+
         <Button onClick={changeQuestionModeToList} className={` px-6 py-2  text-gray-700 ${questionMode=="list"&&"text-blue-600 bg-blue-50"} p-2 rounded-md cursor-pointer   bg-transparent`}>
           <QueueListIcon className="w-5 h-5"/>
         </Button>
