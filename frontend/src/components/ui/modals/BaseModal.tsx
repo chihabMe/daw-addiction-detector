@@ -1,11 +1,15 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { ReactNode } from "react";
+import {twMerge} from "tailwind-merge";
 interface Props {
   children: ReactNode;
   closeModal: () => void;
   showModal:boolean;
+  overlayClassName?:string;
+  contentClassName?:string;
+containerClassName?:string;
 }
-const BaseModal = ({ children, closeModal }: Props) => {
+const BaseModal = ({ children,containerClassName, contentClassName,overlayClassName,closeModal }: Props) => {
   const handleCloseModal = () => {
     closeModal();
   };
@@ -13,7 +17,7 @@ const BaseModal = ({ children, closeModal }: Props) => {
     <>
       <div
         onClick={handleCloseModal}
-        className="fixed top-0 bottom-0 left-0 right-0 bg-gray-900 opacity-60 z-10"
+        className={twMerge("fixed top-0 bottom-0 left-0 right-0 bg-gray-800  opacity-60  z-10",overlayClassName)}
       ></div>
       <AnimatePresence>
         <motion.div
@@ -40,9 +44,9 @@ const BaseModal = ({ children, closeModal }: Props) => {
             right: "50%",
             scale: 0,
           }}
-          className="w-full  "
+          className={twMerge("w-full  ",containerClassName)}
         >
-          <div className="mx-auto">
+          <div className={twMerge("mx-auto",contentClassName)}>
           {children}
           </div>
         </motion.div>

@@ -4,11 +4,13 @@ import Button from "../components/ui/Button";
 import { AnimatePresence, motion } from "framer-motion";
 import BaseModal from "../components/ui/modals/BaseModal";
 import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const QuizPage = () => {
   const [showQuestions,setShowQuestions]= useState(true)
   const  handleQuesiontsResponsesSubmit =() =>{
     setShowQuestions(false)
+    toast.success("success")
   }
 
   return (
@@ -37,7 +39,7 @@ const QuizPage = () => {
 
         </AnimatePresence>
         {!showQuestions&&
-        <BaseModal showModal={showQuestions} closeModal={()=>setShowQuestions(false)} >
+        <BaseModal overlayClassName="bg-blue-500 opacity-100"  showModal={showQuestions} closeModal={()=>setShowQuestions(false)} >
             <div className="w-full flex flex-col gap-2 max-w-[550px] ring-2 ring-blue-500 mx-auto bg-white rounded-lg p-4 ">
               <h1 className="text-lg font-bold text-black text-blue-500">
                 Thanks !
