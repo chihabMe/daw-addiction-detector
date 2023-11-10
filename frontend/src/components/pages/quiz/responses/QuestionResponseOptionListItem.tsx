@@ -1,3 +1,4 @@
+import { getAlphabitUsingItsIndex } from "../../../../helpers/getAlphabitUsingItsIndex";
 import IQuestionResponseOption from "../../../../interfaces/IQuestionResponseOption";
 import { motion } from "framer-motion";
 
@@ -43,9 +44,14 @@ const QuestionResponseOptionListItem = ({
           className={` 
 ${
   isActive && "!text-white"
-}   font-medium text-sm md:text-base group-hover:text-white   `}
+}   font-medium text-sm md:text-base group-hover:text-white   flex gap-2 items-center`}
         >
-          {option.text}
+          <span className="font-bold">
+            {getAlphabitUsingItsIndex(index)} :
+          </span>
+          <span>
+           {option.text}
+          </span>
         </p>
       </div>
     </motion.li>

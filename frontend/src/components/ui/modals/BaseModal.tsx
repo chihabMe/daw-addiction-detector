@@ -14,14 +14,33 @@ const BaseModal = ({ children,containerClassName, contentClassName,overlayClassN
     closeModal();
   };
   return (
-    <>
-      <div
+    <AnimatePresence>
+      <motion.div
+          transition={{ delay: 0.1 }}
+          initial={{
+            opacity: 0,
+            zIndex: 10,
+          }}
+          animate={{
+            opacity: 1,
+            scale: 1,
+            transition:{
+            duration:0.2,
+          }
+          }}
+          exit={{
+            opacity: 0,
+            transition:{
+          }
+
+          }}
         onClick={handleCloseModal}
         className={twMerge("fixed top-0 bottom-0 left-0 right-0 bg-gray-800  opacity-60  z-10",overlayClassName)}
-      ></div>
-      <AnimatePresence>
+      >
+
+      </motion.div>
         <motion.div
-          transition={{ delay: 0.1 }}
+          transition={{ delay: 0.3 }}
           initial={{
             opacity: 0,
             position: "fixed",
@@ -51,7 +70,6 @@ const BaseModal = ({ children,containerClassName, contentClassName,overlayClassN
           </div>
         </motion.div>
       </AnimatePresence>
-    </>
   );
 };
 
