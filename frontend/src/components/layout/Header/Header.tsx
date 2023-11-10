@@ -1,5 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import Button from "../../ui/Button";
+import {Bars3Icon} from "@heroicons/react/24/solid"
 const links = [
   {
     href: "/",
@@ -27,14 +28,33 @@ const links = [
 ];
 const Header = () => {
   return (
-    <header className="w-full  font-rubik   mx-auto items-center  items-center   flex justify-between">
+    <header className="w-full  font-rubik px-4 md:px-2   mx-auto items-center  items-center   flex justify-between">
       <div className="w-full max-w-[1600px] flex items-center justify-between py-4   mx-auto ">
         <div>
           <h1 className="capitalize font-bold  text-3xl">
             mz<span className="text-blue-700">tol</span>
           </h1>
         </div>
-        <div className="flex items-center justify-between grow max-w-[1200px] ">
+      <DesktopView/>
+      <MobileView/>
+      </div>
+    </header>
+  );
+};
+const MobileView = ()=>{
+  return (
+   <div className="  lg:hidden">
+      <Button className="bg-transparent px-6 py-2 !rounded-lg">
+      <Bars3Icon className="w-6 h-6 text-gray-900 "/>
+      </Button>
+   </div>
+  )
+}
+
+
+const DesktopView = ()=>{
+  return (
+        <div className=" hidden  lg:flex items-center justify-between grow max-w-[1200px] ">
           <nav className="flex  grow ">
             <ul className="flex gap-10 items-center  ">
               {links.map((link, idx) => (
@@ -63,9 +83,7 @@ const Header = () => {
             </Link>
           </div>
         </div>
-      </div>
-    </header>
-  );
-};
+  )
+}
 
 export default Header;
