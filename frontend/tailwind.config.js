@@ -5,7 +5,8 @@ export default {
     extend: {
       fontFamily: {
         "roboto": ['"Roboto"', "sans-serif"],
-        "Rubik": ['"Rubik"', "sans-serif"],
+        "rubik": ['"Rubik"', "sans-serif"],
+        "inter": ['"Inter"', "sans-serif"],
       },
       colors:{
         "primary":"#3B82F6",

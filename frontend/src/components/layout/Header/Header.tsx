@@ -9,11 +9,7 @@ const links = [
 
   {
     href: "/about",
-    text: "about",
-  },
-  {
-    href: "/doctors",
-    text: "doctors",
+    text: "about us",
   },
 
   {
@@ -23,13 +19,13 @@ const links = [
 
   {
     href: "/contact",
-    text: "contact us",
+    text: "contact",
   },
 ];
 const Header = () => {
   return (
-    <header className="w-full  font-rubik px-4 md:px-2   mx-auto items-center  items-center   flex justify-between">
-      <div className="w-full max-w-[1600px] flex items-center justify-between py-4   mx-auto ">
+    <header className="w-full   px-4 py-4 md:px-2       items-center        ">
+      <div className="w-full max-w-[1400px] flex items-center gap-16 justify-between py-4   mx-auto  ">
         <div>
           <h1 className="capitalize font-bold  text-3xl">
             mz<span className="text-blue-700">tol</span>
@@ -54,18 +50,18 @@ const MobileView = ()=>{
 
 const DesktopView = ()=>{
   return (
-        <div className=" hidden  lg:flex items-center justify-between grow max-w-[1200px] ">
+        <div className=" hidden  lg:flex items-center justify-between grow  ">
           <nav className="flex  grow ">
             <ul className="flex gap-10 items-center  ">
               {links.map((link, idx) => (
                 <li
                   key={idx}
-                  className="font-bold text-lg  text-gray-600 capitalize hover:text-blue-500"
+                  className="font-[600] font-inter   text-[20px]   text-gray-800 capitalize hover:text-primary"
                 >
                   <NavLink
                     to={link.href}
                     className={({ isActive, isPending }) =>
-                      isPending ? "pending" : isActive ? "text-blue-500" : ""
+                      isPending ? "pending" : isActive ? "text-primary" : ""
                     }
                   >
                     {link.text}
@@ -74,12 +70,13 @@ const DesktopView = ()=>{
               ))}
             </ul>
           </nav>
-          <div className="flex gap-6 items-center">
-            <Link to="/accounts/login">
-              <Button className="!rounded-lg  !py-3.5  ring-2 ring-blue-500">login</Button>
-            </Link>
+          <div className="flex gap-4 items-center">
             <Link to="/accounts/signup">
-              <Button className="!rounded-lg !py-3.5 bg-transparent ring-2 ring-blue-500 !text-blue-500">singup</Button>
+              <Button className="rounded-xl px-8 py-3.5 bg-transparent text-gray-700 hover:text-primary  capitalize  hover:ring-2  hover:ring-primary-500">log in</Button>
+            </Link>
+
+            <Link to="/accounts/login">
+              <Button className="rounded-xl px-8 py-3.5  capitalize  ring-2 ring-blue-500">sign up</Button>
             </Link>
           </div>
         </div>
