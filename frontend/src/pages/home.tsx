@@ -35,12 +35,12 @@ Addiction
 
         <div
 
-          className="flex flex-col md:flex-row items-center gap-6 mt-8">
-          <Link to="/quiz" className="w-full md:w-auto">
-            <Button className="rounded-xl !w-full  ">Start Now!</Button>
+          className="flex   items-center gap-6 mt-8">
+          <Link to="/quiz" className="">
+            <Button className="rounded-xl px-4 py-4 md:px-6 md:py-4 !w-full  ">Start Now!</Button>
           </Link>
-          <Link to="/how-it-works" className="w-full md:w-auto">
-            <Button className="rounded-xl !w-full bg-transparent text-text-darker dark:text-text-ligther">
+          <Link to="/how-it-works" className="">
+            <Button className="rounded-xl  px-4 py-4 md:px-6 md:py-4  !w-full bg-transparent text-text-darker dark:text-text-ligther">
               How It Works?
             </Button>
           </Link>
