@@ -2,6 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 import Button from "../../ui/Button";
 import {Bars3Icon} from "@heroicons/react/24/solid"
 import { motion } from "framer-motion";
+import DarkLightThemeToggler from "../DarkLightThemeToggler";
 const links = [
   {
     href: "/",
@@ -30,11 +31,11 @@ const Header = () => {
       animate={{opacity:1,y:0}}
       transition={{delay:0.1,duration:0.2}}
 
-      className="w-full   px-4 py-4 md:px-2       items-center        ">
+      className="w-full px-4 py-4 md:px-2 items-center ">
       <div className="w-full max-w-[1400px] flex items-center gap-16 justify-between py-4   mx-auto  ">
-        <Link to="/">
+        <Link to="/" className="text-text-darker dark:text-text-ligther ">
           <h1 className="capitalize font-bold  text-3xl">
-            mz<span className="text-blue-700">tol</span>
+            mz<span className="text-primary">tol</span>
           </h1>
         </Link>
       <DesktopView/>
@@ -47,7 +48,7 @@ const MobileView = ()=>{
   return (
    <div className="  lg:hidden">
       <Button className="bg-transparent px-6 py-2 !rounded-lg">
-      <Bars3Icon className="w-6 h-6 text-gray-900 "/>
+      <Bars3Icon className="w-6 h-6 text-text-darker dark:text-text-ligther"/>
       </Button>
    </div>
   )
@@ -62,7 +63,7 @@ const DesktopView = ()=>{
               {links.map((link, idx) => (
                 <li
                   key={idx}
-                  className="font-[600] font-inter   text-[20px]   text-gray-800 capitalize hover:text-primary"
+                  className="font-[600] font-inter   text-[20px]   text-text-darker dark:text-text-ligther capitalize hover:text-primary"
                 >
                   <NavLink
                     to={link.href}
@@ -77,13 +78,15 @@ const DesktopView = ()=>{
             </ul>
           </nav>
           <div className="flex gap-4 items-center">
+            <DarkLightThemeToggler/>
             <Link to="/accounts/signup">
-              <Button className="rounded-xl px-8 py-3.5 bg-transparent text-gray-700 hover:text-primary  capitalize  hover:ring-2  hover:ring-primary-500">log in</Button>
+              <Button className="rounded-xl px-8 py-3.5 bg-transparent text-gray-700 dark:text-text-ligther hover:text-primary  capitalize  hover:ring-2  hover:ring-primary-500">log in</Button>
             </Link>
 
             <Link to="/accounts/login">
               <Button className="rounded-xl px-8 py-3.5  capitalize  ring-2 ring-blue-500">sign up</Button>
             </Link>
+
           </div>
         </div>
   )

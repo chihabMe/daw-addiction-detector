@@ -1,5 +1,7 @@
 import { ReactNode, createContext, useEffect, useState } from "react";
+
 import toast from "react-hot-toast";
+
 type IQuestionType = "list" | "grid";
 type ITheme = "dark"|"light";
 type IQuestionDisplayType = "letters"|"none";
@@ -7,8 +9,7 @@ interface UiContextInitialState {
   theme: ITheme;
   questionMode: IQuestionType;
   questionDisplayType:IQuestionDisplayType,
-  changeThemeToDark:()=>void;
-  changeThemeToLight:()=>void;
+  toggleThemeMode:()=>void;
   changeQuestionModeToList:()=>void;
   changeQuestionModeToGrid:()=>void;
 
@@ -19,8 +20,7 @@ const initialState: UiContextInitialState = {
   theme: localStorage.getItem("theme") as ITheme??"light",
   questionMode:localStorage.getItem("questionMode") as IQuestionType??"list",
   questionDisplayType:localStorage.getItem("questionDisplayType") as IQuestionDisplayType??"letters",
-  changeThemeToDark:()=>{},
-  changeThemeToLight:()=>{},
+  toggleThemeMode:()=>{},
   changeQuestionModeToList:()=>{},
   changeQuestionModeToGrid:()=>{},
   toggleQuestionsDisplaytype:()=>{},
@@ -35,13 +35,15 @@ export const UiContextProvider = ({children}:{children:ReactNode})=>{
   const [questionMode,setQuestionMode] = useState(initialState.questionMode)
   const [questionDisplayType,setQuestionDisplayType] = useState(initialState.questionDisplayType)
 
-  const changeThemeToDark = ()=>{
-    toast.success("dark theme on")
-  setTheme("dark")
-  }
-  const changeThemeToLight = ()=>{
-    toast.success("light theme on")
-  setTheme("light")
+  const toggleThemeMode = ()=>{
+    setTheme(p=>{
+      const isLight =  p=="light";
+      isLight? document.documentElement.classList.remove("dark"):document.documentElement.classList.add("dark")
+       const nextTheme = isLight ? "dark":"light";
+      toast.success(`${nextTheme} on`)
+      return nextTheme;
+    })
+
   }
   const changeQuestionModeToGrid=()=>{
     toast.success("grid display")
@@ -65,16 +67,22 @@ export const UiContextProvider = ({children}:{children:ReactNode})=>{
   useEffect(()=>{
     localStorage.setItem("questionMode",questionMode)
 
+
   },[questionMode])
+
+  
   useEffect(()=>{
     localStorage.setItem("theme",theme)
   },[theme])
+  useEffect(()=>{
+      const storedTheme  = localStorage.getItem("theme")
+      storedTheme == "light"? document.documentElement.classList.remove("dark"):document.documentElement.classList.add("dark")
+  },[])
 
   const value  = {
     theme,
     questionMode,
-    changeThemeToLight,
-    changeThemeToDark,
+    toggleThemeMode,
     changeQuestionModeToList,
     changeQuestionModeToGrid,
     toggleQuestionsDisplaytype,

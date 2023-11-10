@@ -9,7 +9,7 @@ export function Root() {
       <Header />
       <Outlet />
       <Footer/>
-      <Toaster   position="bottom-right"   toastOptions={{duration:4500,className:"bg-white  min-w-[200px] font-medium",icon:<CheckCircleIcon className="w-6 h-6 text-primary"/>}}  />
+      <Toaster   position="bottom-right"   toastOptions={{duration:2500,className:"bg-white  min-w-[200px] font-medium",icon:<CheckCircleIcon className="w-6 h-6 text-primary"/>}}  />
     </> 
   );
 }
