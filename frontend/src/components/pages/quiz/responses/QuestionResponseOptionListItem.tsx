@@ -49,12 +49,12 @@ ${
 }   font-medium text-sm md:text-base group-hover:text-white   flex gap-2 items-center`}
         >
           {questionDisplayType=="letters"&&
-          <span className="font-bold">
-            {getAlphabitUsingItsIndex(index)} :
+          <span className={ ` ${isActive&&"text-white"} font-bold text-primary group-hover:text-white` }>
+            {getAlphabitUsingItsIndex(index)} 
           </span>
           }
           <span>
-           {option.text}
+            {option.text}
           </span>
         </p>
       </div>

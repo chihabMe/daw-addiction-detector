@@ -53,7 +53,6 @@ export const UiContextProvider = ({children}:{children:ReactNode})=>{
   }
 
   const toggleQuestionsDisplaytype=()=>{
-    toast.success("hide letters")
     setQuestionDisplayType(prev=>{
       const action = prev=="letters"?"show":"hide"
       toast(`${action} letters`)

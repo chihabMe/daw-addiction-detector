@@ -1,6 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import Button from "../../ui/Button";
 import {Bars3Icon} from "@heroicons/react/24/solid"
+import { motion } from "framer-motion";
 const links = [
   {
     href: "/",
@@ -24,17 +25,22 @@ const links = [
 ];
 const Header = () => {
   return (
-    <header className="w-full   px-4 py-4 md:px-2       items-center        ">
+    <motion.header
+      initial={{opacity:0,y:"-100%"}}
+      animate={{opacity:1,y:0}}
+      transition={{delay:0.1,duration:0.2}}
+
+      className="w-full   px-4 py-4 md:px-2       items-center        ">
       <div className="w-full max-w-[1400px] flex items-center gap-16 justify-between py-4   mx-auto  ">
-        <div>
+        <Link to="/">
           <h1 className="capitalize font-bold  text-3xl">
             mz<span className="text-blue-700">tol</span>
           </h1>
-        </div>
+        </Link>
       <DesktopView/>
       <MobileView/>
       </div>
-    </header>
+    </motion.header>
   );
 };
 const MobileView = ()=>{
