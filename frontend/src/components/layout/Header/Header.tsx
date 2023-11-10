@@ -56,10 +56,10 @@ const Header = () => {
           </nav>
           <div className="flex gap-6 items-center">
             <Link to="/accounts/login">
-              <Button className="rounded-lg ring-2 ring-blue-500">login</Button>
+              <Button className="!rounded-lg  !py-3.5  ring-2 ring-blue-500">login</Button>
             </Link>
             <Link to="/accounts/signup">
-              <Button className="rounded-lg bg-transparent ring-2 ring-blue-500 !text-blue-500">singup</Button>
+              <Button className="!rounded-lg !py-3.5 bg-transparent ring-2 ring-blue-500 !text-blue-500">singup</Button>
             </Link>
           </div>
         </div>

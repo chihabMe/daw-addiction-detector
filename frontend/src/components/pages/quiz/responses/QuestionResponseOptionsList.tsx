@@ -5,11 +5,13 @@ import { getAllQuestionResponseOptionsPath } from "../../../../utils/constants";
 import ErrorPageContainer from "../../../layout/ErrorPageContainer";
 import QuestionResponseOptionListItem from "./QuestionResponseOptionListItem";
 import QuestionResponsesListSkeleton from "./skeletons/QuestionResponsesListSkeleton";
+import { useUiContext } from "../../../../hooks/useUiContext";
 
 interface Props {
   questionId: string;
 }
 const QuestionResponseOptionsList = ({ questionId }: Props) => {
+  const {questionMode} = useUiContext();
   const { data: questionOptions, error } = useFetch<IQuestionResponseOption[]>(
     `${getAllQuestionResponseOptionsPath}${questionId}`,
   );
@@ -26,7 +28,7 @@ const QuestionResponseOptionsList = ({ questionId }: Props) => {
     );
   if (!questionOptions) return <QuestionResponsesListSkeleton />;
   return (
-    <ul className="flex flex-col py-4 gap-4 font-medium ">
+    <ul className={ `flex transition-all duration-500  ${questionMode=="grid" ?"grid grid-cols-1  md:grid-cols-2   ":"flex-col" }    py-4 gap-4 font-medium ` }>
       {questionOptions.map((option,idx) => (
         <QuestionResponseOptionListItem
           index={idx}

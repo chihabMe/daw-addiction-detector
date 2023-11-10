@@ -12,13 +12,7 @@ const QuestionListItem = ({ question, index }: Props) => {
   const [showQuestionBody, setShowQuestionBody] = useState(false);
   const toggleQuestionBody = () => setShowQuestionBody((prev) => !prev);
   return (
-    <motion.div
-      transition={{ delay: 0.1 * index }}
-      initial={{ opacity: 0.1, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
-      className="flex flex-col   gap-2  rounded-lg p-2"
-    >
+    <li>
       <div
         className="py-2 flex gap-2 items-center cursor-pointer justify-between items-center"
         onClick={toggleQuestionBody}
@@ -37,11 +31,11 @@ const QuestionListItem = ({ question, index }: Props) => {
       <AnimatePresence>
         {showQuestionBody && (
           <motion.div
-            transition={{ delay: 0.1 }}
+            key={`quiestion_body_${index}`}
+            transition={{ delay: 0.1,duration:0.2}}
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            key="quesiton_body"
             className=" text-gray-600 py-2 md:py-4 text-sm font-bold "
           >
             <p>{question.body}</p>
@@ -49,7 +43,7 @@ const QuestionListItem = ({ question, index }: Props) => {
         )}
       </AnimatePresence>
       <QuestionResponseOptionsList questionId={question.id} />
-    </motion.div>
+    </li>
   );
 };
 
