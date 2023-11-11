@@ -14,17 +14,17 @@ const HomePage = () => (
         <div>
         <h1
 
-            className="text-4xl lg:text-5xl text-text-darker dark:text-text-ligther font-[800] capitalize mb-4">
+            className="text-3xl md:text-4xl lg:text-5xl text-text-darker dark:text-text-ligther font-[800] capitalize mb-4">
           Discover Your Gaming 
         </h1>
         <h1
 
-            className="text-4xl lg:text-5xl text-text-darker dark:text-text-ligther font-[800] capitalize mb-4">
+            className="text-3xl md:text-4xl lg:text-5xl text-text-darker dark:text-text-ligther font-[800] capitalize mb-4">
 Addiction
         </h1>
         <h1
 
-            className="text-4xl lg:text-5xl text-text-darker dark:text-text-ligther font-[800] capitalize mb-4">
+            className="text-3xl md:text-4xl lg:text-5xl text-text-darker dark:text-text-ligther font-[800] capitalize mb-4">
           and Overcome It!
         </h1>
         </div>
