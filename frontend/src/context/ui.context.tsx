@@ -38,7 +38,7 @@ export const UiContextProvider = ({children}:{children:ReactNode})=>{
   const toggleThemeMode = ()=>{
     setTheme(p=>{
       const isLight =  p=="light";
-      isLight? document.documentElement.classList.remove("dark"):document.documentElement.classList.add("dark")
+      isLight? document.documentElement.classList.add("dark"):document.documentElement.classList.remove("dark")
        const nextTheme = isLight ? "dark":"light";
       toast.success(`${nextTheme} on`)
       return nextTheme;
