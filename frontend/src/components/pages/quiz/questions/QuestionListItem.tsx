@@ -17,14 +17,14 @@ const QuestionListItem = ({ question, index }: Props) => {
         className="py-2 flex gap-2 items-center cursor-pointer justify-between items-center"
         onClick={toggleQuestionBody}
       >
-        <p className=" text-gray-800  text-lg md:text-xl font-bold ">
+        <p className=" text-text-darker dark:text-text-ligther  text-lg md:text-xl font-bold ">
           {question.title}
         </p>
         <div>
           <ChevronDownIcon
             className={` ${
               showQuestionBody && "rotate-180"
-            } transition-all duration-200 w-6 h-6 text-gray-500`}
+            } transition-all duration-200 w-6 h-6 text-text-dark dark:text-text-light`}
           />
         </div>
       </div>
@@ -36,7 +36,7 @@ const QuestionListItem = ({ question, index }: Props) => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className=" text-gray-600 py-2 md:py-4 text-sm font-bold "
+            className=" text-text-dark dark:text-text-light py-2 md:py-4 text-sm font-bold "
           >
             <p>{question.body}</p>
           </motion.div>

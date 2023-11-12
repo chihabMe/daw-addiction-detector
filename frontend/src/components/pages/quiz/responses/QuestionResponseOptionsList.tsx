@@ -29,9 +29,10 @@ const QuestionResponseOptionsList = ({ questionId }: Props) => {
     );
   if (!questionOptions) return <QuestionResponsesListSkeleton />;
   return (
-    <ul className={ `flex transition-all duration-500  ${questionMode=="grid" ?"grid grid-cols-1  md:grid-cols-2   ":"flex-col" }    py-4 gap-4 font-medium ` }>
+    <ul className={ `flex    ${questionMode=="grid" ?"grid grid-cols-1  md:grid-cols-2   ":"flex-col" }    py-4 gap-4 font-medium ` }>
       {questionOptions.map((option,idx) => (
         
+        <motion.div layout>
         <QuestionResponseOptionListItem
           index={idx}
           setResponseOption={changeChosedResponse}
@@ -39,6 +40,7 @@ const QuestionResponseOptionsList = ({ questionId }: Props) => {
           key={option.id}
           option={option}
         />
+        </motion.div>
       ))}
     </ul>
   );

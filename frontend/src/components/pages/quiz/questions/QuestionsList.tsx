@@ -24,14 +24,14 @@ const QuestionsList = () => {
     <>
     <div className="flex  gap-2 py-4 justify-end px-2">
 
-        <Button onClick={toggleQuestionsDisplaytype} className={`${` px-6 py-2  text-gray-700 ${questionDisplayType=="letters"&&"text-blue-600 bg-blue-50"} p-2 rounded-md cursor-pointer   bg-transparent`} p-2 rounded-md  cursor-pointer `}  >
+        <Button onClick={toggleQuestionsDisplaytype} className={`${` px-6 py-2  text-text-dark dark:text-text-light  ${questionDisplayType=="letters"&&"!text-blue-600 !bg-blue-200"} p-2 rounded-md cursor-pointer   bg-transparent`} p-2 rounded-md  cursor-pointer `}  >
           A-z
         </Button>
 
-        <Button onClick={changeQuestionModeToList} className={` px-6 py-2  text-gray-700 ${questionMode=="list"&&"text-blue-600 bg-blue-50"} p-2 rounded-md cursor-pointer   bg-transparent`}>
+        <Button onClick={changeQuestionModeToList} className={` px-6 py-2  text-text-dark dark:text-text-light  ${questionMode=="list"&&"!text-blue-600 !bg-blue-200"} p-2 rounded-md cursor-pointer   bg-transparent`}>
           <QueueListIcon className="w-5 h-5"/>
         </Button>
-        <Button onClick={changeQuestionModeToGrid} className={`${` px-6 py-2  text-gray-700 ${questionMode=="grid"&&"text-blue-600 bg-blue-50"} p-2 rounded-md cursor-pointer   bg-transparent`} p-2 rounded-md  cursor-pointer `}  >
+        <Button onClick={changeQuestionModeToGrid} className={`${` px-6 py-2  text-text-dark dark:text-text-light  ${questionMode=="grid"&&"!text-blue-600 !bg-blue-200"} p-2 rounded-md cursor-pointer   bg-transparent`} p-2 rounded-md  cursor-pointer `}  >
           <TableCellsIcon className="w-5 h-5"/>
         </Button>
     </div>
