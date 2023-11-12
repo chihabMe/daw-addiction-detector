@@ -12,7 +12,7 @@ const QuestionListItem = ({ question, index }: Props) => {
   const [showQuestionBody, setShowQuestionBody] = useState(false);
   const toggleQuestionBody = () => setShowQuestionBody((prev) => !prev);
   return (
-    <li>
+    <li >
       <div
         className="py-2 flex gap-2 items-center cursor-pointer justify-between items-center"
         onClick={toggleQuestionBody}

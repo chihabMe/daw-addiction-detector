@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import BaseModal from "../components/ui/modals/BaseModal";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
+import { ArrowLeftIcon } from "@heroicons/react/24/solid";
 
 const QuizPage = () => {
   const [showQuestions,setShowQuestions]= useState(true)
@@ -17,6 +18,17 @@ const QuizPage = () => {
   return (
     <main className="min-h-screen">
       <section className="w-full max-w-screen-md  mx-auto py-6 px-2">
+        <motion.div
+            transition={{ delay: 0.1,duration:0.3 }}
+            initial={{  opacity: 0,x:-10}}
+            animate={{ opacity: 1,x:0 }}
+        >
+        <Link to="/">
+          <Button className="bg-transparent group px-6 py-3 ">
+            <ArrowLeftIcon className="text-text-darker group-hover:text-primary w-5 h-5 text-gray-400 dark:text-text-ligther"/>
+          </Button>
+        </Link>
+        </motion.div>
         <AnimatePresence>
           {showQuestions&&
           <motion.div

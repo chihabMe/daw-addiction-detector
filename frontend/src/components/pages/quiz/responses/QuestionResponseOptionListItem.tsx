@@ -28,7 +28,7 @@ const QuestionResponseOptionListItem = ({
       className={`${isActive && "ring-[3px] ring-blue-500"} active:ring-[4px] active:ring-primary p-px rounded-md `}
     >
       <div
-        className={`  py-[22px] group rounded-md px-4 transition-all  flex gap-4  items-center duration-200 cursor-pointer  bg-gray-100  hover:bg-primary hover:!text-white font-medium ${
+        className={`  py-[22px] group rounded-md px-4   flex gap-4  items-center duration-200 cursor-pointer  bg-gray-100  hover:bg-primary hover:!text-white font-medium ${
           isActive && "!text-white !bg-primary"
         }  `}
       >
