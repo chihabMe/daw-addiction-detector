@@ -1,7 +1,7 @@
 import { NavLink, Link, useLocation } from "react-router-dom";
 import Button from "../../ui/Button";
 import DarkLightThemeToggler from "../DarkLightThemeToggler";
-import { AnimatePresence, motion } from "framer-motion";
+import {  motion } from "framer-motion";
 
 interface Props {
   links: {
