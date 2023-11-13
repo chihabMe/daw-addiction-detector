@@ -45,13 +45,13 @@ const HeaderDesktopView = ({ links }: Props) => {
       </nav>
       <div className="flex gap-4 items-center">
         <DarkLightThemeToggler />
-        <Link to="/accounts/signup">
+        <Link to="/accounts/login">
           <Button className="rounded-xl px-8 py-3.5 bg-transparent text-gray-700 dark:text-text-ligther hover:text-primary  capitalize  hover:ring-2  hover:ring-primary-500">
             log in
           </Button>
         </Link>
 
-        <Link to="/accounts/login">
+        <Link to="/accounts/singup">
           <Button className="rounded-xl px-8 py-3.5  capitalize  ring-2 ring-blue-500">
             sign up
           </Button>
