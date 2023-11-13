@@ -51,7 +51,7 @@ const HeaderDesktopView = ({ links }: Props) => {
           </Button>
         </Link>
 
-        <Link to="/accounts/singup">
+        <Link to="/accounts/signup">
           <Button className="rounded-xl px-8 py-3.5  capitalize  ring-2 ring-blue-500">
             sign up
           </Button>
