@@ -1,8 +1,8 @@
-import { Outlet, useLocation } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import Header from "../components/layout/Header/Header";
 import Footer from "../components/layout/Footer/Footer";
 import { Toaster } from "react-hot-toast";
-import {CheckCircleIcon} from "@heroicons/react/24/solid"
+import { CheckCircleIcon} from "@heroicons/react/24/solid"
 const excludeLayoutPaths = ["/quiz"]
 export function Root() {
   const pathname = useLocation().pathname

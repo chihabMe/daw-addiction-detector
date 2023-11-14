@@ -36,7 +36,7 @@ const SignupPage = () => {
             />
             <Input
               name="password2"
-              placeholder="Confirm your password"
+              placeholder="confirm your password"
             />
             <Button className="mt-4">sign up</Button>
           </form>
