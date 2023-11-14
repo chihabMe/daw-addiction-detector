@@ -60,10 +60,10 @@ const LoginPage = () => {
             <p>or continure with</p>
             <hr className=" grow my-6 border-t-2 border-gray-300 dark:border-gray-600" />
           </div>
-          <div className="flex justify-around ">
-        <LoginSocialMediaItem link="/accounts/login" src="/images/social_media/google.png"  />
-        <LoginSocialMediaItem link="/accounts/login" src="/images/social_media/apple.png"  />
-        <LoginSocialMediaItem link="/accounts/login" src="/images/social_media/facebook.png"  />
+          <div className="flex justify-around flex-col gap-4 lg:gap-0 lg:flex-row ">
+        <LoginSocialMediaItem text="google" link="/accounts/login" src="/images/social_media/google.png"  />
+        <LoginSocialMediaItem text="apple" link="/accounts/login" src="/images/social_media/apple.png"  />
+        <LoginSocialMediaItem text="facebook" link="/accounts/login" src="/images/social_media/facebook.png"  />
           </div>
         </div>
       </section>
@@ -71,11 +71,14 @@ const LoginPage = () => {
   );
 };
 
-const LoginSocialMediaItem = ({src,link}:{src:string,link:string}) => {
+const LoginSocialMediaItem = ({src,link,text}:{src:string,text:string,link:string}) => {
   return (
-    <div className="bg-ligth dark:bg-dark  py-[15px] px-10 hover:shadow-lg  transition-all duration-200  rounded-lg dark:shadow-gray-50 shadow-sm cursor-pointer ">
-      <Link to={link}>
-        <img src={src} className="w-7 h-7" />
+    <div className="bg-ligth dark:bg-dark relative  py-[15px] px-10 hover:shadow-lg   transition-all duration-200  rounded-lg  shadow-sm cursor-pointer ">
+      <Link to={link} className="flex justify-center w-full  items-center w-6 h-6">
+        <img src={src} className="w-7 h-7  mx-auto absolute left-4 top-1/2 lg:left-1/2 lg:-translate-x-1/2 -translate-y-1/2   " />
+        <span className=" lg:hidden text-text-darker capitalize font-bold dark:text-text-ligther">
+          {text}
+        </span>
       </Link>
     </div>
   );
