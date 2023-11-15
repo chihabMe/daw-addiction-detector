@@ -50,7 +50,7 @@ Addiction
       <div
         className="hidden   lg:block">
         <img
-          className="w-[550px] h-[550px]"
+          className="w-[600px] h-[600px]"
           src="/images/home/doctor.svg"
           alt="doctor image"
         />
