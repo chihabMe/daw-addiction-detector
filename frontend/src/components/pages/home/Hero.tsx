@@ -31,18 +31,19 @@ const Hero = () => {
 
           <div className="flex   items-center gap-6 mt-8">
             <Link to="/quiz" className="">
-              <Button  className="rounded-xl px-4 py-4 md:px-6 md:py-4 !w-full  ">
+              <Button  className="rounded-xl hover:shadow-lg hover:shadow-blue-500 px-4 py-4 md:px-6 md:py-4 !w-full  ">
                 Start Now!
               </Button>
             </Link>
             <Link to="/how-it-works" className="">
-              <Button  className="rounded-xl  px-4 py-4 md:px-6 md:py-4  !w-full bg-transparent text-text-darker dark:text-text-ligther">
+              <Button  className="rounded-xl    px-4 py-4 md:px-6 md:py-4  !w-full bg-transparent text-text-darker dark:text-text-ligther">
                 How It Works?
               </Button>
             </Link>
           </div>
         </div>
-        <div className="hidden   lg:block">
+        <div className="hidden  relative  lg:block">
+          <div className="bg-blue-300 dark:bg-blue-700 absolute -z-10 w-[600px] -translate-y-1/2 h-[450px] top-1/2 bottom-1/2 blur-[100px]"/>
           <img
             className="w-[600px] h-[600px]"
             src="/images/home/doctor.svg"

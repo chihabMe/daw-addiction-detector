@@ -1,9 +1,9 @@
-import { FormEvent, useState } from "react";
+import { useState } from "react";
 import Button from "../../components/ui/Button";
 import Input from "../../components/ui/Input";
 import { EnvelopeIcon, EyeIcon, EyeSlashIcon } from "@heroicons/react/24/solid";
 import { motion } from "framer-motion";
-import { Form, Link } from "react-router-dom";
+import {  Link } from "react-router-dom";
 import { Formik } from "formik";
 import { loginSchema } from "../../schemas/login.schema";
 const initialState = {
@@ -48,45 +48,47 @@ const LoginPage = () => {
           <Formik
             initialValues={initialState}
             validationSchema={loginSchema}
-            validateOnChange={true}
-            onSubmit={(values, actions) => {
+            onSubmit={async (values, actions) => {
               console.log(values);
               actions.resetForm();
             }}
           >
-            <Form className="flex flex-col ">
-              <Input
-                name="email"
-                type="email"
-                placeholder="Enter your email"
-                Icon={<EnvelopeIcon className=" text-primary   w-5 h-5" />}
-                className="bg-blue-50 my-2"
-              />
-              <Input
-                name="password"
-                placeholder="Enter your password"
-                type={showPassword ? "text" : "password"}
-                iconOnClick={toggleShowPassword}
-                Icon={
-                  showPassword ? <HidePasswordIcon /> : <ShowPasswordIcon />
-                }
-                className="bg-blue-50 my-4"
-              />
-              <div className="flex justify-end py-4">
-                <Link
-                  to="/accounts/password/restore"
-                  className="text-text-dark dark:text-text-dark font-medium hover:!text-primary "
+            {(props) => (
+              <form onSubmit={props.handleSubmit} className="flex flex-col ">
+                <Input
+                  name="email"
+                  type="email"
+                  placeholder="Enter your email"
+                  Icon={<EnvelopeIcon className=" text-primary   w-5 h-5" />}
+                  className="bg-blue-50 my-2"
+                />
+                <Input
+                  name="password"
+                  placeholder="Enter your password"
+                  type={showPassword ? "text" : "password"}
+                  iconOnClick={toggleShowPassword}
+                  Icon={
+                    showPassword ? <HidePasswordIcon /> : <ShowPasswordIcon />
+                  }
+                  className="bg-blue-50 my-4"
+                />
+                <div className="flex justify-end py-4">
+                  <Link
+                    to="/accounts/password/restore"
+                    className="text-text-dark dark:text-text-dark font-medium hover:!text-primary "
+                  >
+                    Recover Password ?
+                  </Link>
+                </div>
+                <Button
+                  disabled={props.isSubmitting}
+                  type="submit"
+                  className="mt-4 font-bold shadow-sm shadow-blue-300 hover:shadow-blue-300 hover:shadow-lg"
                 >
-                  Recover Password ?
-                </Link>
-              </div>
-              <Button
-                type="submit"
-                className="mt-4 font-bold shadow-sm shadow-blue-300 hover:shadow-blue-300 hover:shadow-lg"
-              >
-                Sign in
-              </Button>
-            </Form>
+                  Sign in
+                </Button>
+              </form>
+            )}
           </Formik>
           <div className="flex items-center justify-between gap-4 py-4  text-gray-400 font-medium">
             <motion.hr className=" grow my-6 border-t-2 border-gray-300 dark:border-gray-600" />

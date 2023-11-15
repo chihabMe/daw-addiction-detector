@@ -12,13 +12,13 @@ interface Props {
 const HeaderDesktopView = ({ links }: Props) => {
   const pathname = useLocation().pathname
   return (
-    <div className=" hidden  lg:flex items-center justify-between grow  ">
+    <div className=" hidden   lg:flex items-center justify-between grow  ">
       <nav className="flex  grow ">
         <ul className="flex gap-4 items-center  ">
           {links.map((link, idx) => (
             <li
               key={idx}
-              className="font-[600] font-inter py-3 px-6   text-[20px]   text-text-darker dark:text-text-ligther capitalize hover:text-primary relative"
+              className="font-[600] font-inter py-3 px-6   text-[20px]   text-text-darker dark:text-text-ligther capitalize hover:text-primary  relative"
             >
               {pathname==link.href && 
                 <motion.div
