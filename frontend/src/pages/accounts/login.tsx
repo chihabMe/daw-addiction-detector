@@ -5,6 +5,7 @@ import { EnvelopeIcon, EyeIcon, EyeSlashIcon } from "@heroicons/react/24/solid";
 import { motion } from "framer-motion";
 import { Form, Link } from "react-router-dom";
 import { Formik } from "formik";
+import { loginSchema } from "../../schemas/login.schema";
 const initialState = {
   email: "",
   password: "",
@@ -12,9 +13,6 @@ const initialState = {
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const toggleShowPassword = () => setShowPassword((prev) => !prev);
-  const handleFormSubmit = (e: FormEvent) => {
-    e.preventDefault();
-  };
   return (
     <main className="w-full min-h-screen flex  justify-center items-center  ">
       <motion.section
@@ -49,15 +47,17 @@ const LoginPage = () => {
         <div className=" w-full mx-auto lg:w-1/3 max-w-[450px]   gap-4  flex flex-col justify-center   ">
           <Formik
             initialValues={initialState}
+            validationSchema={loginSchema}
+            validateOnChange={true}
             onSubmit={(values, actions) => {
               console.log(values);
               actions.resetForm();
             }}
-            validateOnChange={true}
           >
             <Form className="flex flex-col ">
               <Input
                 name="email"
+                id="email"
                 type="email"
                 placeholder="Enter your email"
                 Icon={<EnvelopeIcon className=" text-primary   w-5 h-5" />}
@@ -65,6 +65,7 @@ const LoginPage = () => {
               />
               <Input
                 name="password"
+                id="password"
                 placeholder="Enter your password"
                 type={showPassword ? "text" : "password"}
                 iconOnClick={toggleShowPassword}

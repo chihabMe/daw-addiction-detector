@@ -58,61 +58,59 @@ const SignupPage = () => {
             initialValues={initialFormValues}
             validateOnChange={true}
           >
-            {(props) => (
-              <Form className="flex flex-col  ">
+            <Form className="flex flex-col  ">
+              <Input
+                name="email"
+                type="email"
+                placeholder="Enter your email"
+                Icon={<EnvelopeIcon className=" text-primary   w-5 h-5" />}
+                className="bg-blue-50 my-2"
+              />
+
+              <div className="flex items-center justify-between gap-4">
                 <Input
-                  name="email"
-                  type="email"
-                  placeholder="Enter your email"
-                  Icon={<EnvelopeIcon className=" text-primary   w-5 h-5" />}
+                  name="first_name"
+                  type="text"
+                  placeholder="first name"
                   className="bg-blue-50 my-2"
                 />
 
-                <div className="flex items-center justify-between gap-4">
-                  <Input
-                    name="first_name"
-                    type="text"
-                    placeholder="first name"
-                    className="bg-blue-50 my-2"
-                  />
-
-                  <Input
-                    name="last_name"
-                    type="text"
-                    placeholder="last name"
-                    className="bg-blue-50 my-2"
-                  />
-                </div>
-
                 <Input
-                  name="password"
-                  placeholder="Enter your password"
-                  type={showPassword ? "text" : "password"}
-                  iconOnClick={toggleShowPassword}
-                  Icon={
-                    showPassword ? <HidePasswordIcon /> : <ShowPasswordIcon />
-                  }
-                  className="bg-blue-50 my-4"
+                  name="last_name"
+                  type="text"
+                  placeholder="last name"
+                  className="bg-blue-50 my-2"
                 />
+              </div>
 
-                <Input
-                  name="password2"
-                  placeholder="Confirm your password"
-                  type={showPassword ? "text" : "password"}
-                  iconOnClick={toggleShowPassword}
-                  Icon={
-                    showPassword ? <HidePasswordIcon /> : <ShowPasswordIcon />
-                  }
-                  className="bg-blue-50 my-4"
-                />
-                <Button
-                  type="submit"
-                  className="mt-4 font-bold shadow-sm shadow-blue-300 hover:shadow-blue-300 hover:shadow-lg"
-                >
-                  Sign Up
-                </Button>
-              </Form>
-            )}
+              <Input
+                name="password"
+                placeholder="Enter your password"
+                type={showPassword ? "text" : "password"}
+                iconOnClick={toggleShowPassword}
+                Icon={
+                  showPassword ? <HidePasswordIcon /> : <ShowPasswordIcon />
+                }
+                className="bg-blue-50 my-4"
+              />
+
+              <Input
+                name="password2"
+                placeholder="Confirm your password"
+                type={showPassword ? "text" : "password"}
+                iconOnClick={toggleShowPassword}
+                Icon={
+                  showPassword ? <HidePasswordIcon /> : <ShowPasswordIcon />
+                }
+                className="bg-blue-50 my-4"
+              />
+              <Button
+                type="submit"
+                className="mt-4 font-bold shadow-sm shadow-blue-300 hover:shadow-blue-300 hover:shadow-lg"
+              >
+                Sign Up
+              </Button>
+            </Form>
           </Formik>
           <div className="flex items-center justify-between gap-4 py-4  text-gray-400 font-medium">
             <motion.hr className=" grow my-6 border-t-2 border-gray-300 dark:border-gray-600" />
