@@ -8,7 +8,6 @@ from rest_framework.response import Response
 from .models import Patient
 from .serializers import PatientSerializer
 
-# Create your views here.
 
 
 @api_view(["GET", "POST"])

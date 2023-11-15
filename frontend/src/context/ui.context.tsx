@@ -73,6 +73,9 @@ export const UiContextProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     localStorage.setItem("questionMode", questionMode);
   }, [questionMode]);
+  useEffect(() => {
+    localStorage.setItem("questionDisplayType", questionDisplayType);
+  }, [questionDisplayType]);
 
   useEffect(() => {
     localStorage.setItem("theme", theme);

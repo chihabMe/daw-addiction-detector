@@ -55,39 +55,39 @@ const LoginPage = () => {
             }}
             validateOnChange={true}
           >
-              <Form className="flex flex-col ">
-                <Input
-                  name="email"
-                  type="email"
-                  placeholder="Enter your email"
-                  Icon={<EnvelopeIcon className=" text-primary   w-5 h-5" />}
-                  className="bg-blue-50 my-2"
-                />
-                <Input
-                  name="password"
-                  placeholder="Enter your password"
-                  type={showPassword ? "text" : "password"}
-                  iconOnClick={toggleShowPassword}
-                  Icon={
-                    showPassword ? <HidePasswordIcon /> : <ShowPasswordIcon />
-                  }
-                  className="bg-blue-50 my-4"
-                />
-                <div className="flex justify-end py-4">
-                  <Link
-                    to="/accounts/password/restore"
-                    className="text-text-dark dark:text-text-dark font-medium hover:!text-primary "
-                  >
-                    Recover Password ?
-                  </Link>
-                </div>
-                <Button
-                  type="submit"
-                  className="mt-4 font-bold shadow-sm shadow-blue-300 hover:shadow-blue-300 hover:shadow-lg"
+            <Form className="flex flex-col ">
+              <Input
+                name="email"
+                type="email"
+                placeholder="Enter your email"
+                Icon={<EnvelopeIcon className=" text-primary   w-5 h-5" />}
+                className="bg-blue-50 my-2"
+              />
+              <Input
+                name="password"
+                placeholder="Enter your password"
+                type={showPassword ? "text" : "password"}
+                iconOnClick={toggleShowPassword}
+                Icon={
+                  showPassword ? <HidePasswordIcon /> : <ShowPasswordIcon />
+                }
+                className="bg-blue-50 my-4"
+              />
+              <div className="flex justify-end py-4">
+                <Link
+                  to="/accounts/password/restore"
+                  className="text-text-dark dark:text-text-dark font-medium hover:!text-primary "
                 >
-                  Sign in
-                </Button>
-              </Form>
+                  Recover Password ?
+                </Link>
+              </div>
+              <Button
+                type="submit"
+                className="mt-4 font-bold shadow-sm shadow-blue-300 hover:shadow-blue-300 hover:shadow-lg"
+              >
+                Sign in
+              </Button>
+            </Form>
           </Formik>
           <div className="flex items-center justify-between gap-4 py-4  text-gray-400 font-medium">
             <motion.hr className=" grow my-6 border-t-2 border-gray-300 dark:border-gray-600" />

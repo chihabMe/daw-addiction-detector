@@ -5,7 +5,7 @@ interface Props   {
   children: ReactNode;
   className?: string;
   onClick?: () => void;
-  type:"submit"|"reset";
+  type?:"submit"|"reset";
 }
 const Button = ({ children,className, onClick,type} : Props) => {
 
