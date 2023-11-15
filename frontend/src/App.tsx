@@ -12,9 +12,9 @@ function App() {
             key="dark_theme_overlay"
             transition={{}}
             initial={{opacity:0}}
-            exit={{opacity:1}}
+            exit={{opacity:0}}
             animate={{opacity:1}}
-            className="-z-10 fixed    top-0 bottom-0 left-0 right-0  bg-light  dark:bg-dark"></motion.div>
+            className="-z-10 fixed  top-0 bottom-0 left-0 right-0    bg-light  dark:bg-dark"></motion.div>
         )}
       </AnimatePresence>
       <RouterProvider router={router} />;

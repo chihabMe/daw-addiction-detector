@@ -12,12 +12,27 @@ const LoginPage = () => {
     e.preventDefault();
   };
   return (
-    <main className="w-full min-h-screen flex justify-center items-center  ">
-      <section className="w-full h-[800px]   mx-auto max-w-[1500px]   gap-4   my-auto  rounded-xl p-8   flex justify-between   ">
-        <div className="w-2/3 hidden  lg:flex    ">
-          <div className="w-full max-w-[500px] flex  pt-10  flex-col gap-4">
-            <h1 className="font-bold text-text-darker dark:text-text-ligther text-5xl ">Sign in to</h1>
-            <h1 className="font-bold text-text-darker dark:text-text-ligther text-5xl ">start your test</h1>
+    <main className="w-full min-h-screen flex  justify-center items-center  ">
+
+
+      <motion.section
+        initial={{
+          opacity:0,
+        }}
+        animate={{
+          opacity:1,
+        }}
+        transition={{
+          duration:0.5
+        }}
+
+        className="w-full h-[800px] relative       mx-auto max-w-[1500px]   gap-4   my-auto  rounded-xl p-10   flex justify-between    ">
+        <div className="w-2/3  hidden  backdrop-blur  lg:flex    ">
+
+
+          <div className="w-full  max-w-[500px] flex  pt-10  flex-col gap-4">
+            <h1 className="font-bold text-gray-800 dark:text-text-ligther text-5xl ">Sign in to</h1>
+            <h1 className="font-bold text-gray-800 dark:text-text-ligther text-5xl ">start your test</h1>
             <p className="w-full max-w-[300px] font-medium text-text-dark dark:text-text-light py-2">
               if you don't have an account you can 
               <Link to="/accounts/signup" className="text-primary  font-bold">
@@ -56,9 +71,11 @@ const LoginPage = () => {
             </Button>
           </form>
           <div className="flex items-center justify-between gap-4 py-4  text-gray-400 font-medium">
-            <hr className=" grow my-6 border-t-2 border-gray-300 dark:border-gray-600" />
+            <motion.hr
+              className=" grow my-6 border-t-2 border-gray-300 dark:border-gray-600" />
             <p>or continure with</p>
-            <hr className=" grow my-6 border-t-2 border-gray-300 dark:border-gray-600" />
+            <motion.hr
+              className=" grow my-6 border-t-2 border-gray-300 dark:border-gray-600" />
           </div>
           <div className="flex justify-around flex-col gap-4 lg:gap-0 lg:flex-row ">
         <LoginSocialMediaItem text="google" link="/accounts/login" src="/images/social_media/google.png"  />
@@ -66,21 +83,23 @@ const LoginPage = () => {
         <LoginSocialMediaItem text="facebook" link="/accounts/login" src="/images/social_media/facebook.png"  />
           </div>
         </div>
-      </section>
+      </motion.section>
     </main>
   );
 };
 
 const LoginSocialMediaItem = ({src,link,text}:{src:string,text:string,link:string}) => {
   return (
-    <div className="bg-ligth dark:bg-dark relative  py-[15px] px-10 hover:shadow-lg   transition-all duration-200  rounded-lg  shadow-sm cursor-pointer ">
+    <motion.div
+
+      className="bg-ligth dark:bg-dark relative  py-[15px] px-10 hover:shadow-lg   transition-all duration-200  rounded-lg  shadow-sm cursor-pointer ">
       <Link to={link} className="flex justify-center w-full  items-center w-6 h-6">
         <img src={src} className="w-7 h-7  mx-auto absolute left-4 top-1/2 lg:left-1/2 lg:-translate-x-1/2 -translate-y-1/2   " />
         <span className=" lg:hidden text-text-darker capitalize font-bold dark:text-text-ligther">
           {text}
         </span>
       </Link>
-    </div>
+    </motion.div>
   );
 };
 

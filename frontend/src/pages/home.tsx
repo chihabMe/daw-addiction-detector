@@ -3,7 +3,7 @@ import Button from "../components/ui/Button";
 import { motion } from "framer-motion";
 
 const HomePage = () => (
-  <main className="min-h-screen px-4">
+  <main className="min-h-screen px-4 relative ">
     <motion.section
           transition={{delay:0.1,duration:0.4}}
           initial={{y:-50,opacity:0}}
