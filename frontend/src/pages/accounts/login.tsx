@@ -57,7 +57,6 @@ const LoginPage = () => {
             <Form className="flex flex-col ">
               <Input
                 name="email"
-                id="email"
                 type="email"
                 placeholder="Enter your email"
                 Icon={<EnvelopeIcon className=" text-primary   w-5 h-5" />}
@@ -65,7 +64,6 @@ const LoginPage = () => {
               />
               <Input
                 name="password"
-                id="password"
                 placeholder="Enter your password"
                 type={showPassword ? "text" : "password"}
                 iconOnClick={toggleShowPassword}

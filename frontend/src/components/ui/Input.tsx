@@ -5,11 +5,10 @@ interface Props extends HTMLProps<HTMLInputElement> {
   Icon?: ReactNode;
   iconOnClick?: () => void;
   name: string;
-  id: string;
 }
-const Input = ({ Icon, name, id, ...props }: Props) => {
+const Input = ({ Icon, name,  ...props }: Props) => {
   const [focus, setFocus] = useState(false);
-  const [fields, state, actions] = useField({ name, id });
+  const [fields, state, actions] = useField({ name});
   const hasError = !state.touched && state.error != undefined;
   const valid = !state.touched && state.error == undefined;
   return (

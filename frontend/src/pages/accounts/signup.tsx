@@ -5,6 +5,7 @@ import { EnvelopeIcon, EyeIcon, EyeSlashIcon } from "@heroicons/react/24/solid";
 import { motion } from "framer-motion";
 import { Form, Link } from "react-router-dom";
 import { Formik } from "formik";
+import { signupSchema } from "../../schemas/signup.schema";
 const initialFormValues = {
   email: "",
   first_name: "",
@@ -56,6 +57,7 @@ const SignupPage = () => {
               actions.resetForm();
             }}
             initialValues={initialFormValues}
+            validationSchema={signupSchema}
             validateOnChange={true}
           >
             <Form className="flex flex-col  ">
