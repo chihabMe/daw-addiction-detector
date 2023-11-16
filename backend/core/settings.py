@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -20,12 +21,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-5@tz&3op$s1qv)c6c)-yw6qe9uxf^&ty%59i)w0*pue3*cw&$y"
+SECRET_KEY = os.environ.get(
+    "SECRET_KEY",
+    default="django-insecure-5@tz&3op$s1qv)c6c)-yw6qe9uxf^&ty%59i)w0*pue3*cw&$y",
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get("MODE") == "PRODUCTION"
 
-ALLOWED_HOSTS = ["localhost:8000","localhost"]
+ALLOWED_HOSTS = ["localhost:8000", "localhost"]
+RENDER_EXTERNAL_HOSTNAME = os.environ.get("RENDER_EXTERNAL_HOSTNAME")
+if RENDER_EXTERNAL_HOSTNAME:
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
 
 # Application definition
@@ -53,6 +60,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -155,3 +163,11 @@ CORS_ALLOWED_ORIGINS = [
     "http://192.168.43.87:3000",
     "http://192.168.0.171:3000",
 ]
+if RENDER_EXTERNAL_HOSTNAME:
+    CORS_ALLOWED_ORIGINS.append(RENDER_EXTERNAL_HOSTNAME)
+if not DEBUG:
+    STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
+
