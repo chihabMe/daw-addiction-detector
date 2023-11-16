@@ -77,7 +77,7 @@ const Reviews = () => {
 const ReviewItem = ({ review, index }: { review: IReview; index: number }) => {
   const animate = useAnimation();
   const ref = useRef(null);
-  const inView = useInView(ref);
+  const inView = useInView(ref,{once:true});
   useEffect(() => {
     if (inView) {
       animate.start({
