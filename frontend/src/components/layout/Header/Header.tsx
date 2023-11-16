@@ -3,7 +3,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import HeaderDesktopView from "./HeaderDesktopView";
 import HeaderMobileView from "./HeadeMobileView";
 import { useEffect, useState } from "react";
-import Button from "../../ui/Button";
 const links = [
   {
     href: "/",
