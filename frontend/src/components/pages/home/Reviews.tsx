@@ -1,6 +1,7 @@
 import { StarIcon } from "@heroicons/react/24/solid";
 import Container from "../../layout/Container";
-import { motion } from "framer-motion";
+import { motion, useAnimate, useAnimation, useInView } from "framer-motion";
+import { useEffect, useRef } from "react";
 
 interface IReview {
   username: string;
@@ -54,36 +55,59 @@ const reviews: IReview[] = [
   },
 ];
 const Reviews = () => {
+  const ref = useRef(null);
+  const inView = useInView(ref);
   return (
     <Container>
-
-      <section className="py-8">
+      <section className="py-8 ">
         <h1 className="text-text-darker dark:text-text-ligther py-8  font-bold text-3xl">
           What people said about us
         </h1>
 
-
-        <ul className="grid gap-6 grid-cols-1 sm:grid-cols-2  lg:grid-cols-3  ">
+        <ul
+          ref={ref}
+          className="grid gap-6 grid-cols-1 sm:grid-cols-2  lg:grid-cols-3  "
+        >
           {reviews.map((review, idx) => (
-            <ReviewItem index={idx} review={review} />
+            <ReviewItem inView={inView} index={idx} review={review} />
           ))}
-
         </ul>
       </section>
     </Container>
   );
 };
 
-const ReviewItem = ({ review, index }: { review: IReview; index: number }) => {
+const ReviewItem = ({
+  review,
+  index,
+  inView,
+}: {
+  review: IReview;
+  index: number;
+  inView: boolean;
+}) => {
+  const animate = useAnimation();
+  if (inView) {
+    animate.start({
+      opacity: 1,
+      scale:1,
+      transition: {
+        delay: 0.1 * index,
+        type: "tween",
+        duration: 0.5,
+      },
+    });
+  }
+  console.log(inView)
+
   const starts = [];
   for (let i = 0; i < review.rating; i++) {
     starts.push(<StarIcon className="text-yellow-400 w-4 h-4" />);
   }
   return (
     <motion.li
-      transition={{delay:0.1*index}}
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
+      initial={{opacity:0,scale:0.8}}
+      animate={animate}
       className="rounded-xl   cursor-pointer hover:shadow-lg shadow p-4 bg-gray-50 dark:bg-dark "
     >
       <div className="   flex gap-2 items-center">
