@@ -10,9 +10,9 @@ const Hero = () => {
         transition={{ delay: 0.1, duration: 0.4 }}
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className="flex flex-col py-8 md:flex-row justify-between items-center justify-center min-h-[80vh]  mx-auto"
+        className="flex flex-col  py-8 md:flex-row justify-between items-center justify-center min-h-[80vh]   mx-auto"
       >
-        <div className="w-full lg:w-1/2 font-roboto max-w-[680px] gap-4  flex flex-col justify-center lg:items-start">
+        <div className="w-full   lg:w-1/2 font-roboto max-w-[680px] gap-4  flex flex-col justify-center lg:items-start">
           <div>
             <h1 className="text-3xl md:text-4xl lg:text-5xl text-text-darker dark:text-text-ligther font-[800] capitalize mb-4">
               Discover Your Gaming
@@ -42,8 +42,8 @@ const Hero = () => {
             </Link>
           </div>
         </div>
-        <div className="hidden  relative  lg:block">
-          <div className="bg-blue-300 dark:bg-blue-700 absolute -z-10 w-[600px] -translate-y-1/2 h-[450px] top-1/2 bottom-1/2 blur-[100px]"/>
+        <div className="  relative  lg:block">
+          <div className="bg-blue-300 dark:bg-blue-700 absolute -z-10 lg:w-[600px] -translate-y-1/2 lg:h-[450px] top-1/2 bottom-1/2 blur-[100px]"/>
           <img
             className="w-[600px] h-[600px]"
             src="/images/home/doctor.svg"

@@ -1,6 +1,6 @@
 import { StarIcon } from "@heroicons/react/24/solid";
 import Container from "../../layout/Container";
-import { motion, useAnimate, useAnimation, useInView } from "framer-motion";
+import { motion, useAnimation, useInView } from "framer-motion";
 import { useEffect, useRef } from "react";
 
 interface IReview {
@@ -55,8 +55,6 @@ const reviews: IReview[] = [
   },
 ];
 const Reviews = () => {
-  const ref = useRef(null);
-  const inView = useInView(ref);
   return (
     <Container>
       <section className="py-8 ">
@@ -65,11 +63,10 @@ const Reviews = () => {
         </h1>
 
         <ul
-          ref={ref}
           className="grid gap-6 grid-cols-1 sm:grid-cols-2  lg:grid-cols-3  "
         >
           {reviews.map((review, idx) => (
-            <ReviewItem inView={inView} index={idx} review={review} />
+            <ReviewItem index={idx} review={review} />
           ))}
         </ul>
       </section>
@@ -77,28 +74,23 @@ const Reviews = () => {
   );
 };
 
-const ReviewItem = ({
-  review,
-  index,
-  inView,
-}: {
-  review: IReview;
-  index: number;
-  inView: boolean;
-}) => {
+const ReviewItem = ({ review, index }: { review: IReview; index: number }) => {
   const animate = useAnimation();
-  if (inView) {
-    animate.start({
-      opacity: 1,
-      scale:1,
-      transition: {
-        delay: 0.1 * index,
-        type: "tween",
-        duration: 0.5,
-      },
-    });
-  }
-  console.log(inView)
+  const ref = useRef(null);
+  const inView = useInView(ref);
+  useEffect(() => {
+    if (inView) {
+      animate.start({
+        opacity: 1,
+        scale: 1,
+        transition: {
+          delay: 0.1 * index,
+          type: "tween",
+          duration: 0.5,
+        },
+      });
+    }
+  }, [inView]);
 
   const starts = [];
   for (let i = 0; i < review.rating; i++) {
@@ -106,7 +98,8 @@ const ReviewItem = ({
   }
   return (
     <motion.li
-      initial={{opacity:0,scale:0.8}}
+      ref={ref}
+      initial={{ opacity: 0, scale: 0.8 }}
       animate={animate}
       className="rounded-xl   cursor-pointer hover:shadow-lg shadow p-4 bg-gray-50 dark:bg-dark "
     >
