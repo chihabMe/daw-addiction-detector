@@ -37,7 +37,7 @@ const Introduction = ({ body, reverse, image }: Props) => {
         animate={animateSection}
         ref={ref}
         className={`flex flex-col    py-10   ${
-          reverse && "lg:flex-row-reverse"
+          reverse ? "lg:flex-row-reverse":"lg:flex-row"
         } justify-between items-center`}
       >
         <motion.div
