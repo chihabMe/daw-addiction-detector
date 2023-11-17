@@ -2,7 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import HeaderDesktopView from "./HeaderDesktopView";
 import HeaderMobileView from "./HeadeMobileView";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 const links = [
   {
     href: "/",
@@ -27,15 +27,18 @@ const links = [
 
 const Header = () => {
   const [isScrolling, setIsScrolling] = useState(false);
+  const prevYValue = useRef(0)
   const handleScroll = () => {
     console.log("y:", window.scrollY);
     console.log("height:", window.innerHeight);
 
-    if (window.scrollY >= window.innerHeight - 200) {
+    // if (window.scrollY >= window.innerHeight - 200) {
+     if(window.scrollY>prevYValue.current+50){
       setIsScrolling(true);
-    } else {
+    } else if(window.scrollY<prevYValue.current-50) {
       setIsScrolling(false);
     }
+    prevYValue.current=window.scrollY;
   };
   useEffect(() => {
     if (window) {
@@ -64,7 +67,7 @@ const ScrollingHeader = () => {
       <ul className="flex  relative   gap-2 w-full mx-auto py-4 rounded-xl items-center justify-around px-4  max-w-[600px]     ">
         <div className="  rounded-full z-40  absolute bg-gradient-to-r from-cyan-500 to-blue-500 top-0 bottom-0 left-0 right-0 " />
         {links.map((link) => (
-          <Link to={link.href}>
+          <Link key={link.href} to={link.href}>
             <li className="  z-50 capitalize cursor-pointer px-6 py-3  font-medium relative ">
               {link.href == pathname && (
                 <motion.div
