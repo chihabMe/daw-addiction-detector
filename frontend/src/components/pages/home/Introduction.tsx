@@ -36,15 +36,15 @@ const Introduction = ({ body, reverse, image }: Props) => {
         transition={{ delay: 0.4, duration: 1 }}
         animate={animateSection}
         ref={ref}
-        className={`flex   py-10   ${
-          reverse && "flex-row-reverse"
+        className={`flex flex-col    py-10   ${
+          reverse && "lg:flex-row-reverse"
         } justify-between items-center`}
       >
         <motion.div
           initial={{ x: reverse ? 50 : -50 }}
           animate={animateContent}
           transition={{ delay: 0.5, duration: 0.7 }}
-          className="w-1/2 flex flex-col gap-2"
+          className="w-full lg:w-1/2 flex flex-col gap-2"
         >
           <p className="text-text-darker dark:text-text-ligther">{body}</p>
           <Link to="/quiz" className="my-2">

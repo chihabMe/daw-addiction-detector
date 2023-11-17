@@ -65,7 +65,7 @@ const ScrollingHeader = () => {
       className="w-full sticky top-4 z-50  "
     >
       <ul className="flex  relative   gap-2 w-full mx-auto py-4 rounded-xl items-center justify-around px-4  max-w-[600px]     ">
-        <div className="  rounded-full z-40  absolute bg-gradient-to-r from-cyan-500 to-blue-500 top-0 bottom-0 left-0 right-0 " />
+        <div className="  rounded-full z-40  absolute bg-gradient-to-r from-cyan-500 dark:from-cyan-800 dark:to-primary to-blue-500 top-0 bottom-0 left-0 right-0 " />
         {links.map((link, idx) => (
           <Link key={link.href} to={link.href}>
             <motion.li
