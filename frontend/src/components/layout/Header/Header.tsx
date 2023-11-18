@@ -64,7 +64,7 @@ const ScrollingHeader = () => {
       transition={{ duration: 0.3 }}
       className="w-full sticky top-4 z-50  "
     >
-      <ul className="flex  relative   gap-2 w-full mx-auto py-4 rounded-xl items-center justify-around px-4  max-w-[600px]     ">
+      <ul className="flex  relative   lg:gap-2 w-full mx-auto py-4 rounded-xl items-center justify-around px-4  max-w-[600px]     ">
         <div className="  rounded-full z-40  absolute bg-gradient-to-r from-cyan-500 dark:from-cyan-800 dark:to-primary to-blue-500 top-0 bottom-0 left-0 right-0 " />
         {links.map((link, idx) => (
           <Link key={link.href} to={link.href}>
@@ -72,7 +72,7 @@ const ScrollingHeader = () => {
               initial={{ y: -20 }}
               animate={{ y: 0 }}
               transition={{ delay: 0.1 * idx }}
-              className="  z-50 capitalize cursor-pointer px-6 py-3  font-medium relative "
+              className="  z-50 capitalize cursor-pointer px-3 py-1.5 text-xs lg:text-base lg:px-6 lg:py-3  font-medium relative "
             >
               {link.href == pathname && (
                 <motion.div
