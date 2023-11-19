@@ -171,6 +171,8 @@ const LoginSocialMediaItem = ({
   );
 };
 
+
+
 const HidePasswordIcon = () => {
   return (
     <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }}>
@@ -188,3 +190,4 @@ const ShowPasswordIcon = () => {
 };
 
 export default SignupPage;
+

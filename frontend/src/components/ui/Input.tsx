@@ -11,10 +11,11 @@ const Input = ({ Icon, name, ...props }: Props) => {
   const [field, meta, _] = useField({ name });
   const hasError = meta.touched && meta.error;
   const valid = meta.touched && !meta.error;
-  console.log(meta)
+  console.log(meta);
 
   return (
-    <div className="w-full flex flex-col gap-2">
+    <div className="w-full flex flex-col gap-px  py-2">
+      {props.label && <label className={ `${hasError&&"!text-red-400"} text-text-darker dark:text-text-ligther font-medium text-[19px] medium capitalize` }>{props.label}</label>}
       <div
         className={twMerge(
           `transition-all duration-200 ${
