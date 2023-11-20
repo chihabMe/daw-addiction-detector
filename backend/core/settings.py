@@ -28,6 +28,7 @@ SECRET_KEY = os.environ.get(
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("MODE") == "PRODUCTION"
+DEBUG = True
 
 ALLOWED_HOSTS = ["localhost:8000", "localhost"]
 RENDER_EXTERNAL_HOSTNAME = os.environ.get("RENDER_EXTERNAL_HOSTNAME")

@@ -1,5 +1,6 @@
 import Hero from "../components/pages/home/Hero";
 import Introduction from "../components/pages/home/Introduction";
+import OurNumbers from "../components/pages/home/OurNumbers";
 import Reviews from "../components/pages/home/Reviews";
 const introductions = [
   {
@@ -21,6 +22,7 @@ const HomePage = () => (
   <main className="min-h-screen px-4 relative ">
     <Hero />
     <Reviews />
+    <OurNumbers/>
     {introductions.map((intro, idx) => (
       <Introduction
         key={`intro_item_${idx}`}
