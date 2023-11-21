@@ -38,7 +38,6 @@ const Header = () => {
     prevYValue.current = window.scrollY;
   };
   const handleResizing = ()=>{
-    console.log(window.innerWidth)
     setIsScrolling(false)
   }
   useEffect(() => {
@@ -51,7 +50,6 @@ const Header = () => {
       }
     }
   }, []);
-  console.log(isScrolling);
   return (
     <>
       <AnimatePresence>{isScrolling && <ScrollingHeader />}</AnimatePresence>
