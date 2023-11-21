@@ -32,6 +32,7 @@ const OurNumbers = () => {
         scale: 1,
       });
     }
+    
   }, [inView]);
 
 

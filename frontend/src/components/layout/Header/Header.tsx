@@ -29,10 +29,7 @@ const Header = () => {
   const [isScrolling, setIsScrolling] = useState(false);
   const prevYValue = useRef(0);
   const handleScroll = () => {
-    console.log("y:", window.scrollY);
-    console.log("height:", window.innerHeight);
-
-    // if (window.scrollY >= window.innerHeight - 200) {
+    if(window.innerWidth<=1024)return;
     if (window.scrollY > prevYValue.current + 50) {
       setIsScrolling(true);
     } else if (window.scrollY < prevYValue.current - 50) {
@@ -40,10 +37,18 @@ const Header = () => {
     }
     prevYValue.current = window.scrollY;
   };
+  const handleResizing = ()=>{
+    console.log(window.innerWidth)
+    setIsScrolling(false)
+  }
   useEffect(() => {
     if (window) {
       window.addEventListener("scroll", handleScroll);
-      return () => window.removeEventListener("scroll", handleScroll);
+      window.addEventListener("resize",handleResizing)
+      return () =>{ 
+        window.removeEventListener("resize",handleResizing)
+        window.removeEventListener("scroll", handleScroll)
+      }
     }
   }, []);
   console.log(isScrolling);
@@ -72,7 +77,7 @@ const ScrollingHeader = () => {
               initial={{ y: -20 }}
               animate={{ y: 0 }}
               transition={{ delay: 0.1 * idx }}
-              className="  z-50 capitalize cursor-pointer px-3 py-1.5 text-xs lg:text-base lg:px-6 lg:py-3  font-medium relative "
+              className="  z-50 capitalize cursor-pointer px-3 py-1.5 text-xs lg:px-6 lg:py-3  font-medium relative "
             >
               {link.href == pathname && (
                 <motion.div
