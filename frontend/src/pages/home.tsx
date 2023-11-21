@@ -1,3 +1,4 @@
+import AddedValue from "../components/pages/home/AddedValue";
 import Hero from "../components/pages/home/Hero";
 import Introduction from "../components/pages/home/Introduction";
 import OurNumbers from "../components/pages/home/OurNumbers";
