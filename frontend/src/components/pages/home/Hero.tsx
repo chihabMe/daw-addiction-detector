@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Button from "../../ui/Button";
 import Container from "../../layout/Container";
-import WaveLine from "../../svgs/WaveLine";
 
 const Hero = () => {
   return (
