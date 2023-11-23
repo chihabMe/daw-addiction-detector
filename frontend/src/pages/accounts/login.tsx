@@ -6,12 +6,14 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Formik } from "formik";
 import { loginSchema } from "../../schemas/login.schema";
+import { useAuth } from "../../hooks/useAuth";
 const initialState = {
   email: "",
   password: "",
 };
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const {login} = useAuth();
   const toggleShowPassword = () => setShowPassword((prev) => !prev);
   return (
     <main className="w-full min-h-[90vh] flex   justify-center items-center   ">
@@ -57,7 +59,8 @@ const LoginPage = () => {
               validationSchema={loginSchema}
               onSubmit={async (values, actions) => {
                 console.log(values);
-                actions.resetForm();
+                const a = await login(values.email,values.password);
+                actions.setSubmitting(false);
               }}
             >
               {(props) => (

@@ -11,7 +11,6 @@ const Input = ({ Icon, name, ...props }: Props) => {
   const [field, meta, _] = useField({ name });
   const hasError = meta.touched && meta.error;
   const valid = meta.touched && !meta.error;
-  console.log(meta);
 
   return (
     <div className="w-full flex flex-col gap-px  py-2">
