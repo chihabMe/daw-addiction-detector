@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     "livemessages",
     "answers",
     "questions",
+    "contacts"
 ]
 
 MIDDLEWARE = [
