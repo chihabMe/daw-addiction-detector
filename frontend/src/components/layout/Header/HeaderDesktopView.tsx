@@ -3,6 +3,7 @@ import Button from "../../ui/Button";
 import DarkLightThemeToggler from "../DarkLightThemeToggler";
 import { motion } from "framer-motion";
 import { useAuth } from "../../../hooks/useAuth";
+import { BellIcon, UserIcon } from "@heroicons/react/24/solid";
 
 interface Props {
   links: {
@@ -11,7 +12,7 @@ interface Props {
   }[];
 }
 const HeaderDesktopView = ({ links }: Props) => {
-  const { isLogged } = useAuth();
+  const { isLogged  } = useAuth();
   const pathname = useLocation().pathname;
   return (
     <div className=" hidden   lg:flex items-center justify-between grow  ">
@@ -46,23 +47,40 @@ const HeaderDesktopView = ({ links }: Props) => {
           ))}
         </ul>
       </nav>
-      {!isLogged && (
-        <div className="flex gap-4 items-center">
-          <DarkLightThemeToggler />
-          <Link to="/accounts/login">
-            <Button className="rounded-xl px-8 py-3.5 bg-transparent text-gray-700 dark:text-text-ligther hover:text-primary  capitalize  hover:ring-2  hover:ring-primary-500">
-              log in
-            </Button>
-          </Link>
+      {isLogged && <AuthencatedUserHeaderView />}
+      {!isLogged && <UnAuthencatedUserHeaderView />}
+    </div>
+  );
+};
+const AuthencatedUserHeaderView = () => {
+  return (
+    <div className="flex items-center gap-4">
+      <Button className="bg-transparent px-4">
+        <BellIcon className="w-5 h-5 text-gray-600" />
+      </Button>
+      <Button className="bg-transparent px-4">
+        <Link to="/accounts/profile">
+          <UserIcon className="w-5 h-5 text-gray-600" />
+        </Link>
+      </Button>
+    </div>
+  );
+};
+const UnAuthencatedUserHeaderView = () => {
+  return (
+    <div className="flex gap-4 items-center">
+      <DarkLightThemeToggler />
+      <Link to="/accounts/login">
+        <Button className="rounded-xl px-8 py-3.5 bg-transparent text-gray-700 dark:text-text-ligther hover:text-primary  capitalize  hover:ring-2  hover:ring-primary-500">
+          log in
+        </Button>
+      </Link>
 
-          <Link to="/accounts/signup">
-            <Button className="rounded-xl px-8 py-3.5  capitalize  ring-2 ring-blue-500">
-              sign up
-            </Button>
-          </Link>
-        </div>
-      )}
-      {isLogged && <h1>profile</h1>}
+      <Link to="/accounts/signup">
+        <Button className="rounded-xl px-8 py-3.5  capitalize  ring-2 ring-blue-500">
+          sign up
+        </Button>
+      </Link>
     </div>
   );
 };

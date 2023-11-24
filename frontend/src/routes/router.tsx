@@ -10,6 +10,8 @@ import ErrorPage from "./error-page";
 import { Root } from "./root";
 import LoginPage from "../pages/accounts/login";
 import SignupPage from "../pages/accounts/signup";
+import ProtectedRoute from "../components/wrappers/ProtectedRoute";
+import ProfilePage from "../pages/accounts/profile";
 
 export const router = createBrowserRouter([
   {
@@ -21,20 +23,11 @@ export const router = createBrowserRouter([
         path: "",
         element: <HomePage />,
       },
-      {
-        path: "doctors",
-        element: <DoctorsPage />,
-      },
 
       {
         path: "services",
         element: <ServicesPage />,
       },
-      {
-        path: "patients",
-        element: <PatientsPage />,
-      },
-
       {
         path: "contact",
         element: <ContactPage />,
@@ -45,8 +38,22 @@ export const router = createBrowserRouter([
         element: <AboutPage />,
       },
       {
-        path: "quiz",
-        element: <QuizPage />,
+        path: "",
+        element: <ProtectedRoute />,
+        children: [
+          {
+            path: "quiz",
+            element: <QuizPage />,
+          },
+          {
+            path: "patients",
+            element: <PatientsPage />,
+          },
+          {
+            path: "doctors",
+            element: <DoctorsPage />,
+          },
+        ],
       },
       {
         path: "accounts",
@@ -59,6 +66,17 @@ export const router = createBrowserRouter([
           {
             path: "signup",
             element: <SignupPage />,
+          },
+        ],
+      },
+
+      {
+        path: "accounts",
+        element: <ProtectedRoute />,
+        children: [
+          {
+            path: "profile",
+            element: <ProfilePage />,
           },
         ],
       },

@@ -6,42 +6,41 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Formik } from "formik";
 import { loginSchema } from "../../schemas/login.schema";
-// import { useAuth } from "../../hooks/useAuth";
+import { useAuth } from "../../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 const initialState = {
   email: "",
   password: "",
 };
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
-  // const {login} = useAuth();
+  const navigate = useNavigate();
+  const { login, isLoading } = useAuth();
   const toggleShowPassword = () => setShowPassword((prev) => !prev);
   return (
     <main className="w-full min-h-[90vh] flex   justify-center items-center   ">
       <motion.section
         initial={{
           opacity: 0,
-          scale:0.97
+          scale: 0.97,
         }}
         animate={{
           opacity: 1,
-          scale:1
+          scale: 1,
         }}
         transition={{
           duration: 0.5,
-          ease:"linear"
+          ease: "linear",
         }}
         className="w-full mt-10 h-[750px] relative        mx-auto max-w-[1500px]        rounded-xl shadow      flex justify-between     "
       >
         <div className="w-1/2 relative flex justify-center items-center bg-primary p-2 rounded-l-xl  hidden  backdrop-blur  lg:flex    ">
           <div className="   flex    flex-col gap-2">
-            <h1 className="font-bold text-gray-100  text-5xl ">
-              Advanture   
-            </h1>
-            <h1 className="font-bold text-gray-100  text-5xl ">
-              start here 
-            </h1>
+            <h1 className="font-bold text-gray-100  text-5xl ">Advanture</h1>
+            <h1 className="font-bold text-gray-100  text-5xl ">start here</h1>
             <p className="w-full max-w-[300px] font-medium  text-gray-100 py-2">
-              create an account to join our community 
+              create an account to join our community
               <Link to="/accounts/signup" className="   font-bold">
                 {" "}
                 here!
@@ -59,6 +58,17 @@ const LoginPage = () => {
               validationSchema={loginSchema}
               onSubmit={async (values, actions) => {
                 console.log(values);
+                const { success } = await login(values.email, values.password);
+                if (success) {
+                  toast.success("logged in");
+                  navigate("/accounts/profile");
+                } else {
+                  toast.error("failed to login");
+                  actions.setErrors({
+                    password: "Invalid field",
+                    email: "Invalid field",
+                  });
+                }
                 actions.setSubmitting(false);
               }}
             >
@@ -93,6 +103,7 @@ const LoginPage = () => {
                   </div>
                   <Button
                     disabled={props.isSubmitting}
+                    isLoading={isLoading}
                     type="submit"
                     className="mt-4 font-bold shadow-sm shadow-blue-300 hover:shadow-blue-300 hover:shadow-lg"
                   >
