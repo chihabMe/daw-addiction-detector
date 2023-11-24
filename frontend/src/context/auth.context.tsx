@@ -7,7 +7,7 @@ interface AuthContextState {
   isError: boolean;
   user: null | IUser;
   loadUser: () => void;
-  login: (email: string, password: string) => void;
+  login: (email: string, password: string) => Promise<boolean>;
   logout: () => void;
   error: Record<string, string>;
 }
@@ -16,7 +16,7 @@ const initialState: AuthContextState = {
   user: null,
   isLoading: true,
   loadUser: () => {},
-  login: () => {},
+  login: async () => false,
   logout: () => {},
   error: {},
   isError: false,
@@ -73,16 +73,18 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
       if (!res.ok) {
         setIsError(true);
         setError(data);
-        await loadUser();
       } else {
         localStorage.setItem("access", data.access);
         localStorage.setItem("refresh", data.refresh);
         setIsError(false);
         setError({});
+        await loadUser();
+        return true;
       }
     } catch (err) {
       setIsError(true);
       setError({});
+      return false;
     } finally {
       setIsLoading(false);
     }

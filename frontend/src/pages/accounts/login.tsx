@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "../../components/ui/Button";
 import Input from "../../components/ui/Input";
 import { EnvelopeIcon, EyeIcon, EyeSlashIcon } from "@heroicons/react/24/solid";
@@ -7,13 +7,16 @@ import { Link } from "react-router-dom";
 import { Formik } from "formik";
 import { loginSchema } from "../../schemas/login.schema";
 import { useAuth } from "../../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 const initialState = {
   email: "",
   password: "",
 };
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const { login, isLoading } = useAuth();
+  const navigate = useNavigate();
+  const { login, isLogged, isLoading } = useAuth();
   const toggleShowPassword = () => setShowPassword((prev) => !prev);
   return (
     <main className="w-full min-h-[90vh] flex   justify-center items-center   ">
@@ -55,7 +58,10 @@ const LoginPage = () => {
               validationSchema={loginSchema}
               onSubmit={async (values, actions) => {
                 console.log(values);
-                await login(values.email, values.password);
+                const isLogged = await login(values.email, values.password);
+                if(isLogged){
+                  toast.success("logged in")
+                }
                 actions.setSubmitting(false);
               }}
             >
