@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Button from "../../components/ui/Button";
 import Input from "../../components/ui/Input";
 import { EnvelopeIcon, EyeIcon, EyeSlashIcon } from "@heroicons/react/24/solid";
@@ -16,7 +16,7 @@ const initialState = {
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
-  const { login, isLogged, isLoading } = useAuth();
+  const { login, isLoading } = useAuth();
   const toggleShowPassword = () => setShowPassword((prev) => !prev);
   return (
     <main className="w-full min-h-[90vh] flex   justify-center items-center   ">
@@ -61,6 +61,7 @@ const LoginPage = () => {
                 const { success } = await login(values.email, values.password);
                 if (success) {
                   toast.success("logged in");
+                  navigate("/accounts/profile");
                 } else {
                   toast.error("failed to login");
                   actions.setErrors({

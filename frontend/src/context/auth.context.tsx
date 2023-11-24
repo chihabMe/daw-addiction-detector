@@ -22,6 +22,7 @@ const initialState: AuthContextState = {
   user: null,
   isLoading: true,
   loadUser: () => {},
+  //@ts-ignore
   login: async (email: string, password: string) => {
     return {
       success: false,

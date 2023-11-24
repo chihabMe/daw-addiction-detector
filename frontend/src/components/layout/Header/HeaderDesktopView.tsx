@@ -12,7 +12,7 @@ interface Props {
   }[];
 }
 const HeaderDesktopView = ({ links }: Props) => {
-  const { isLogged, user } = useAuth();
+  const { isLogged  } = useAuth();
   const pathname = useLocation().pathname;
   return (
     <div className=" hidden   lg:flex items-center justify-between grow  ">
