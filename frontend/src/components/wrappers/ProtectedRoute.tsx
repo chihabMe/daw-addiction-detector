@@ -1,14 +1,29 @@
-import { ReactNode } from "react";
+import { useEffect } from "react";
 import { useAuth } from "../../hooks/useAuth";
-import { useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
+import Spinner from "../ui/Spinner";
 
-const ProtectedRoute = ({ children }: { children: ReactNode }) => {
-  const { isLogged } = useAuth();
+function ProtectedRoute() {
+  const { isLogged, isLoading } = useAuth();
   const navigate = useNavigate();
-  if (!isLogged) {
-    return navigate("/accounts/login");
-  }
-  return <>{children}</>;
-};
+
+  useEffect(() => {
+    if (!isLogged) {
+      navigate("/accounts/login");
+    }
+  }, []);
+  if (isLoading)
+    return (
+      <div className="w-full min-h-screen flex justify-center items-center">
+        <Spinner className="border-primary" />
+      </div>
+    );
+
+  return (
+    <>
+      <Outlet />
+    </>
+  );
+}
 
 export default ProtectedRoute;
