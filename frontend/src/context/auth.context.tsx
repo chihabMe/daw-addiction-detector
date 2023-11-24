@@ -1,13 +1,19 @@
 import { ReactNode, createContext, useEffect, useState } from "react";
 import { getUserPath, obtainTokenPath } from "../utils/constants";
-
+interface ILoginResponse {
+  success: boolean;
+  error?: {
+    message: string;
+    fields?: Record<string, string>; // Update the structure if necessary
+  };
+}
 interface AuthContextState {
   isLogged: boolean;
   isLoading: boolean;
   isError: boolean;
   user: null | IUser;
   loadUser: () => void;
-  login: (email: string, password: string) => Promise<boolean>;
+  login: (email: string, password: string) => Promise<ILoginResponse>;
   logout: () => void;
   error: Record<string, string>;
 }
@@ -16,7 +22,12 @@ const initialState: AuthContextState = {
   user: null,
   isLoading: true,
   loadUser: () => {},
-  login: async () => false,
+  login: async (email: string, password: string) => {
+    return {
+      success: false,
+    };
+  },
+
   logout: () => {},
   error: {},
   isError: false,
@@ -64,27 +75,29 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
         "Content-Type": "application/json",
       },
     };
-    console.log(config);
-    console.log(obtainTokenPath);
+
     try {
       const res = await fetch(obtainTokenPath, config);
-      console.log(res);
       const data = await res.json();
       if (!res.ok) {
         setIsError(true);
         setError(data);
+        return {
+          success: false,
+          error: { message: "unable to login", fields: data }, // Update the structure if necessary
+        };
       } else {
         localStorage.setItem("access", data.access);
         localStorage.setItem("refresh", data.refresh);
         setIsError(false);
         setError({});
         await loadUser();
-        return true;
+        return { success: true };
       }
     } catch (err) {
       setIsError(true);
       setError({});
-      return false;
+      return { success: false, error: { message: "unable to log in" } };
     } finally {
       setIsLoading(false);
     }

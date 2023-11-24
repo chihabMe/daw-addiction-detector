@@ -58,9 +58,15 @@ const LoginPage = () => {
               validationSchema={loginSchema}
               onSubmit={async (values, actions) => {
                 console.log(values);
-                const isLogged = await login(values.email, values.password);
-                if(isLogged){
-                  toast.success("logged in")
+                const { success } = await login(values.email, values.password);
+                if (success) {
+                  toast.success("logged in");
+                } else {
+                  toast.error("failed to login");
+                  actions.setErrors({
+                    password: "Invalid field",
+                    email: "Invalid field",
+                  });
                 }
                 actions.setSubmitting(false);
               }}
