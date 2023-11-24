@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useState } from "react";
+import { ReactNode, createContext, useEffect, useState } from "react";
 import { getUserPath, obtainTokenPath } from "../utils/constants";
 
 interface AuthContextState {
@@ -53,40 +53,43 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
     } finally {
       setIsLoading(false);
     }
-  }
-
-const login = async (email: string, password: string) => {
-  setIsLogged(true);
-  const config = {
-    method: "POST",
-    body: JSON.stringify({ email, password }),
-    headers: {
-      "Content-Type": "application/json",
-    },
   };
-  console.log(config);
-  console.log(obtainTokenPath);
-  try {
-    const res = await fetch(obtainTokenPath, config);
-    console.log(res);
-    const data = await res.json();
-    if (!res.ok) {
+
+  const login = async (email: string, password: string) => {
+    setIsLogged(true);
+    const config = {
+      method: "POST",
+      body: JSON.stringify({ email, password }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    console.log(config);
+    console.log(obtainTokenPath);
+    try {
+      const res = await fetch(obtainTokenPath, config);
+      console.log(res);
+      const data = await res.json();
+      if (!res.ok) {
+        setIsError(true);
+        setError(data);
+        await loadUser();
+      } else {
+        localStorage.setItem("access", data.access);
+        localStorage.setItem("refresh", data.refresh);
+        setIsError(false);
+        setError({});
+      }
+    } catch (err) {
       setIsError(true);
-      setError(data);
-      await loadUser();
-    } else {
-      localStorage.setItem("access", data.access);
-      localStorage.setItem("refresh", data.refresh);
-      setIsError(false);
       setError({});
+    } finally {
+      setIsLoading(false);
     }
-  } catch (err) {
-    setIsError(true);
-    setError({});
-  } finally {
-    setIsLoading(false);
-  }
-  }
+  };
+  useEffect(() => {
+    loadUser();
+  }, []);
   const logout = () => {
     setIsLoading(false);
     setIsLogged(false);
