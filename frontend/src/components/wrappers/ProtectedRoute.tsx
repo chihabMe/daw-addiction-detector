@@ -6,6 +6,8 @@ import Spinner from "../ui/Spinner";
 function ProtectedRoute() {
   const { isLogged, isLoading } = useAuth();
   const navigate = useNavigate();
+  console.log(isLoading)
+  console.log(isLogged)
 
   useEffect(() => {
     if (!isLoading&&!isLogged) {
