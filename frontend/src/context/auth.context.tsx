@@ -1,5 +1,6 @@
 import { ReactNode, createContext, useEffect, useState } from "react";
 import { getUserPath, obtainTokenPath } from "../utils/constants";
+import axiosClient from "../utils/axios_client";
 interface ILoginResponse {
   success: boolean;
   error?: {
@@ -46,19 +47,9 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
   const loadUser = async () => {
     try {
       setIsLoading(true);
-      const res = await fetch(getUserPath, {
-        method: "GET",
-        headers: {
-          authorization: `Bearer ${localStorage.getItem("access")}`,
-          "Content-Type": "application/json",
-        },
-      });
-      if (!res.ok) {
-        throw new Error("unable to fetch user");
-      }
-      const data = await res.json();
+      const response = await axiosClient.get(getUserPath)
       setIsLogged(true);
-      setUser(data);
+      setUser(response.data);
     } catch (err) {
       setIsError(true);
       setIsLogged(false);

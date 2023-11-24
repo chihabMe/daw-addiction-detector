@@ -8,7 +8,7 @@ function ProtectedRoute() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!isLogged) {
+    if (!isLoading&&!isLogged) {
       navigate("/accounts/login");
     }
   }, []);
