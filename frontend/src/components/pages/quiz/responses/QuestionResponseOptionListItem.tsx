@@ -26,8 +26,8 @@ const QuestionResponseOptionListItem = ({
         exit={{ opacity: 0, y: -20 }}
         onClick={() => setResponseOption(option.id)}
         className={`${
-          isActive && "ring-[3px] ring-blue-500"
-        } active:ring-[4px] active:ring-primary p-px rounded-md ring-1 ring-white `}
+          isActive && "ring-[3px]  !ring-primary"
+} active:ring-[4px]   transition duration-300  active:ring-primary p-px rounded-md ring-1 ring-white `}
       >
         <div
           className={`  py-[22px] group rounded-md px-4 text-text-darker dark:text-text-ligther bg-bg-light   dark:bg-dark   flex gap-4  items-center duration-200 cursor-pointer  bg-gray-100  hover:bg-primary hover:!text-white font-medium ${
