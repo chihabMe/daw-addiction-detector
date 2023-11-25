@@ -3,7 +3,7 @@ import Button from "../../ui/Button";
 import DarkLightThemeToggler from "../DarkLightThemeToggler";
 import { motion } from "framer-motion";
 import { useAuth } from "../../../hooks/useAuth";
-import { BellIcon  } from "@heroicons/react/24/solid";
+import { BellIcon } from "@heroicons/react/24/solid";
 import HeaderProfileDropMenu from "./HeaderProfileDropMenu";
 
 interface Props {
@@ -13,7 +13,7 @@ interface Props {
   }[];
 }
 const HeaderDesktopView = ({ links }: Props) => {
-  const { isLogged } = useAuth();
+  const { isLogged,isLoading } = useAuth();
   const pathname = useLocation().pathname;
   return (
     <div className=" hidden   lg:flex items-center justify-between grow  ">
@@ -48,8 +48,8 @@ const HeaderDesktopView = ({ links }: Props) => {
           ))}
         </ul>
       </nav>
-      {isLogged && <AuthencatedUserHeaderView />}
-      {!isLogged && <UnAuthencatedUserHeaderView />}
+      {!isLoading && isLogged && <AuthencatedUserHeaderView />}
+      {!isLoading && !isLogged && <UnAuthencatedUserHeaderView />}
     </div>
   );
 };
@@ -60,7 +60,7 @@ const AuthencatedUserHeaderView = () => {
       <Button className="bg-transparent  px-6 ">
         <BellIcon className="w-6 h-6 text-gray-600 dark:text-gray-200 " />
       </Button>
-      <HeaderProfileDropMenu/>
+      <HeaderProfileDropMenu />
     </div>
   );
 };

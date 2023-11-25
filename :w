@@ -35,7 +35,7 @@ const HeaderProfileDropMenu = () => {
             <DropdownMenu.Content
               align="end"
               asChild
-              className="bg-light flex flex-col  px-2 py-2 dark:bg-dark w-[300px] shadow rounded-xl z-50  py-2"
+              className="bg-light flex flex-col gap-1 px-2 py-2 dark:bg-dark w-[300px] shadow rounded-xl z-50  py-2"
               sideOffset={5}
             >
               <motion.div
