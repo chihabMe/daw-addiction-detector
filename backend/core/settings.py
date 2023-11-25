@@ -31,7 +31,7 @@ SECRET_KEY = os.environ.get(
 DEBUG = os.environ.get("MODE") == "PRODUCTION"
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost:8000", "localhost", "127.0.0.1", "127.0.0.1:8000"]
+ALLOWED_HOSTS = ["localhost:8000", "localhost", "127.0.0.1", "127.0.0.1:8000","192.168.0.171"]
 RENDER_EXTERNAL_HOSTNAME = os.environ.get("RENDER_EXTERNAL_HOSTNAME")
 if RENDER_EXTERNAL_HOSTNAME:
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
