@@ -58,7 +58,7 @@ const AuthencatedUserHeaderView = () => {
     <div className="flex items-center gap-2">
       <DarkLightThemeToggler />
       <Button className="bg-transparent  px-6 ">
-        <BellIcon className="w-6 h-6 text-gray-600 dark:text-gray-200 " />
+        <BellIcon className="w-5 h-5 text-gray-600 dark:text-gray-200 " />
       </Button>
       <HeaderProfileDropMenu />
     </div>

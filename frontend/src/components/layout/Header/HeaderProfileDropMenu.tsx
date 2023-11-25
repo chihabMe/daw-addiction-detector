@@ -2,16 +2,17 @@ import {
   UserIcon,
   Cog6ToothIcon,
   ArrowLeftOnRectangleIcon,
+  ChevronDownIcon,
 } from "@heroicons/react/24/solid";
 import Button from "../../ui/Button";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { AnimatePresence, motion, useAnimationControls } from "framer-motion";
 import { ReactNode, useEffect, useState } from "react";
 import { useAuth } from "../../../hooks/useAuth";
 
 const HeaderProfileDropMenu = () => {
-  const {user,logout} = useAuth()
+  const { user, logout } = useAuth();
   const [open, setOpen] = useState(false);
   const closeMenu = async () => setOpen(false);
   const navigate = useNavigate();
@@ -21,12 +22,11 @@ const HeaderProfileDropMenu = () => {
   }, [controls, open]);
   return (
     <DropdownMenu.Root open={open} onOpenChange={setOpen}>
-      <DropdownMenu.Trigger asChild>
-        <button className="IconButton" aria-label="Customise options">
-          <Button className="bg-transparent px-6">
-            <UserIcon className="w-6 h-6 text-gray-600 dark:text-gray-200 " />
-          </Button>
-        </button>
+      <DropdownMenu.Trigger>
+        <Button className="bg-transparent   flex items-center gap-2  rounded-lg active:bg-blue-200  px-6 ">
+          <UserIcon className="w-5 h-5 text-gray-600 dark:text-gray-200 " />
+          <ChevronDownIcon className={ `${open&&"rotate-180"} transition duration-300 w-3 h-3 text-gray-600 dark:text-gray-200 ` }/>
+        </Button>
       </DropdownMenu.Trigger>
 
       <AnimatePresence>
@@ -51,7 +51,7 @@ const HeaderProfileDropMenu = () => {
                 >
                   <div className="flex  py-2 cursor-pointer gap-4 items-center text-text-darker group-hover:text-primary group-hover:dark:text-white dark:text-text-ligther">
                     <UserIcon className="w-5 h-5 " />
-                    <span className="" >{user?.email}</span>
+                    <span className="">{user?.email}</span>
                   </div>
                 </MenuItem>
 
@@ -66,11 +66,13 @@ const HeaderProfileDropMenu = () => {
                     <span className="w-5 h-5 ">Settings</span>
                   </div>
                 </MenuItem>
-                <MenuItem closeMenu={closeMenu} onSelect={async()=>{
-                  await logout()
-                  navigate("/")
-
-                }}>
+                <MenuItem
+                  closeMenu={closeMenu}
+                  onSelect={async () => {
+                    await logout();
+                    navigate("/");
+                  }}
+                >
                   <div className="flex  py-2 cursor-pointer gap-4 items-center  text-red-400  ">
                     <ArrowLeftOnRectangleIcon className="w-5 h-5" />
                     <span className="">logout</span>
@@ -99,9 +101,9 @@ const MenuItem = ({
       onSelect={async (e) => {
         e.preventDefault();
         await controls.start({
-          opacity:[0.5,1],
-          scale:[0.99,1],
-          transition:{duration:0.3}
+          opacity: [0.5, 1],
+          scale: [0.99, 1],
+          transition: { duration: 0.3 },
         });
 
         await closeMenu();
