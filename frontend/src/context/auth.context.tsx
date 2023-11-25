@@ -6,7 +6,6 @@ import {
 } from "../utils/constants";
 import axiosClient from "../utils/axios_client";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
 interface ILoginResponse {
   success: boolean;
   error?: {
