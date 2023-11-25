@@ -31,7 +31,7 @@ SECRET_KEY = os.environ.get(
 DEBUG = os.environ.get("MODE") == "PRODUCTION"
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost:8000", "localhost","127.0.0.1","127.0.0.1:8000"]
+ALLOWED_HOSTS = ["localhost:8000", "localhost", "127.0.0.1", "127.0.0.1:8000"]
 RENDER_EXTERNAL_HOSTNAME = os.environ.get("RENDER_EXTERNAL_HOSTNAME")
 if RENDER_EXTERNAL_HOSTNAME:
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "corsheaders",
     "rest_framework_simplejwt",
+    "rest_framework_simplejwt.token_blacklist",
     # local apps
     "accounts",
     "authentication",
@@ -61,7 +62,7 @@ INSTALLED_APPS = [
     "livemessages",
     "answers",
     "questions",
-    "contacts"
+    "contacts",
 ]
 LOGIN_REDIRECT_URL = "/"
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
