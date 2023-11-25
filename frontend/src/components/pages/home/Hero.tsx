@@ -75,7 +75,7 @@ const Hero = () => {
             animate={{opacity:1,scale:1}}
             transition={{delay:0.8,ease:"easeInOut"}}
           className="  relative  lg:block">
-          <div className="bg-blue-300 dark:bg-blue-700 absolute -z-10 lg:w-[600px] -translate-y-1/2 lg:h-[450px] top-1/2 bottom-1/2 blur-[100px]" />
+          <div className="bg-blue-300 dark:bg-blue-900 absolute -z-10 lg:w-[600px] -translate-y-1/2 lg:h-[450px] top-1/2 bottom-1/2 blur-[100px]" />
           <motion.img
             className="w-[600px] h-[600px]"
             src="/images/home/doctor.svg"
