@@ -17,7 +17,7 @@ function App() {
             className="-z-10 fixed  top-0 bottom-0 left-0 right-0      dark:bg-dark"></motion.div>
         )}
       </AnimatePresence>
-      <RouterProvider router={router} />;
+      <RouterProvider router={router} />
     </>
   );
 }

@@ -25,7 +25,7 @@ const Button = ({
       className={twMerge(
         `${
           props.disabled && "opacity-50"
-        } text-white  shadow-sm hover:shadow-lg px-10 py-4 font-bold rounded-lg transition-all duration-200 flex gap-2 items-center justify-center cursor-pointer bg-primary hover:ring-1 hover:ring-blue-500 active:ring-2 active:ring-blue-500 `,
+        } text-white  shadow-sm hover:shadow-lg px-10 py-4 font-bold  transition-all duration-200 flex gap-2 items-center justify-center cursor-pointer bg-primary hover:ring-1 hover:ring-blue-500 active:ring-2 active:ring-blue-500 `,
         className,
       )}
     >

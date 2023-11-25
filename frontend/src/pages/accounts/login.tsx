@@ -19,7 +19,7 @@ const LoginPage = () => {
   const { login, isLoading } = useAuth();
   const toggleShowPassword = () => setShowPassword((prev) => !prev);
   return (
-    <main className="w-full min-h-[100vh] flex   justify-center items-center   ">
+    <main className="w-full min-h-[100vh] flex    justify-center    ">
       <motion.section
         initial={{
           opacity: 0,
@@ -33,7 +33,7 @@ const LoginPage = () => {
           duration: 0.5,
           ease: "linear",
         }}
-        className="w-full mt-10 h-[750px] relative        mx-auto max-w-[1500px]        rounded-xl shadow      flex justify-between     "
+        className="w-full mt-2 h-[750px] relative        mx-auto max-w-[1500px]        rounded-xl shadow      flex justify-between     "
       >
         <div className="w-1/2 relative flex justify-center items-center bg-primary p-2 rounded-l-xl  hidden  backdrop-blur  lg:flex    ">
           <div className="   flex    flex-col gap-2">

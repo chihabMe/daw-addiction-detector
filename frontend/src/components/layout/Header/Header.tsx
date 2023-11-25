@@ -110,7 +110,7 @@ const DefaultHeader = () => {
       <div className=" flex items-center gap-16 justify-between py-4   mx-auto  ">
         <Link to="/" className="text-text-darker dark:text-text-ligther ">
           <h1 className="capitalize font-bold  text-3xl">
-            mz<span className="text-primary">tool</span>
+            mz<span className="text-primary">tol</span>
           </h1>
         </Link>
         <HeaderDesktopView links={links} />

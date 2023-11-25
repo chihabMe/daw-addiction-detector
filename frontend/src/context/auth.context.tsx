@@ -58,6 +58,7 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
     } catch (err) {
       setIsError(true);
       setIsLogged(false);
+      setUser(null)
     } finally {
       setIsLoading(false);
     }
