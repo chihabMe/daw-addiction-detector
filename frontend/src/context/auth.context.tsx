@@ -1,6 +1,11 @@
 import { ReactNode, createContext, useEffect, useState } from "react";
-import { getUserPath, obtainTokenPath } from "../utils/constants";
+import {
+  getUserPath,
+  logoutTokenPath,
+  obtainTokenPath,
+} from "../utils/constants";
 import axiosClient from "../utils/axios_client";
+import toast from "react-hot-toast";
 interface ILoginResponse {
   success: boolean;
   error?: {
@@ -15,7 +20,7 @@ interface AuthContextState {
   user: null | IUser;
   loadUser: () => void;
   login: (email: string, password: string) => Promise<ILoginResponse>;
-  logout: () => void;
+  logout:  () => Promise<void>;
   error: Record<string, string>;
 }
 const initialState: AuthContextState = {
@@ -30,7 +35,7 @@ const initialState: AuthContextState = {
     };
   },
 
-  logout: () => {},
+  logout: async() => {},
   error: {},
   isError: false,
 };
@@ -47,12 +52,13 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
   const loadUser = async () => {
     try {
       setIsLoading(true);
-      const response = await axiosClient.get(getUserPath)
+      const response = await axiosClient.get(getUserPath);
       setIsLogged(true);
       setUser(response.data);
     } catch (err) {
       setIsError(true);
       setIsLogged(false);
+      setUser(null)
     } finally {
       setIsLoading(false);
     }
@@ -97,9 +103,22 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     loadUser();
   }, []);
-  const logout = () => {
-    setIsLoading(false);
+  const logout = async () => {
+    setIsLoading(true);
     setIsLogged(false);
+    try {
+      await axiosClient.post(logoutTokenPath, {
+        refresh: localStorage.getItem("refresh"),
+      });
+    } catch (err) {
+      toast.error("An error occurred while attempting to log out");
+    } finally {
+      localStorage.removeItem("access")
+      localStorage.removeItem("refresh")
+      setIsLoading(false);
+      setUser(null);
+      setIsLogged(false);
+    }
   };
   const value: AuthContextState = {
     isLoading,

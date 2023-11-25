@@ -1,5 +1,5 @@
-import axios, { AxiosRequestConfig } from "axios";
-import { API_URL, refreshtokenPath } from "./constants";
+import axios  from "axios";
+import { refreshtokenPath } from "./constants";
 import { jwtDecode } from "jwt-decode";
 
 interface DecodedToken {

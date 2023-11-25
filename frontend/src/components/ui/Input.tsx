@@ -22,7 +22,7 @@ const Input = ({ Icon, name, ...props }: Props) => {
           }
           ${hasError && "ring-2 ring-red-400 text-red-400"}
           ${valid && "ring-2 ring-primary"}
-          items-center flex justify-between h-[60px] px-4 rounded-lg outline-none bg-white dark:bg-gray-700 w-full text-text-darker dark:text-text-ligther font-medium`,
+          items-center flex justify-between h-[65px] px-4 rounded-lg outline-none bg-white dark:bg-gray-700 w-full text-text-darker dark:text-text-ligther font-medium`,
           props.className,
         )}
       >

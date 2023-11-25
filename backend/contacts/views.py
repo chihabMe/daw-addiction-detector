@@ -5,8 +5,6 @@ from rest_framework.decorators import api_view
 from .serializer import ContactSerializer
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
-# Create your views here.
 
 @api_view(['GET','POST'])
 def contact_list_save(request):

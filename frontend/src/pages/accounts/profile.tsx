@@ -13,7 +13,14 @@ const ProfilePage = () => {
     getProfile();
   }, []);
 
-  return <div>{user?.first_name}</div>;
+  return(
+    <main className="min-h-screen">
+      <section >
+      {user?.first_name}
+      </section>
+
+    </main>
+  )
 };
 
 export default ProfilePage;

@@ -3,7 +3,8 @@ import Button from "../../ui/Button";
 import DarkLightThemeToggler from "../DarkLightThemeToggler";
 import { motion } from "framer-motion";
 import { useAuth } from "../../../hooks/useAuth";
-import { BellIcon, UserIcon } from "@heroicons/react/24/solid";
+import { BellIcon } from "@heroicons/react/24/solid";
+import HeaderProfileDropMenu from "./HeaderProfileDropMenu";
 
 interface Props {
   links: {
@@ -12,23 +13,23 @@ interface Props {
   }[];
 }
 const HeaderDesktopView = ({ links }: Props) => {
-  const { isLogged  } = useAuth();
+  const { isLogged,isLoading } = useAuth();
   const pathname = useLocation().pathname;
   return (
     <div className=" hidden   lg:flex items-center justify-between grow  ">
       <nav className="flex  grow ">
-        <ul className="flex gap-4 items-center  ">
+        <ul className="flex gap-4 items-center   ">
           {links.map((link, idx) => (
             <li
               key={idx}
-              className="font-[600] font-inter py-3 px-6   text-[20px]   text-text-darker dark:text-text-ligther capitalize hover:text-primary  relative"
+              className="font-[600]  font-inter py-3 px-6   text-[20px]   text-text-darker dark:text-text-ligther capitalize hover:text-primary  relative"
             >
               {pathname == link.href && (
                 <motion.div
                   layout
                   layoutId="active-navlink"
                   style={{ borderRadius: 9999 }}
-                  className="w-full rounded-full inset-0 bg-primary absolute"
+                  className="w-full    rounded-full inset-0 bg-primary absolute"
                 ></motion.div>
               )}
               <NavLink
@@ -38,7 +39,7 @@ const HeaderDesktopView = ({ links }: Props) => {
                     ? "pending"
                     : isActive
                     ? "text-primary relative text-white z-10"
-                    : "relative z-10"
+                    : "relative z-10   "
                 }
               >
                 {link.text}
@@ -47,22 +48,19 @@ const HeaderDesktopView = ({ links }: Props) => {
           ))}
         </ul>
       </nav>
-      {isLogged && <AuthencatedUserHeaderView />}
-      {!isLogged && <UnAuthencatedUserHeaderView />}
+      {!isLoading && isLogged && <AuthencatedUserHeaderView />}
+      {!isLoading && !isLogged && <UnAuthencatedUserHeaderView />}
     </div>
   );
 };
 const AuthencatedUserHeaderView = () => {
   return (
-    <div className="flex items-center gap-4">
-      <Button className="bg-transparent px-4">
-        <BellIcon className="w-5 h-5 text-gray-600" />
+    <div className="flex items-center gap-2">
+      <DarkLightThemeToggler />
+      <Button className="bg-transparent  px-6 ">
+        <BellIcon className="w-5 h-5 text-gray-600 dark:text-gray-200 " />
       </Button>
-      <Button className="bg-transparent px-4">
-        <Link to="/accounts/profile">
-          <UserIcon className="w-5 h-5 text-gray-600" />
-        </Link>
-      </Button>
+      <HeaderProfileDropMenu />
     </div>
   );
 };
