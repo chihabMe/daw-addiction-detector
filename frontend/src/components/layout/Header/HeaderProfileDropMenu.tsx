@@ -11,7 +11,7 @@ import { ReactNode, useEffect, useState } from "react";
 import { useAuth } from "../../../hooks/useAuth";
 
 const HeaderProfileDropMenu = () => {
-  const {user} = useAuth()
+  const {user,logout} = useAuth()
   const [open, setOpen] = useState(false);
   const closeMenu = async () => setOpen(false);
   const navigate = useNavigate();
@@ -66,7 +66,11 @@ const HeaderProfileDropMenu = () => {
                     <span className="w-5 h-5 ">Settings</span>
                   </div>
                 </MenuItem>
-                <MenuItem closeMenu={closeMenu}>
+                <MenuItem closeMenu={closeMenu} onSelect={async()=>{
+                  await logout()
+                  navigate("/")
+
+                }}>
                   <div className="flex py-2 cursor-pointer gap-4 text-red-400 items-center   cursor-pointer ">
                     <ArrowLeftOnRectangleIcon className="w-5 h-5" />
                     <span className="">logout</span>

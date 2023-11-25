@@ -7,6 +7,7 @@ export const getAllQuestionResponseOptionsPath =
 export const obtainTokenPath = API_URL + "/api/v1/auth/token/obtain";
 export const refreshtokenPath = API_URL+ "/api/v1/auth/token/refresh";
 export const veriftyTokenPath = API_URL + "/api/v1/auth/token/veirfy";
+export const logoutTokenPath = API_URL + "/api/v1/auth/token/logout";
 export const getUserPath = API_URL + "/api/v1/auth/me";
 
 export const getProfilePath = "/api/v1/auth/me"
