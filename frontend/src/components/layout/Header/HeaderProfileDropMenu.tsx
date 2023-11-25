@@ -49,7 +49,7 @@ const HeaderProfileDropMenu = () => {
                   }}
                   closeMenu={closeMenu}
                 >
-                  <div className="flex  py-2 cursor-pointer gap-4   items-center text-text-darker group-hover:text-primary dark:text-text-ligther">
+                  <div className="flex  py-2 cursor-pointer gap-4 items-center text-text-darker group-hover:text-primary group-hover:dark:text-white dark:text-text-ligther">
                     <UserIcon className="w-5 h-5 " />
                     <span className="" >{user?.email}</span>
                   </div>
@@ -61,7 +61,7 @@ const HeaderProfileDropMenu = () => {
                   }}
                   closeMenu={closeMenu}
                 >
-                  <div className="flex  py-2 cursor-pointer gap-4 items-center text-text-darker group-hover:text-primary dark:text-text-ligther">
+                  <div className="flex  py-2 cursor-pointer gap-4 items-center text-text-darker group-hover:text-primary group-hover:dark:text-white dark:text-text-ligther">
                     <Cog6ToothIcon className="w-5 h-5 " />
                     <span className="w-5 h-5 ">Settings</span>
                   </div>
@@ -71,7 +71,7 @@ const HeaderProfileDropMenu = () => {
                   navigate("/")
 
                 }}>
-                  <div className="flex py-2 cursor-pointer gap-4 text-red-400 items-center   cursor-pointer ">
+                  <div className="flex  py-2 cursor-pointer gap-4 items-center  text-red-400  ">
                     <ArrowLeftOnRectangleIcon className="w-5 h-5" />
                     <span className="">logout</span>
                   </div>
@@ -99,13 +99,15 @@ const MenuItem = ({
       onSelect={async (e) => {
         e.preventDefault();
         await controls.start({
-          x: [2, 0],
+          opacity:[0.5,1],
+          scale:[0.99,1],
+          transition:{duration:0.3}
         });
 
         await closeMenu();
         onSelect && onSelect();
       }}
-      className="      px-2 py-2 rounded-lg  transition duration-200  group"
+      className="   outline-none hover:shadow hover:bg-blue-50 dark:hover:bg-dark dark:hover:shadow-gray-700    px-2 py-2 rounded-xl   transition duration-200  group"
     >
       <motion.div animate={controls}>{children}</motion.div>
     </DropdownMenu.Item>
