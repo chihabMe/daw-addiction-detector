@@ -55,10 +55,10 @@ const HeaderDesktopView = ({ links }: Props) => {
 };
 const AuthencatedUserHeaderView = () => {
   return (
-    <div className="flex items-center gap-4">
+    <div className="flex items-center gap-2">
       <DarkLightThemeToggler />
-      <Button className="bg-transparent  px-4 ">
-        <BellIcon className="w-7 h-7 text-gray-600" />
+      <Button className="bg-transparent  px-6 ">
+        <BellIcon className="w-6 h-6 text-gray-600 dark:text-gray-200 " />
       </Button>
       <HeaderProfileDropMenu/>
     </div>

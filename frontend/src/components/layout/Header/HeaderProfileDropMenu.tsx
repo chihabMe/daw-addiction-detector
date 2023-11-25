@@ -21,8 +21,8 @@ const HeaderProfileDropMenu = () => {
     <DropdownMenu.Root open={open} onOpenChange={setOpen}>
       <DropdownMenu.Trigger asChild>
         <button className="IconButton" aria-label="Customise options">
-          <Button className="bg-transparent px-4">
-            <UserIcon className="w-7 h-7 text-gray-600" />
+          <Button className="bg-transparent px-6">
+            <UserIcon className="w-6 h-6 text-gray-600 dark:text-gray-200 " />
           </Button>
         </button>
       </DropdownMenu.Trigger>
