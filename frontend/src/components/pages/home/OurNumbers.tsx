@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef  } from "react";
 import Container from "../../layout/Container";
-import { motion, useAnimation, useAnimationControls, useInView } from "framer-motion";
+import { motion, useAnimation,  useInView } from "framer-motion";
 const ourNumbersData = [
   {
     body: "Total tests in last year",
@@ -23,14 +23,17 @@ const ourNumbersData = [
 const OurNumbers = () => {
   const animate = useAnimation();
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true });
+  const inView = useInView(ref, { once:false ,amount:"all" });
   useEffect(() => {
     if (inView) {
       animate.start({
-        opacity: 1,
+        opacity: [0.8,1],
         scale: 1,
         y: 0,
       });
+    }else{
+      animate.start({
+ y: 40, opacity: 0, x: -10, scale: 0.8       });
     }
   }, [inView]);
 
