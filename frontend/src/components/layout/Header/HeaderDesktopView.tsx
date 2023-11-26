@@ -21,7 +21,7 @@ const HeaderDesktopView = ({ links }: Props) => {
         <ul className="flex gap-4 items-center   ">
           {links.map((link, idx) => (
             <li
-              key={idx}
+              key={`nav_bar_links_item_${idx}`}
               className="font-[600]  font-inter py-3 px-6   text-[20px]   text-text-darker dark:text-text-ligther capitalize hover:text-primary  relative"
             >
               {pathname == link.href && (

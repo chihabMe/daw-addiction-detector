@@ -14,7 +14,7 @@ const QuestionListItem = ({ question, index }: Props) => {
   return (
     <li >
       <div
-        className="py-2 flex gap-2 items-center cursor-pointer justify-between items-center"
+        className="py-2 flex  items-center cursor-pointer justify-between items-center"
         onClick={toggleQuestionBody}
       >
         <p className=" text-text-darker dark:text-text-ligther  text-lg md:text-xl font-bold ">
@@ -35,7 +35,7 @@ const QuestionListItem = ({ question, index }: Props) => {
             transition={{ delay: 0.1,duration:0.2}}
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
+            exit={{ opacity: 0, y: -10}}
             className=" text-text-dark dark:text-text-light py-2 md:py-4 text-sm font-bold "
           >
             <p>{question.body}</p>

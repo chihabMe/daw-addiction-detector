@@ -1,6 +1,6 @@
-import { useEffect, useRef  } from "react";
+import { useEffect, useRef } from "react";
 import Container from "../../layout/Container";
-import { motion, useAnimation,  useInView } from "framer-motion";
+import { motion, useAnimation, useInView } from "framer-motion";
 const ourNumbersData = [
   {
     body: "Total tests in last year",
@@ -23,17 +23,21 @@ const ourNumbersData = [
 const OurNumbers = () => {
   const animate = useAnimation();
   const ref = useRef(null);
-  const inView = useInView(ref, { once:false ,amount:"all" });
+  const inView = useInView(ref, { once: false, amount: "all" });
   useEffect(() => {
     if (inView) {
       animate.start({
-        opacity: [0.8,1],
+        opacity: [0.8, 1],
         scale: 1,
         y: 0,
       });
-    }else{
+    } else {
       animate.start({
- y: 40, opacity: 0, x: -10, scale: 0.8       });
+        y: 40,
+        opacity: 0,
+        x: -10,
+        scale: 0.8,
+      });
     }
   }, [inView]);
 
@@ -43,6 +47,7 @@ const OurNumbers = () => {
         <div className=" grid grid-cols-1 md:grid-cols-2   lg:grid-cols-4  gap-2  py-4  ">
           {ourNumbersData.map((data, idx) => (
             <motion.div
+              key={`our_numbers_item_${idx}`}
               initial={{ y: 40, opacity: 0, x: -10, scale: 0.8 }}
               animate={animate}
               transition={{ delay: 0.1 * idx, duration: 0.3 }}
@@ -59,12 +64,6 @@ const OurNumbers = () => {
 };
 
 const NumberItem = ({ number }: { number: number }) => {
-  return (
-    <span
-      className="text-4xl   font-bold text-white"
-    >
-      {number}K+
-    </span>
-  );
+  return <span className="text-4xl   font-bold text-white">{number}K+</span>;
 };
 export default OurNumbers;

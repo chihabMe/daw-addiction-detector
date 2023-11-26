@@ -52,7 +52,7 @@ const QuizPage = () => {
 
         </AnimatePresence>
         {!showQuestions&&
-        <BaseModal overlayClassName="bg-primary opacity-100"  showModal={showQuestions} closeModal={()=>setShowQuestions(false)} >
+        <BaseModal overlayClassName=""  showModal={showQuestions} closeModal={()=>setShowQuestions(false)} >
             <div className="w-full flex flex-col gap-2 max-w-[550px] ring-2 ring-blue-500 mx-auto bg-white rounded-lg p-4 ">
               <h1 className="text-lg font-bold text-black text-primary">
                 Thanks !

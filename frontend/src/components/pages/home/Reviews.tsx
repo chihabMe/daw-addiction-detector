@@ -64,7 +64,7 @@ const Reviews = () => {
 
         <ul className="grid gap-6 grid-cols-1 sm:grid-cols-2  lg:grid-cols-3  ">
           {reviews.map((review, idx) => (
-            <ReviewItem index={idx} review={review} />
+            <ReviewItem key={`review_item_${idx}`} index={idx} review={review} />
           ))}
         </ul>
       </section>
