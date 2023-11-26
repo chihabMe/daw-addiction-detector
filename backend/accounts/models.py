@@ -30,6 +30,12 @@ GENDER_CHOICES = [
     ("F", "female"),
 ]
 
+USER_TYPES = [
+    ("paitent", "paitent"),
+    ("doctor", "doctor"),
+    ("admin", "admin"),
+]
+
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField("email", unique=True)
@@ -41,6 +47,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     updated = models.DateTimeField(auto_now=True)
     is_active = models.BooleanField("active", default=True)
     is_staff = models.BooleanField("is staff", default=False)
+    user_type = models.CharField(max_length=10, choices=USER_TYPES, default="paitent")
     objects = UserManager()
 
     USERNAME_FIELD = "email"
@@ -52,6 +59,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     def get_full_name(self):
         return str(self.first_name) + " " + str(self.last_name)
+
 
     def __str__(self):
         return self.get_full_name()
