@@ -83,8 +83,9 @@ const ReviewItem = ({ review, index }: { review: IReview; index: number }) => {
       animate.start({
         opacity: 1,
         scale: 1,
+        y:0,
         transition: {
-          delay: 0.1 * index,
+          delay: 0.1 * index/2,
           type: "tween",
           duration: 0.5,
         },
@@ -99,7 +100,7 @@ const ReviewItem = ({ review, index }: { review: IReview; index: number }) => {
   return (
     <motion.li
       ref={ref}
-      initial={{ opacity: 0, scale: 0.8 }}
+      initial={{ y:35,opacity: 0, scale: 0.8 }}
       animate={animate}
       className="rounded-xl   cursor-pointer hover:shadow-lg shadow p-4 bg-gray-50 dark:bg-dark "
     >

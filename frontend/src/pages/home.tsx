@@ -20,20 +20,20 @@ const introductions = [
   },
 ];
 const HomePage = () => (
-  <main className="min-h-screen px-4 relative  ">
+  <main className="min-h-screen pb-4 px-4 relative  ">
     <WaveLine />
     <Hero />
     <Reviews />
     <OurNumbers />
-    {introductions.map((intro, idx) => (
-      <Introduction
-        key={`intro_item_${idx}`}
-        body={intro.body}
-        image={intro.image}
-        reverse={(idx + 1) % 2 == 0}
-      />
-    ))}
   </main>
 );
 
+    // {introductions.map((intro, idx) => (
+    //   <Introduction
+    //     key={`intro_item_${idx}`}
+    //     body={intro.body}
+    //     image={intro.image}
+    //     reverse={(idx + 1) % 2 == 0}
+    //   />
+    // ))}
 export default HomePage;

@@ -9,6 +9,6 @@ export const veriftyTokenPath = API_URL + "/api/v1/auth/token/veirfy";
 export const logoutTokenPath = API_URL + "/api/v1/auth/token/logout";
 export const getUserPath = API_URL + "/api/v1/auth/me";
 
-export const getProfilePath = "/api/v1/auth/me";
+export const getProfilePath = API_URL+"/api/v1/auth/me";
 
 export const userRegistrationpath = API_URL + "/api/v1/accounts/register";
