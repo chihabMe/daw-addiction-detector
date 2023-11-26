@@ -1,7 +1,7 @@
 import { NavLink, Link, useLocation } from "react-router-dom";
 import Button from "../../ui/Button";
 import DarkLightThemeToggler from "../DarkLightThemeToggler";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useAuth } from "../../../hooks/useAuth";
 import { BellIcon } from "@heroicons/react/24/solid";
 import HeaderProfileDropMenu from "./HeaderProfileDropMenu";
@@ -13,7 +13,7 @@ interface Props {
   }[];
 }
 const HeaderDesktopView = ({ links }: Props) => {
-  const { isLogged,isLoading } = useAuth();
+  const { isLogged, isLoading } = useAuth();
   const pathname = useLocation().pathname;
   return (
     <div className=" hidden   lg:flex items-center justify-between grow  ">
@@ -48,8 +48,29 @@ const HeaderDesktopView = ({ links }: Props) => {
           ))}
         </ul>
       </nav>
-      {!isLoading && isLogged && <AuthencatedUserHeaderView />}
-      {!isLoading && !isLogged && <UnAuthencatedUserHeaderView />}
+      <AnimatePresence>
+        {isLogged && (
+          <motion.div
+            transition={{ delay: 0.2, duration: 0.2 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+          >
+            <AuthencatedUserHeaderView />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {!isLoading && !isLogged && (
+          <motion.div
+            transition={{ delay: 0.1, duration: 0.2 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+          >
+            <UnAuthencatedUserHeaderView />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
