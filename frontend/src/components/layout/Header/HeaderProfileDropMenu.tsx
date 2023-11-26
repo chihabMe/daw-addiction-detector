@@ -57,7 +57,7 @@ const HeaderProfileDropMenu = () => {
 
                 <MenuItem
                   onSelect={() => {
-                    navigate("/accounts/profile");
+                    navigate("/accounts/settings");
                   }}
                   closeMenu={closeMenu}
                 >

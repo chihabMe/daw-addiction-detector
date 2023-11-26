@@ -12,6 +12,7 @@ import LoginPage from "../pages/accounts/login";
 import SignupPage from "../pages/accounts/signup";
 import ProtectedRoute from "../components/wrappers/ProtectedRoute";
 import ProfilePage from "../pages/accounts/profile";
+import SettingsPage from "../pages/accounts/settings";
 
 export const router = createBrowserRouter([
   {
@@ -77,6 +78,10 @@ export const router = createBrowserRouter([
           {
             path: "profile",
             element: <ProfilePage />,
+          },
+          {
+            path: "settings",
+            element: <SettingsPage />,
           },
         ],
       },
