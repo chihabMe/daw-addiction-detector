@@ -1,8 +1,7 @@
-import { Link, useLocation } from "react-router-dom";
-import { AnimatePresence, motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import HeaderDesktopView from "./HeaderDesktopView";
 import HeaderMobileView from "./HeadeMobileView";
-import { useEffect, useRef, useState } from "react";
 const links = [
   {
     href: "/",
@@ -114,7 +113,7 @@ const DefaultHeader = () => {
       <div className=" flex items-center gap-16 justify-between py-4   mx-auto  ">
         <Link to="/" className="text-text-darker dark:text-text-ligther ">
           <h1 className="capitalize font-bold  text-3xl">
-            mz<span className="text-primary">tol</span>
+            mz<span className="text-primary">tool</span>
           </h1>
         </Link>
         <HeaderDesktopView links={links} />

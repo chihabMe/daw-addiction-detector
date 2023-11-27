@@ -45,7 +45,7 @@ const QuestionResponseOptionsList = ({ questionId }: Props) => {
       }    py-4 gap-4 font-medium `}
     >
       {options?.data.map((option, idx) => (
-        <motion.div layout>
+        <motion.div layout >
           <QuestionResponseOptionListItem
             key={`quesiton_respones_item_${option.id}`}
             index={idx}
