@@ -1,11 +1,14 @@
-import {  useState } from "react";
+import { useState } from "react";
 import Button from "../../components/ui/Button";
 import Input from "../../components/ui/Input";
 import { EnvelopeIcon, EyeIcon, EyeSlashIcon } from "@heroicons/react/24/solid";
 import { motion } from "framer-motion";
-import {  Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Formik } from "formik";
 import { signupSchema } from "../../schemas/signup.schema";
+import { userRegistrationpath } from "../../utils/constants";
+import axios, { AxiosError } from "axios";
+import toast from "react-hot-toast";
 const initialFormValues = {
   email: "",
   first_name: "",
@@ -16,9 +19,7 @@ const initialFormValues = {
 const SignupPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const toggleShowPassword = () => setShowPassword((prev) => !prev);
-  // const handleFormSubmit = (e: FormEvent) => {
-  //   e.preventDefault();
-  // };
+  const navigate = useNavigate();
   return (
     <main className="w-full min-h-screen flex  justify-center items-center  ">
       <motion.section
@@ -44,7 +45,6 @@ const SignupPage = () => {
             <p className="w-full max-w-[300px] font-medium text-text-dark dark:text-text-light py-2">
               if you have an account you can
               <Link to="/accounts/login" className="text-primary  font-bold">
-                {" "}
                 login from here!
               </Link>
             </p>
@@ -52,9 +52,17 @@ const SignupPage = () => {
         </div>
         <div className="   w-full mx-auto lg:w-1/3  max-w-[470px]   gap-4  flex flex-col justify-center   ">
           <Formik
-            onSubmit={(values, actions) => {
-              console.log(values);
-              actions.resetForm();
+            onSubmit={async (values, actions) => {
+              try {
+                  await axios.post(userRegistrationpath, values);
+                toast.success("registerd!");
+                navigate("/accounts/login");
+              } catch (err) {
+                if (err instanceof AxiosError) {
+                  actions.setErrors(err.response?.data);
+                  toast.error("faild!");
+                }
+              }
             }}
             initialValues={initialFormValues}
             validationSchema={signupSchema}
@@ -171,8 +179,6 @@ const LoginSocialMediaItem = ({
   );
 };
 
-
-
 const HidePasswordIcon = () => {
   return (
     <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }}>
@@ -190,4 +196,3 @@ const ShowPasswordIcon = () => {
 };
 
 export default SignupPage;
-

@@ -28,8 +28,8 @@ export function Root() {
           className: "bg-white  min-w-[200px] font-medium",
           success: {
             iconTheme: {
-              primary:"#3B82F6",
-              secondary:"white"
+              primary: "#3B82F6",
+              secondary: "white",
             },
           },
         }}

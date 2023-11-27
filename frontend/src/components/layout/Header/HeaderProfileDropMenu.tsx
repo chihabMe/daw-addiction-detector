@@ -18,7 +18,7 @@ const HeaderProfileDropMenu = () => {
   const navigate = useNavigate();
   const controls = useAnimationControls();
   useEffect(() => {
-    if (open) controls.start({ opacity: 1, y: 0 });
+    if (open) controls.start({ opacity: 1, y: 0,scale:1 });
   }, [controls, open]);
   return (
     <DropdownMenu.Root open={open} onOpenChange={setOpen}>
@@ -39,9 +39,9 @@ const HeaderProfileDropMenu = () => {
               sideOffset={5}
             >
               <motion.div
-                initial={{ opacity: 0, y: -5 }}
+                initial={{ opacity: 0, y: -5}}
                 animate={controls}
-                exit={{ opacity: 0, y: -3 }}
+                exit={{ opacity: 0, y: -3,scale:0.95}}
               >
                 <MenuItem
                   onSelect={() => {
@@ -57,7 +57,7 @@ const HeaderProfileDropMenu = () => {
 
                 <MenuItem
                   onSelect={() => {
-                    navigate("/accounts/profile");
+                    navigate("/accounts/settings");
                   }}
                   closeMenu={closeMenu}
                 >
@@ -103,7 +103,7 @@ const MenuItem = ({
         await controls.start({
           opacity: [0.5, 1],
           scale: [0.99, 1],
-          transition: { duration: 0.3 },
+          transition: { duration: 0.25 },
         });
 
         await closeMenu();

@@ -7,11 +7,11 @@ User = get_user_model()
 
 # Create your models here.
 class QuestionType(models.Model):
+    title = models.CharField(max_length=300)
     description = models.TextField()
     creator = models.ForeignKey(
         User, related_name="created_question_types", on_delete=models.CASCADE
     )
-    title = models.CharField(max_length=300)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
@@ -20,8 +20,8 @@ class QuestionType(models.Model):
 
 
 class Question(models.Model):
-    body = models.TextField()
     title = models.CharField(max_length=300)
+    body = models.TextField()
     creator = models.ForeignKey(
         User, related_name="created_questions", on_delete=models.CASCADE
     )

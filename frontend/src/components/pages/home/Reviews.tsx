@@ -62,11 +62,9 @@ const Reviews = () => {
           What people said about us
         </h1>
 
-        <ul
-          className="grid gap-6 grid-cols-1 sm:grid-cols-2  lg:grid-cols-3  "
-        >
+        <ul className="grid gap-6 grid-cols-1 sm:grid-cols-2  lg:grid-cols-3  ">
           {reviews.map((review, idx) => (
-            <ReviewItem index={idx} review={review} />
+            <ReviewItem key={`review_item_${idx}`} index={idx} review={review} />
           ))}
         </ul>
       </section>
@@ -77,17 +75,23 @@ const Reviews = () => {
 const ReviewItem = ({ review, index }: { review: IReview; index: number }) => {
   const animate = useAnimation();
   const ref = useRef(null);
-  const inView = useInView(ref,{once:true});
+  const inView = useInView(ref, { once: false,amount:"all" });
   useEffect(() => {
     if (inView) {
       animate.start({
         opacity: 1,
         scale: 1,
+        y: 0,
         transition: {
-          delay: 0.1 * index,
+          delay: (0.1 * index) ,
           type: "tween",
           duration: 0.5,
         },
+      });
+    } else {
+      animate.start({
+        opacity: 0,
+        scale: 0.8,
       });
     }
   }, [inView]);
@@ -99,7 +103,7 @@ const ReviewItem = ({ review, index }: { review: IReview; index: number }) => {
   return (
     <motion.li
       ref={ref}
-      initial={{ opacity: 0, scale: 0.8 }}
+      initial={{ y: 35, opacity: 0, scale: 0.8 }}
       animate={animate}
       className="rounded-xl   cursor-pointer hover:shadow-lg shadow p-4 bg-gray-50 dark:bg-dark "
     >

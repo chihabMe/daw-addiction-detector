@@ -21,20 +21,25 @@ const ourNumbersData = [
   },
 ];
 const OurNumbers = () => {
-
   const animate = useAnimation();
   const ref = useRef(null);
-  const inView = useInView(ref,{once:true});
+  const inView = useInView(ref, { once: false, amount: "all" });
   useEffect(() => {
     if (inView) {
       animate.start({
-        opacity: 1,
+        opacity: [0.8, 1],
         scale: 1,
+        y: 0,
+      });
+    } else {
+      animate.start({
+        y: 40,
+        opacity: 0,
+        x: -10,
+        scale: 0.8,
       });
     }
-    
   }, [inView]);
-
 
   return (
     <Container>
@@ -42,14 +47,13 @@ const OurNumbers = () => {
         <div className=" grid grid-cols-1 md:grid-cols-2   lg:grid-cols-4  gap-2  py-4  ">
           {ourNumbersData.map((data, idx) => (
             <motion.div
-              initial={{opacity:0,x:-10,scale:0}}
+              key={`our_numbers_item_${idx}`}
+              initial={{ y: 40, opacity: 0, x: -10, scale: 0.8 }}
               animate={animate}
-              transition={{delay:0.1*idx,duration:0.3}}
+              transition={{ delay: 0.1 * idx, duration: 0.3 }}
               className="flex  flex-col mx-auto gap-4 w-full min-h-[210px] md:min-h-[200px] md:max-w-[350px] lg:max-w-[280px]   shadow px-4 py-4 rounded-xl  bg-gradient-to-r from-cyan-500 dark:from-cyan-800 dark:to-primary to-blue-300 "
             >
-              <span className="text-4xl font-bold text-white">
-                ${data.number}K+
-              </span>
+              <NumberItem number={data.number} />
               <p className="font-semibold     text-gray-100">{data.body}</p>
             </motion.div>
           ))}
@@ -59,4 +63,7 @@ const OurNumbers = () => {
   );
 };
 
+const NumberItem = ({ number }: { number: number }) => {
+  return <span className="text-4xl   font-bold text-white">{number}K+</span>;
+};
 export default OurNumbers;

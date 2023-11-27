@@ -31,7 +31,13 @@ SECRET_KEY = os.environ.get(
 DEBUG = os.environ.get("MODE") == "PRODUCTION"
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost:8000", "localhost", "127.0.0.1", "127.0.0.1:8000","192.168.0.171"]
+ALLOWED_HOSTS = [
+    "localhost:8000",
+    "localhost",
+    "127.0.0.1",
+    "127.0.0.1:8000",
+    "192.168.0.171",
+]
 RENDER_EXTERNAL_HOSTNAME = os.environ.get("RENDER_EXTERNAL_HOSTNAME")
 if RENDER_EXTERNAL_HOSTNAME:
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
@@ -147,6 +153,8 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+MEDIA_URL = "media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
@@ -210,3 +218,5 @@ if RENDER_EXTERNAL_HOSTNAME:
     CORS_ALLOWED_ORIGINS.append(RENDER_EXTERNAL_HOSTNAME)
 if not DEBUG:
     STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+##

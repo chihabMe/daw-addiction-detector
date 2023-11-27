@@ -5,7 +5,7 @@ User = get_user_model()
 
 
 class UserCreationSerializer(serializers.ModelSerializer):
-    password2 = serializers.CharField()
+    password2 = serializers.CharField(write_only=True)
 
     class Meta:
         model = User
@@ -23,3 +23,27 @@ class UserCreationSerializer(serializers.ModelSerializer):
         user.set_password(password)
         user.save()
         return user
+
+
+class UserProfileSerializer(serializers.ModelSerializer):
+    email = serializers.CharField(source="email", read_only=True)
+    user_type = serializers.CharField(source="user_type", read_only=True)
+
+    class Meta:
+        model = User
+        fields = [
+            "first_name",
+            "last_name",
+            "email",
+            "phone",
+            "user_type",
+            "gender",
+            "created_at",
+            "updated_at",
+        ]
+
+    def update(self, instance, validated_data):
+        instance.first_name = validated_data.get("first_name", instance.first_name)
+        instance.last_name = validated_data.get("last_name", instance.last_name)
+        instance.phone = validated_data.get("phone", instance.phone)
+        instance.gendre = validated_data.get("gender", instance.gender)

@@ -30,17 +30,29 @@ GENDER_CHOICES = [
     ("F", "female"),
 ]
 
+USER_TYPES = [
+    ("paitent", "paitent"),
+    ("doctor", "doctor"),
+    ("admin", "admin"),
+]
+
+
+def user_image_namer(instance, name):
+    return instance.email +"/"+ name
+
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField("email", unique=True)
     first_name = models.CharField("first name", max_length=200, blank=True)
     last_name = models.CharField("last name", max_length=200, blank=True)
+    image = models.ImageField(upload_to=user_image_namer, null=True, blank=True)
     phone = models.CharField(max_length=12)
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES, default="M")
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     is_active = models.BooleanField("active", default=True)
     is_staff = models.BooleanField("is staff", default=False)
+    user_type = models.CharField(max_length=10, choices=USER_TYPES, default="paitent")
     objects = UserManager()
 
     USERNAME_FIELD = "email"

@@ -7,7 +7,7 @@ User = get_user_model()
 class CurrentAuthUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ["email", "first_name", "id"]
+        fields = ["email", "first_name", "id","user_type"]
 
 class TokenBlackListSerializer(serializers.Serializer):
     refresh = serializers.CharField()

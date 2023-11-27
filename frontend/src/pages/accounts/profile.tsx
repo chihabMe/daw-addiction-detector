@@ -1,31 +1,29 @@
-import { useEffect } from "react";
-import { useAuth } from "../../hooks/useAuth";
-import axiosClient from "../../utils/axios_client";
-import { getProfilePath } from "../../utils/constants";
-import { useQuery } from "react-query";
+import {  useQuery } from "react-query";
 import { getProfile } from "../../services/profile.services";
+import Spinner from "../../components/ui/Spinner";
 
 const ProfilePage = () => {
-  const { user } = useAuth();
+  // const { user } = useAuth();
 
-  const query = useQuery("profile",getProfile)
-  useEffect(() => {
-    const getProfile = async () => {
-      const response = await axiosClient.get(getProfilePath);
-      console.log(response);
-    };
-    getProfile();
-  }, []);
+  const { isLoading, data: profile,isError,error } = useQuery("profile", getProfile,{
+    refetchOnWindowFocus:"always",
+  });
+  if (isLoading)
+    return (
+      <div className="w-full min-h-screen flex justify-center items-center">
+        <Spinner className="w-10 h-10" />
+      </div>
+    );
+    if(isError)
+      <div className="w-full text-red-400 min-h-screen flex justify-center items-center">
+          {error.message}
+      </div>
 
-  return(
-
+  return (
     <main className="min-h-screen">
-      <section >
-      {user?.first_name}
-      </section>
-
+      <section className="text-white">{JSON.stringify(profile?.data)}</section>
     </main>
-  )
+  );
 };
 
 export default ProfilePage;

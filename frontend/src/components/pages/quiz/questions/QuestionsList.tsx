@@ -1,7 +1,4 @@
 import { QueueListIcon, TableCellsIcon } from "@heroicons/react/24/solid";
-import { useFetch } from "../../../../hooks/useFetch";
-import IQuestion from "../../../../interfaces/IQuestion";
-import { getAllQuestionsPath } from "../../../../utils/constants";
 import ErrorPageContainer from "../../../layout/ErrorPageContainer";
 import QuestionListItem from "./QuestionListItem";
 import QuestionsListSkeleton from "./skeletons/QuestionsListSkeleton";
@@ -9,9 +6,19 @@ import { motion } from "framer-motion";
 import { useUiContext } from "../../../../hooks/useUiContext";
 import Button from "../../../ui/Button";
 import DarkLightThemeToggler from "../../../layout/DarkLightThemeToggler";
+import { useQuery } from "react-query";
+import { getAllQuestions } from "../../../../services/questions.services";
 
 const QuestionsList = () => {
-  const { data, error } = useFetch<IQuestion[]>(getAllQuestionsPath);
+  const { isError, error, isLoading, data } = useQuery(
+    "questions",
+    getAllQuestions,
+    {
+      refetchOnWindowFocus: "always",
+      staleTime:5000,
+      refetchOnMount:true
+    },
+  );
   const {
     questionDisplayType,
     toggleQuestionsDisplaytype,
@@ -19,13 +26,15 @@ const QuestionsList = () => {
     changeQuestionModeToList,
     questionMode,
   } = useUiContext();
-  if (error)
+
+  if (isLoading) return <QuestionsListSkeleton />;
+
+  if ((!data || isError) && error instanceof Error)
     return (
       <ErrorPageContainer>
         <p>{error.message}</p>
       </ErrorPageContainer>
     );
-  if (!data) return <QuestionsListSkeleton />;
 
   return (
     <>
@@ -59,8 +68,9 @@ const QuestionsList = () => {
         </Button>
       </div>
       <ul className="flex flex-col gap-2 ">
-        {data.map((question, idx) => (
+        {data?.data.map((question, idx) => (
           <motion.div
+            key={`quesiton_list_item_${question.id}`}
             transition={{ delay: 0.1 * idx }}
             initial={{ opacity: 0.1, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
