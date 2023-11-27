@@ -18,14 +18,21 @@ const HeaderProfileDropMenu = () => {
   const navigate = useNavigate();
   const controls = useAnimationControls();
   useEffect(() => {
-    if (open) controls.start({ opacity: 1, y: 0,scale:1 });
+    if (open) controls.start({ opacity: 1, y: 0, scale: 1 });
   }, [controls, open]);
   return (
     <DropdownMenu.Root open={open} onOpenChange={setOpen}>
       <DropdownMenu.Trigger>
-        <Button className="bg-transparent   flex items-center gap-2  rounded-lg active:bg-blue-200  px-6 ">
+        <Button className="bg-transparent  my-2  flex items-center gap-2  rounded-lg active:bg-blue-200  px-6 ">
           <UserIcon className="w-5 h-5 text-gray-600 dark:text-gray-200 " />
-          <ChevronDownIcon className={ `${open&&"rotate-180"} transition duration-300 w-3 h-3 text-gray-600 dark:text-gray-200 ` }/>
+          <span className="capitalize text-text-darker dark:text-text-ligther">
+            {user?.first_name}
+          </span>
+          <ChevronDownIcon
+            className={`${
+              open && "rotate-180"
+            } transition duration-300 w-3 h-3 text-gray-600 dark:text-gray-200 `}
+          />
         </Button>
       </DropdownMenu.Trigger>
 
@@ -39,9 +46,9 @@ const HeaderProfileDropMenu = () => {
               sideOffset={5}
             >
               <motion.div
-                initial={{ opacity: 0, y: -5}}
+                initial={{ opacity: 0, y: -5 }}
                 animate={controls}
-                exit={{ opacity: 0, y: -3,scale:0.95}}
+                exit={{ opacity: 0, y: -3, scale: 0.95 }}
               >
                 <MenuItem
                   onSelect={() => {
@@ -51,7 +58,7 @@ const HeaderProfileDropMenu = () => {
                 >
                   <div className="flex  py-2 cursor-pointer gap-4 items-center text-text-darker group-hover:text-primary group-hover:dark:text-white dark:text-text-ligther">
                     <UserIcon className="w-5 h-5 " />
-                    <span className="">{user?.email}</span>
+                    <span className="">Profile</span>
                   </div>
                 </MenuItem>
 
@@ -64,6 +71,18 @@ const HeaderProfileDropMenu = () => {
                   <div className="flex  py-2 cursor-pointer gap-4 items-center text-text-darker group-hover:text-primary group-hover:dark:text-white dark:text-text-ligther">
                     <Cog6ToothIcon className="w-5 h-5 " />
                     <span className="w-5 h-5 ">Settings</span>
+                  </div>
+                </MenuItem>
+
+                <MenuItem
+                  onSelect={() => {
+                    navigate("/accounts/settings");
+                  }}
+                  closeMenu={closeMenu}
+                >
+                  <div className="flex  py-2 cursor-pointer gap-4 items-center text-text-darker group-hover:text-primary group-hover:dark:text-white dark:text-text-ligther">
+                    <Cog6ToothIcon className="w-5 h-5 " />
+                    <span className="w-5 h-5 ">Quizzes</span>
                   </div>
                 </MenuItem>
                 <MenuItem

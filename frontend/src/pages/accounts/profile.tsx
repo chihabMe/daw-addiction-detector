@@ -1,12 +1,15 @@
-import {  useQuery } from "react-query";
+import { useQuery } from "react-query";
 import { getProfile } from "../../services/profile.services";
 import Spinner from "../../components/ui/Spinner";
 
 const ProfilePage = () => {
-  // const { user } = useAuth();
-
-  const { isLoading, data: profile,isError,error } = useQuery("profile", getProfile,{
-    refetchOnWindowFocus:"always",
+  const {
+    isLoading,
+    data: profile,
+    isError,
+    error,
+  } = useQuery("profile", getProfile, {
+    refetchOnWindowFocus: "always",
   });
   if (isLoading)
     return (
@@ -14,10 +17,10 @@ const ProfilePage = () => {
         <Spinner className="w-10 h-10" />
       </div>
     );
-    if(isError)
-      <div className="w-full text-red-400 min-h-screen flex justify-center items-center">
-          {error.message}
-      </div>
+  if (isError)
+    <div className="w-full text-red-400 min-h-screen flex justify-center items-center">
+      {error.message}
+    </div>;
 
   return (
     <main className="min-h-screen">
