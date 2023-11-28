@@ -13,20 +13,18 @@ def reviews_list(request):
     }
     return Response(data)
 
-@api_view(['POST', 'GET'])
+
+
+@api_view([ 'GET'])
 def average_rating(request):
     all_reviews = Reviews.objects.all()
+    total_reviews = len(all_reviews)
 
-    if all_reviews:
-        total_reviews = all_reviews.count()
-        avg_rating = sum([F('rating') for review in all_reviews]) / total_reviews
-    else:
-        avg_rating = 0
-    
+    avg_rating = sum([F('rating') for review in all_reviews]) / total_reviews
     
     serializer = ReviewsSerlializer(all_reviews, many=True)  # Pass all reviews to the serializer
     data = {
         'average_rating': avg_rating,
         'reviews': serializer.data
     }
-    return Response(data)
+    return Respqzaonse(data)

@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <footer className="bg-primary dark:bg-blue-900">
       <Container>
-        <div className="mx-auto  px-4 py-16 sm:px-6 lg:px-8">
+        <div className="mx-auto  px-4 py-10 sm:px-6 lg:px-8">
           <div className="lg:flex lg:items-start lg:gap-8">
             <div className="text-teal-600"></div>
 
@@ -253,7 +253,7 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="mt-8 border-t border-primary pt-8">
+          <div className="mt-2 border-t border-primary pt-4">
             <div className="sm:flex sm:justify-between">
               <p className="text-xs text-white font-medium">
                 &copy; 2023 mztool.com  All rights reserved.
