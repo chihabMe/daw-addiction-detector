@@ -5,10 +5,16 @@ from .models import Reviews
 class ReviewsSerlializer(serializers.ModelSerializer):
     class Meta:
         model= Reviews
-        fields= ["writer", "text", "rating ", "date"]
+        user_name= serializers.CharField()
+        fields= ["user",
+                "text",
+                "rating",
+                "date"
+                ]
 
 
-class RatingSerializer (serializers.ModelSerializer):
-    class Meta:
-        model= Reviews
-        fields = ["rating"]
+#class RatingSerializer (serializers.ModelSerializer):
+#    class Meta:
+#        model= Reviews
+#        fields = ["rating"]
+#
