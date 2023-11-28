@@ -69,6 +69,7 @@ INSTALLED_APPS = [
     "answers",
     "questions",
     "contacts",
+    "reviews",
 ]
 LOGIN_REDIRECT_URL = "/"
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
