@@ -18,7 +18,6 @@ export const axiosClient = axios.create({
 });
 
 axiosClient.interceptors.request.use(async (req) => {
-  console.log("-----run-----");
   if (!accessToken) {
     accessToken = localStorage.getItem("access") ?? null;
   }
@@ -35,8 +34,6 @@ axiosClient.interceptors.request.use(async (req) => {
   }
 
   const refreshToken = localStorage.getItem("refresh");
-  console.log("-------------")
-  console.log(refreshToken)
 
   if (!refreshToken) {
     // If there's no refresh token, simply return the request

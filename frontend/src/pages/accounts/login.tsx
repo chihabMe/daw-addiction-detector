@@ -3,7 +3,7 @@ import Button from "../../components/ui/Button";
 import Input from "../../components/ui/Input";
 import { EnvelopeIcon, EyeIcon, EyeSlashIcon } from "@heroicons/react/24/solid";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { Formik } from "formik";
 import { loginSchema } from "../../schemas/login.schema";
 import { useAuth } from "../../hooks/useAuth";
@@ -16,6 +16,7 @@ const initialState = {
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const { login, isLoading } = useAuth();
   const toggleShowPassword = () => setShowPassword((prev) => !prev);
   return (
@@ -57,11 +58,13 @@ const LoginPage = () => {
               initialValues={initialState}
               validationSchema={loginSchema}
               onSubmit={async (values, actions) => {
-                console.log(values);
                 const { success } = await login(values.email, values.password);
                 if (success) {
                   toast.success("logged in");
-                  navigate("/accounts/profile");
+                  const next = searchParams.get("next");
+                  if (next) {
+                    navigate(next);
+                  } else navigate("/accounts/profile");
                 } else {
                   toast.error("failed to login");
                   actions.setErrors({
