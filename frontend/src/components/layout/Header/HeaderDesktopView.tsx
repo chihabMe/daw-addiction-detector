@@ -3,8 +3,9 @@ import Button from "../../ui/Button";
 import DarkLightThemeToggler from "../DarkLightThemeToggler";
 import { AnimatePresence, motion } from "framer-motion";
 import { useAuth } from "../../../hooks/useAuth";
-import { BellIcon } from "@heroicons/react/24/solid";
 import HeaderProfileDropMenu from "./HeaderProfileDropMenu";
+import HeaderNotificationsMenu from "./HeaderNotificationsMenu";
+import HeaderMessagesMenu from "./HeaderMessagesMenu";
 
 interface Props {
   links: {
@@ -18,18 +19,18 @@ const HeaderDesktopView = ({ links }: Props) => {
   return (
     <div className=" hidden   lg:flex items-center justify-between grow  ">
       <nav className="flex  grow ">
-        <ul className="flex gap-4 items-center   ">
+        <ul className="flex gap-4 items-center">
           {links.map((link, idx) => (
             <li
               key={`nav_bar_links_item_${idx}`}
-              className="font-[600]  font-inter py-3 px-6   text-[20px]   text-text-darker dark:text-text-ligther capitalize hover:text-primary  relative"
+              className="font-[500]   py-3 px-6 text-[20px] text-text-darker dark:text-text-ligther capitalize hover:text-primary relative"
             >
-              {pathname == link.href && (
+              {pathname === link.href && (
                 <motion.div
                   layout
                   layoutId="active-navlink"
                   style={{ borderRadius: 9999 }}
-                  className="w-full    rounded-full inset-0 bg-primary absolute"
+                  className="w-full rounded-full inset-0 bg-primary absolute"
                 ></motion.div>
               )}
               <NavLink
@@ -38,8 +39,8 @@ const HeaderDesktopView = ({ links }: Props) => {
                   isPending
                     ? "pending"
                     : isActive
-                    ? "text-primary relative text-white z-10"
-                    : "relative z-10   "
+                    ? "text-primary transition-all  relative text-white z-10"
+                    : "relative z-10"
                 }
               >
                 {link.text}
@@ -76,11 +77,10 @@ const HeaderDesktopView = ({ links }: Props) => {
 };
 const AuthencatedUserHeaderView = () => {
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center ">
       <DarkLightThemeToggler />
-      <Button className="bg-transparent  px-6 ">
-        <BellIcon className="w-5 h-5 text-gray-600 dark:text-gray-200 " />
-      </Button>
+      <HeaderMessagesMenu />
+      <HeaderNotificationsMenu />
       <HeaderProfileDropMenu />
     </div>
   );
