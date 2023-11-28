@@ -12,9 +12,3 @@ class ReviewsSerlializer(serializers.ModelSerializer):
                 "date"
                 ]
 
-
-#class RatingSerializer (serializers.ModelSerializer):
-#    class Meta:
-#        model= Reviews
-#        fields = ["rating"]
-#
