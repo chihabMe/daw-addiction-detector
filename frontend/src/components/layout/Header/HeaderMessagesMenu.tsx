@@ -1,4 +1,4 @@
-import { EnvelopeIcon, EnvelopeOpenIcon } from "@heroicons/react/24/solid";
+import { EnvelopeIcon  } from "@heroicons/react/24/solid";
 import Button from "../../ui/Button";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 // import { useNavigate } from "react-router-dom";

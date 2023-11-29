@@ -3,7 +3,7 @@ import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 import HeaderDesktopView from "./HeaderDesktopView";
 import HeaderMobileView from "./HeadeMobileView";
 import Container from "../Container";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 const links = [
   {
     href: "/",
