@@ -10,3 +10,4 @@ export default interface IQuestion {
   created: string; // Change this to the appropriate date type
   updated: string; // Change this to the appropriate date type
 }
+

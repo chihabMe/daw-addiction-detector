@@ -9,8 +9,11 @@ interface Props {
   index: number;
 }
 const QuestionListItem = ({ question, index }: Props) => {
+
   const [showQuestionBody, setShowQuestionBody] = useState(false);
+
   const toggleQuestionBody = () => setShowQuestionBody((prev) => !prev);
+
   return (
     <li >
       <div
