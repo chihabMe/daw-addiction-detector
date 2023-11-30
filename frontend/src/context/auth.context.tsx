@@ -65,7 +65,7 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const login = async (email: string, password: string) => {
-    setIsLogged(true);
+    setIsLoading(true);
     const config = {
       method: "POST",
       body: JSON.stringify({ email, password }),
