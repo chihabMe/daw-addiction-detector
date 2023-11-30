@@ -2,6 +2,8 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.base_user import check_password
 from rest_framework.schemas.coreapi import serializers
 
+from patients.models import Patient
+
 User = get_user_model()
 
 
@@ -27,8 +29,8 @@ class UserCreationSerializer(serializers.ModelSerializer):
 
 
 class UserProfileSerializer(serializers.ModelSerializer):
-    email = serializers.CharField(source="email", read_only=True)
-    user_type = serializers.CharField(source="user_type", read_only=True)
+    email = serializers.CharField( read_only=True)
+    user_type = serializers.CharField( read_only=True)
 
     class Meta:
         model = User
@@ -68,3 +70,20 @@ class AccountDeletionSerializer(serializers.Serializer):
         user = self.context["request"].user
         user.is_active = False
         return user.save()
+
+
+class PatientProfileSerializer(serializers.ModelSerializer):
+    user = UserProfileSerializer(read_only=True)
+
+    class Meta:
+        model = Patient
+        fields = [
+            "user",
+            "addiction_level",
+            "average_hours_of_play_per_week",
+            "average_month_of_play",
+            "insomnia_score",
+            "excessive_sleepiness_score",
+            "anxiety_score",
+            "depression_score",
+        ]

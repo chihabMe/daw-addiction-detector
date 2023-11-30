@@ -1,6 +1,9 @@
 from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
 from django.contrib.auth.models import PermissionsMixin
 from django.db import models
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from patients.models import Patient
 
 
 class UserManager(BaseUserManager):
@@ -45,8 +48,8 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     image = models.ImageField(upload_to=user_image_namer, null=True, blank=True)
     phone = models.CharField(max_length=12)
     gender = models.CharField(max_length=1, choices=GenderChoices.choices, default="M")
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
     is_active = models.BooleanField("active", default=True)
     is_staff = models.BooleanField("is staff", default=False)
     user_type = models.CharField(
@@ -66,3 +69,8 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.get_full_name()
+
+@receiver(post_save,sender=CustomUser)
+def create_patient(sender,instance,created,**kwargs):
+    if created and instance.user_type==CustomUser.UserTypes.PAITENT:
+         Patient.objects.create(user=instance)
