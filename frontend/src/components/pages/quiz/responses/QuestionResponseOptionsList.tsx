@@ -1,7 +1,4 @@
 import { useState } from "react";
-import { useFetch } from "../../../../hooks/useFetch";
-import IQuestionResponseOption from "../../../../interfaces/IQuestionResponseOption";
-import { getAllQuestionResponseOptionsPath } from "../../../../utils/constants";
 import ErrorPageContainer from "../../../layout/ErrorPageContainer";
 import QuestionResponseOptionListItem from "./QuestionResponseOptionListItem";
 import QuestionResponsesListSkeleton from "./skeletons/QuestionResponsesListSkeleton";

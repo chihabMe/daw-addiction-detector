@@ -43,8 +43,8 @@ const OurNumbers = () => {
 
   return (
     <Container>
-      <section ref={ref} className="">
-        <div className=" grid grid-cols-1 md:grid-cols-2   lg:grid-cols-4  gap-2  py-4  ">
+      <section className="">
+        <div ref={ref}  className=" grid grid-cols-1 md:grid-cols-2   lg:grid-cols-4  gap-2  py-4  ">
           {ourNumbersData.map((data, idx) => (
             <motion.div
               key={`our_numbers_item_${idx}`}

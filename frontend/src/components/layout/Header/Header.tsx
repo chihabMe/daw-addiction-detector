@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 import HeaderDesktopView from "./HeaderDesktopView";
 import HeaderMobileView from "./HeadeMobileView";
 import Container from "../Container";
+import {  useState } from "react";
 const links = [
   {
     href: "/",
@@ -20,22 +21,22 @@ const links = [
   },
 ];
 
-const links2 = [
-  {
-    href: "/",
-    text: "home",
-  },
-
-  {
-    href: "/accounts/profile",
-    text: "profile",
-  },
-
-  {
-    href: "/accounts/settings",
-    text: "settings",
-  },
-];
+// const links2 = [
+//   {
+//     href: "/",
+//     text: "home",
+//   },
+//
+//   {
+//     href: "/accounts/profile",
+//     text: "profile",
+//   },
+//
+//   {
+//     href: "/accounts/settings",
+//     text: "settings",
+//   },
+// ];
 // const Header = () => {
 //   const [isScrolling, setIsScrolling] = useState(false);
 //   const prevYValue = useRef(0);
@@ -69,9 +70,6 @@ const links2 = [
 //   );
 // };
 
-const Header = () => {
-  return <DefaultHeader />;
-};
 // const ScrollingHeader = () => {
 //   const pathname = useLocation().pathname;
 //   return (
@@ -113,12 +111,32 @@ const Header = () => {
 //   );
 // };
 //
-const DefaultHeader = () => {
+const Header = () => {
+  const [isScrolling, setIsScolling] = useState(false);
+  const { scrollY } = useScroll();
+  useMotionValueEvent(scrollY, "change", (value) => {
+    if (value > scrollY.getPrevious() && value > 250) {
+      console.log("yes");
+      setIsScolling(true);
+    } else {
+      setIsScolling(false);
+      console.log("no");
+    }
+  });
   return (
     <motion.header
-      initial={{ opacity: 0, y: "-50%" }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.1, duration: 0.2 }}
+      animate={isScrolling ? "hidden" : "visible"}
+      variants={{
+        hidden: {
+          opacity: 0.4,
+          y: "-100%",
+        },
+        visible: {
+          opacity: 1,
+          y: 0,
+        },
+      }}
+      transition={{ delay: 0.1, duration: 0.4 }}
       className="w-full sticky top-0 relative z-50 bg-light dark:bg-dark w-full     md:mx-auto  px-4 px-4 py-2 md:px-8 rounded-lg overflow-hidden items-center    relative  "
     >
       <Container>
@@ -129,7 +147,7 @@ const DefaultHeader = () => {
               mz<span className="text-primary">tool</span>
             </h1>
           </Link>
-          <HeaderDesktopView links={ links} />
+          <HeaderDesktopView links={links} />
           <HeaderMobileView links={links} />
         </div>
       </Container>
