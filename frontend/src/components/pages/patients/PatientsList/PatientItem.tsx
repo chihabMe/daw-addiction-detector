@@ -3,7 +3,6 @@ interface Props {
   patient: IPatient;
 }
 const PatientItem = ({ patient }: Props) => {
-  console.log(patient);
   return (
     <div className="bg-blue-100 rounded-lg p-2 cursor-pointer ">
       <p>name : {patient.first_name}</p>

@@ -1,4 +1,5 @@
 from django.contrib.auth import get_user_model
+from django.contrib.auth.base_user import check_password
 from rest_framework.schemas.coreapi import serializers
 
 User = get_user_model()
@@ -28,8 +29,6 @@ class UserCreationSerializer(serializers.ModelSerializer):
 class UserProfileSerializer(serializers.ModelSerializer):
     email = serializers.CharField(source="email", read_only=True)
     user_type = serializers.CharField(source="user_type", read_only=True)
-    update_at = serializers.DateField()
-
 
     class Meta:
         model = User
@@ -43,9 +42,29 @@ class UserProfileSerializer(serializers.ModelSerializer):
             "created_at",
             "updated_at",
         ]
+        extra_kwargs = {
+            "phone": {"required": False, "allow_blank": True},
+        }
 
     def update(self, instance, validated_data):
         instance.first_name = validated_data.get("first_name", instance.first_name)
         instance.last_name = validated_data.get("last_name", instance.last_name)
         instance.phone = validated_data.get("phone", instance.phone)
         instance.gendre = validated_data.get("gender", instance.gender)
+        instance.save()
+        return instance
+
+
+class AccountDeletionSerializer(serializers.Serializer):
+    password = serializers.CharField()
+
+    def validate_password(self, password):
+        user = self.context["request"].user
+        if not check_password(password, user.password):
+            raise serializers.ValidationError("Invalid password")
+        return password
+
+    def save(self):
+        user = self.context["request"].user
+        user.is_active = False
+        return user.save()

@@ -15,8 +15,8 @@ const QuestionsList = () => {
     getAllQuestions,
     {
       refetchOnWindowFocus: "always",
-      staleTime:5000,
-      refetchOnMount:true
+      staleTime: 5000,
+      refetchOnMount: true,
     },
   );
   const {

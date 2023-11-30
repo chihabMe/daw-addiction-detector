@@ -24,6 +24,3 @@ def reviews_input(request):
     return Response(serialiser.data)
     
 
-
-
-
