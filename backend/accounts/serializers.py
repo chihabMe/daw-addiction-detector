@@ -27,10 +27,8 @@ class UserCreationSerializer(serializers.ModelSerializer):
 
 
 class UserProfileSerializer(serializers.ModelSerializer):
-    email = serializers.CharField(read_only=True)
-    user_type = serializers.CharField(read_only=True)
-    created_at = serializers.DateTimeField(read_only=True)
-    updated_at = serializers.DateTimeField(read_only=True)
+    email = serializers.CharField(source="email", read_only=True)
+    user_type = serializers.CharField(source="user_type", read_only=True)
 
     class Meta:
         model = User
