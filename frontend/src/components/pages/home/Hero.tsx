@@ -13,7 +13,7 @@ const Hero = () => {
     >
       <Container>
         <div className="flex  flex-col  py-8 md:flex-row justify-between items-center justify-center min-h-[80vh]   mx-auto">
-          <motion.div className="w-full   lg:w-1/2 font-roboto max-w-[480px] gap-4  flex flex-col justify-center lg:items-start">
+          <motion.div className="w-full   lg:w-1/2 font-roboto max-w-[520px] gap-4  flex flex-col justify-center lg:items-start">
             <div>
               <motion.h1
                 initial={{ y: 40, opacity: 0 }}
@@ -76,7 +76,7 @@ const Hero = () => {
           >
             <div className="bg-blue-300 dark:bg-blue-900 absolute -z-10 lg:w-[450px] -translate-y-1/2 lg:h-[350px] top-1/2 bottom-1/2 blur-[100px]" />
             <motion.img
-              className="w-[450px] h-[450px]"
+              className="w-[580px] h-[580px]"
               src="/images/home/doctor.svg"
               alt="doctor image"
             />
