@@ -28,6 +28,8 @@ class UserCreationSerializer(serializers.ModelSerializer):
 class UserProfileSerializer(serializers.ModelSerializer):
     email = serializers.CharField(source="email", read_only=True)
     user_type = serializers.CharField(source="user_type", read_only=True)
+    update_at = serializers.DateField()
+
 
     class Meta:
         model = User

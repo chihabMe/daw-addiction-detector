@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import Contact
 # Register your models here.
 
-class AdminCaontacts (admin.ModelAdmin):
+class AdminContacts (admin.ModelAdmin):
     list_display = (
         "email",
         "first_name",
@@ -10,4 +10,4 @@ class AdminCaontacts (admin.ModelAdmin):
         "send_date",
     )
 
-admin.site.register(Contact, AdminCaontacts)    
+admin.site.register(Contact, AdminContacts)    
