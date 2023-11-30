@@ -13,13 +13,13 @@ const Hero = () => {
     >
       <Container>
         <div className="flex  flex-col  py-8 md:flex-row justify-between items-center justify-center min-h-[80vh]   mx-auto">
-          <motion.div className="w-full   lg:w-1/2 font-roboto max-w-[680px] gap-4  flex flex-col justify-center lg:items-start">
+          <motion.div className="w-full   lg:w-1/2 font-roboto max-w-[480px] gap-4  flex flex-col justify-center lg:items-start">
             <div>
               <motion.h1
                 initial={{ y: 40, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
-                className="text-3xl md:text-4xl lg:text-5xl text-text-darker dark:text-text-ligther font-[800] capitalize mb-4"
+                className="text-2xl md:text-3xl lg:text-4xl text-text-darker dark:text-text-ligther font-[800] capitalize mb-4"
               >
                 Discover Your Gaming
               </motion.h1>
@@ -27,7 +27,7 @@ const Hero = () => {
                 initial={{ y: 40, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
-                className="text-3xl md:text-4xl lg:text-5xl text-text-darker dark:text-text-ligther font-[800] capitalize mb-4"
+                className="text-2xl md:text-3xl lg:text-4xl text-text-darker dark:text-text-ligther font-[800] capitalize mb-4"
               >
                 Addiction
               </motion.h1>
@@ -35,7 +35,7 @@ const Hero = () => {
                 initial={{ y: 40, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.6 }}
-                className="text-3xl md:text-4xl lg:text-5xl text-text-darker dark:text-text-ligther font-[800] capitalize mb-4"
+                className="text-2xl md:text-3xl lg:text-4xl text-text-darker dark:text-text-ligther font-[800] capitalize mb-4"
               >
                 and Overcome It!
               </motion.h1>
@@ -57,7 +57,7 @@ const Hero = () => {
               className="flex   items-center gap-6 mt-8"
             >
               <Link to="/quiz" className="">
-                <Button className="rounded-xl hover:shadow-lg hover:shadow-blue-500 px-4 py-4 md:px-6 md:py-4 !w-full  ">
+                <Button className="rounded-xl hover:shadow-lg hover:shadow-blue-500 px-4 py-4 md:px-4 md:py-3 !w-full  ">
                   Start Now!
                 </Button>
               </Link>
@@ -74,9 +74,9 @@ const Hero = () => {
             transition={{ delay: 0.8, ease: "easeInOut" }}
             className="  relative  lg:block"
           >
-            <div className="bg-blue-300 dark:bg-blue-900 absolute -z-10 lg:w-[600px] -translate-y-1/2 lg:h-[450px] top-1/2 bottom-1/2 blur-[300px]" />
+            <div className="bg-blue-300 dark:bg-blue-900 absolute -z-10 lg:w-[450px] -translate-y-1/2 lg:h-[350px] top-1/2 bottom-1/2 blur-[100px]" />
             <motion.img
-              className="w-[600px] h-[600px]"
+              className="w-[450px] h-[450px]"
               src="/images/home/doctor.svg"
               alt="doctor image"
             />
