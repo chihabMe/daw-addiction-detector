@@ -57,12 +57,12 @@ const Hero = () => {
               className="flex   items-center gap-6 mt-8"
             >
               <Link to="/quiz" className="">
-                <Button className="rounded-xl hover:shadow-lg hover:shadow-blue-500 px-4 py-4 md:px-4 md:py-3 !w-full  ">
+                <Button className="rounded-xl hover:shadow-lg hover:shadow-blue-500 px-4 py-4 md:px-4 md:text-sm md:py-4 !w-full  ">
                   Start Now!
                 </Button>
               </Link>
               <Link to="/how-it-works" className="">
-                <Button className="rounded-xl    px-4 py-4 md:px-6 md:py-4  !w-full bg-transparent text-text-darker dark:text-text-ligther">
+                <Button className="rounded-xl    px-4 py-4 md:px-6 md:py-4  !w-full bg-transparent md:text-sm  text-text-darker dark:text-text-ligther">
                   How It Works?
                 </Button>
               </Link>
@@ -76,7 +76,7 @@ const Hero = () => {
           >
             <div className="bg-blue-300 dark:bg-blue-900 absolute -z-10 lg:w-[450px] -translate-y-1/2 lg:h-[350px] top-1/2 bottom-1/2 blur-[100px]" />
             <motion.img
-              className="w-[580px] h-[580px]"
+              className="w-[510px] h-[510px]"
               src="/images/home/doctor.svg"
               alt="doctor image"
             />
