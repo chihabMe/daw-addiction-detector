@@ -1,26 +1,24 @@
-
 from django.db import models
-from django.contrib.auth import get_user_model
 
-
-User = get_user_model()
 
 class UiSettings(models.Model):
     class ThemeChoices(models.TextChoices):
-        DARK = "DARK" ,"dark"
-        LIGHT = "LIGHT" ,"light"
+        DARK = "dark", "Dark"
+        LIGHT = "light", "Light"
+
     class LanguageChoices(models.TextChoices):
-        EN = "EN" , "en"
-        AR = "AR" , "ar"
+        EN = "en", "English"
+        AR = "ar", "Arabic"
+
     class QtDisplayChoices(models.TextChoices):
-        GRID = "GRID","grid"
-        LIST = "LIST","list"
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    theme = models.BooleanField(max_length=5,default=ThemeChoices.LIGHT,choices=ThemeChoices.choices)
-    language = models.CharField(max_length=2,default=LanguageChoices.EN,choices=LanguageChoices.choices)
-    qt_display_type = models.CharField(max_length=4,choices=QtDisplayChoices.choices,default=QtDisplayChoices.LIST)
+        GRID = "grid", "Grid"
+        LIST = "list", "List"
+
+    user = models.OneToOneField("accounts.CustomUser", on_delete=models.CASCADE)
+    theme = models.CharField(max_length=5, choices=ThemeChoices.choices, default=ThemeChoices.LIGHT)
+    language = models.CharField(max_length=2, choices=LanguageChoices.choices, default=LanguageChoices.EN)
+    qt_display_type = models.CharField(max_length=4, choices=QtDisplayChoices.choices, default=QtDisplayChoices.LIST)
     qt_show_alph = models.BooleanField(default=True)
 
     def __str__(self):
-        return self.user.username
-
+        return self.user.first_name

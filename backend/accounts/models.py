@@ -4,6 +4,7 @@ from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from patients.models import Patient
+from uisettings.models import UiSettings
 
 
 class UserManager(BaseUserManager):
@@ -74,3 +75,9 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 def create_patient(sender,instance,created,**kwargs):
     if created and instance.user_type==CustomUser.UserTypes.PAITENT:
          Patient.objects.create(user=instance)
+
+@receiver(post_save,sender=CustomUser)
+def create_uisettings(sender,instance,created,**kwargs):
+    if created :
+        UiSettings.objects.create(user=instance)
+

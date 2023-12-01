@@ -72,7 +72,7 @@ const Hero = () => {
             initial={{ opacity: 0, scale: 0.85 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.8, ease: "easeInOut" }}
-            className="  relative  lg:block"
+            className="  relativl mx-aue  lg:block"
           >
             <div className="bg-blue-300 dark:bg-blue-900 absolute -z-10 lg:w-[450px] -translate-y-1/2 lg:h-[350px] top-1/2 bottom-1/2 blur-[100px]" />
             <motion.img
