@@ -1,3 +1,4 @@
+
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
@@ -12,6 +13,7 @@ urlpatterns = [
     path("api/v1/contact", include("contacts.urls", namespace="contacts")),
     path("api/v1/accounts", include("accounts.urls", namespace="accounts")),
     path("api/v1/reviews/", include("reviews.urls", namespace="reviews")),
+    path("api/v1/uisettings/",include("uisettings.urls",namespace="uisettings")),
 ]
 
 

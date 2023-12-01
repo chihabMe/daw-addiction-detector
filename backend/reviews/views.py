@@ -2,7 +2,6 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import Reviews
 from .serializer import ReviewsSerlializer
-from django.db.models import F
 from rest_framework import status
 
 

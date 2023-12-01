@@ -80,4 +80,3 @@ def create_patient(sender,instance,created,**kwargs):
 def create_uisettings(sender,instance,created,**kwargs):
     if created :
         UiSettings.objects.create(user=instance)
-
