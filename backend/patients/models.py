@@ -2,11 +2,10 @@ from django.contrib.auth import get_user_model
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 
-User = get_user_model()
 
 
 class Patient(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField("accounts.CustomUser", on_delete=models.CASCADE)
     addiction_level = models.PositiveIntegerField(
         blank=True,  # Allow empty values
         null=True,  # Allow null values

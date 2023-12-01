@@ -34,7 +34,7 @@ const Input = ({ Icon, name, ...props }: Props) => {
           onBlur={() => setFocus(false)}
         />
         {Icon && (
-          <div onClick={props.iconOnClick} className="cursor-pointer">
+          <div onClick={props.iconOnClick} className={props.iconOnClick &&"cursor-pointer"}>
             {Icon}
           </div>
         )}

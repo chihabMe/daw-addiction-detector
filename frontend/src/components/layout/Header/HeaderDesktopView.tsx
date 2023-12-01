@@ -23,7 +23,7 @@ const HeaderDesktopView = ({ links }: Props) => {
           {links.map((link, idx) => (
             <li
               key={`nav_bar_links_item_${idx}`}
-              className="font-[500]   py-3 px-6 text-[20px] text-text-darker dark:text-text-ligther capitalize hover:text-primary relative"
+              className="font-[500]   py-3 px-6  text-text-darker dark:text-text-ligther capitalize hover:text-primary relative"
             >
               {pathname === link.href && (
                 <motion.div

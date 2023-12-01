@@ -1,11 +1,11 @@
-from django.shortcuts import render
 from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-
 from .serializers import (AccountDeletionSerializer, UserCreationSerializer,
-                          UserProfileSerializer)
+                          UserProfileSerializer,PatientProfileSerializer)
+
+from .models import CustomUser as User
 
 # Create your views here.
 
@@ -24,12 +24,14 @@ def create_user_view(request):
 def get_update_profile(request):
     user = request.user
     if request.method == "PUT":
-        serializer = UserProfileSerializer(user, data=request.data)
-        if serializer.is_valid():
-            serializer.save(owner=user)
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    serializer = UserProfileSerializer(user)
+        if request.user.user_type == User.UserTypes.PAITENT:
+
+            serializer = PatientProfileSerializer(user, data=request.data)
+            if serializer.is_valid():
+                serializer.save(owner=user)
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    serializer = PatientProfileSerializer(user.patient)
     return Response(serializer.data)
 
 
