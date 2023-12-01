@@ -68,8 +68,12 @@ INSTALLED_APPS = [
     "livemessages",
     "answers",
     "questions",
+    #seth
     "contacts",
+    #seth/massi
     "reviews",
+    #massi
+    "uisettings",
 ]
 LOGIN_REDIRECT_URL = "/"
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
