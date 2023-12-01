@@ -33,32 +33,32 @@ def user_image_namer(instance, name):
 
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
-    class UserTypes(models.IntegerChoices):
-        PAITENT = 1, "paitent"
-        DOCTOR = 2, "doctor"
-        ADMIN = 3, "admin"
+    class UserTypes(models.TextChoices):
+        PAITENT = "PAITENT", "paitent"
+        DOCTOR = "DOCTOR", "doctor"
+        ADMIN = "ADMIN", "admin"
 
-    class GenderChoices(models.IntegerChoices):
-        MALE = 1, "male"
-        female = 2, "female"
+    class GenderChoices(models.TextChoices):
+        MALE = "MALE", "male"
+        female = "FEMALE", "female"
 
     email = models.EmailField("email", unique=True)
     first_name = models.CharField("first name", max_length=200, blank=True)
     last_name = models.CharField("last name", max_length=200, blank=True)
     image = models.ImageField(upload_to=user_image_namer, null=True, blank=True)
     phone = models.CharField(max_length=12)
-    gender = models.CharField(max_length=1, choices=GenderChoices.choices, default="M")
+    gender = models.CharField(max_length=6, choices=GenderChoices.choices, default=GenderChoices.MALE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     is_active = models.BooleanField("active", default=True)
     is_staff = models.BooleanField("is staff", default=False)
     user_type = models.CharField(
-        max_length=10, choices=UserTypes.choices, default="paitent"
+        max_length=10, choices=UserTypes.choices, default=UserTypes.PAITENT
     )
     objects = UserManager()
 
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ["first_name","last_name"]
 
     class Meta:
         verbose_name = "user"
