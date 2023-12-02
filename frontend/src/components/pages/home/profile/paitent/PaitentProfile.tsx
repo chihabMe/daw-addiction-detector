@@ -20,11 +20,16 @@ const PaitentProfile = () => {
     <div className="w-full text-red-400 min-h-screen flex justify-center items-center">
       {error.message}
     </div>;
-  console.log(isLoading,profile)
   return (
-    <section>
-      <h1 className="text-gray-500">  {profile?.data.user.email} </h1>
-      <h1> {profile?.data.user.user_type} </h1>
+    <section className="text-black dark:text-white">
+      <h1>
+        {profile?.data.user.first_name}
+        hi
+      </h1>
+
+      <h1>
+        {profile?.data.user.email}
+      </h1>
     </section>
   );
 };

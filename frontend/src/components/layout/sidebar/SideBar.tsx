@@ -7,12 +7,18 @@ import {
   QueueListIcon,
   UserIcon,
 } from "@heroicons/react/24/outline";
+import { motion } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
 const sidebarItems = [
   {
+    link: "/",
+    text: "home",
+    Icon: HomeIcon,
+  },
+  {
     link: "/accounts/dashboard",
     text: "dashboard",
-    Icon: HomeIcon,
+    Icon: HashtagIcon,
   },
 
   {
@@ -47,7 +53,16 @@ const sidebarItems = [
 ];
 const SideBar = () => {
   return (
-    <aside className="bg-white h-screen w-64 shadow-lg">
+    <motion.aside
+      initial={"hide"}
+      animate={"show"}
+      transition={{ease:"easeInOut"}}
+      variants={{
+        hide: {x:"-100%",opacity:0},
+        show: {x:0,opacity:1},
+      }}
+      className=" bg-bg-light dark:bg-dark h-screen w-72 shadow-lg"
+    >
       <div className=" pl-4 py-6">
         <Link to="/" className="text-text-darker dark:text-text-ligther ">
           <h1 className="capitalize font-bold  text-3xl">
@@ -65,7 +80,7 @@ const SideBar = () => {
           />
         ))}
       </ul>
-    </aside>
+    </motion.aside>
   );
 };
 const SidBarItem = ({
@@ -89,13 +104,13 @@ const SidBarItem = ({
         <div className="flex items-center gap-4">
           <div>
             <Icon
-              className={`w-5 h-5 transition-all duration-300 t text-gray-500 ${
+              className={`w-5 h-5 transition-all duration-300 t text-gray-500 dark:text-gray-100 ${
                 isActive && "!text-white"
               }  group-hover:text-white`}
             />
           </div>
           <span
-            className={`capitalize transition-all duration-300 text-gray-600  ${
+            className={`capitalize transition-all duration-300 text-gray-600  dark:text-gray-100 ${
               isActive && "!text-white"
             } dark:text-text-lighter group-hover:text-white font-medium`}
           >
