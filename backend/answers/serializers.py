@@ -6,7 +6,7 @@ from .models import Answer, AnswerItem
 class AnswerItemSerializer(serializers.ModelSerializer):
     question = serializers.CharField(source="question.title")
     question_response_option = serializers.CharField(
-        source="question_response_option.body"
+        source="question_response_option.text"
     )
 
     class Meta:
@@ -15,7 +15,7 @@ class AnswerItemSerializer(serializers.ModelSerializer):
 
 
 class AnswerSerializer(serializers.ModelSerializer):
-    items = AnswerItemSerializer(read_only=True)
+    items = AnswerItemSerializer(many=True,read_only=True)
 
     class Meta:
         model = Answer
