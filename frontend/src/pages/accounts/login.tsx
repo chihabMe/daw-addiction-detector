@@ -42,14 +42,14 @@ const LoginPage = () => {
             <h1 className="font-bold text-gray-100  text-5xl ">start here</h1>
             <p className="w-full max-w-[300px] font-medium  text-gray-100 py-2">
               create an account to join our community
-              <Link to="/accounts/signup" className="   font-bold">
+              <Link to="/accounts/signup" className="   font-bold hover:underline mx-2">
                 {" "}
                 here!
               </Link>
             </p>
           </div>
         </div>
-        <div className=" w-full mx-auto lg:w-1/2 bg-light rounded-r-xl dark:bg-text-darker py-4 px-2 rounded-r-xl     gap-4  flex flex-col  justify-center   bg-blue-100 ">
+        <div className=" w-full mx-auto lg:w-1/2 bg-light rounded-r-xl dark:bg-text-darker py-4 px-2 rounded-r-xl     gap-2  flex flex-col  justify-center   bg-blue-100 ">
           <div className="w-full max-w-[500px]  mx-auto">
             <h1 className="font-medium text-2xl my-2 text-text-darker dark:text-text-ligther text-center py-2">
               Hello! Welcome back
@@ -96,19 +96,19 @@ const LoginPage = () => {
                     }
                     className="bg-blue-50 my-4"
                   />
-                  <div className="flex justify-end py-4">
+                  <div className="flex justify-end py-2">
                     <Link
                       to="/accounts/password/restore"
-                      className="text-text-darker text-primary dark:text-text-dark  transition-all duration-200 hover:!text-primary "
+                      className="text-text-darker text-sm font-medium text-primary dark:text-text-dark  transition-all duration-200 hover:!text-primary "
                     >
-                      Recover Password ?
+                      Recover password ?
                     </Link>
                   </div>
                   <Button
                     disabled={props.isSubmitting}
                     isLoading={isLoading}
                     type="submit"
-                    className="mt-4 font-bold shadow-sm shadow-blue-300 hover:shadow-blue-300 hover:shadow-lg"
+                    className=" mt-1 font-bold shadow-sm shadow-blue-300 hover:shadow-blue-300 hover:shadow-lg"
                   >
                     Sign in
                   </Button>

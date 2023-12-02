@@ -44,7 +44,7 @@ const SignupPage = () => {
             </h1>
             <p className="w-full max-w-[300px] font-medium text-text-dark dark:text-text-light py-2">
               if you have an account you can
-              <Link to="/accounts/login" className="text-primary  font-bold">
+              <Link to="/accounts/login" className="text-primary  font-bold px-2 hover:underline">
                 login from here!
               </Link>
             </p>
@@ -124,9 +124,9 @@ const SignupPage = () => {
               </form>
             )}
           </Formik>
-          <div className="flex items-center justify-between gap-4 py-4  text-gray-400 font-medium">
+          <div className="flex items-center justify-between gap-4   text-gray-400 font-medium">
             <motion.hr className=" grow my-6 border-t-2 border-gray-300 dark:border-gray-600" />
-            <p>or continue with</p>
+            <p>or</p>
             <motion.hr className=" grow my-6 border-t-2 border-gray-300 dark:border-gray-600" />
           </div>
           <div className="flex justify-around flex-col gap-4 lg:gap-0 lg:flex-row ">
@@ -162,7 +162,7 @@ const LoginSocialMediaItem = ({
   link: string;
 }) => {
   return (
-    <motion.div className="bg-ligth dark:bg-dark relative  py-[15px] px-14 py-2 hover:shadow-lg   transition-all duration-200  rounded-lg  shadow cursor-pointer ">
+    <motion.div className="bg-ligth dark:bg-dark relative  py-[15px] px-10 py-2 hover:shadow-lg   transition-all duration-200  rounded-lg  shadow cursor-pointer ">
       <Link
         to={link}
         className="flex justify-center w-full  items-center w-6 h-6"

@@ -14,22 +14,22 @@ const Input = ({ Icon, name, ...props }: Props) => {
 
   return (
     <div className="w-full flex flex-col gap-px  py-2">
-      {props.label && <label className={ `${hasError&&"!text-red-400"} text-text-darker dark:text-text-ligther font-medium text-[19px] medium capitalize` }>{props.label}</label>}
+      {props.label && <label className={ `${hasError&&"!text-red-400"} text-text-darker dark:text-text-ligther font-medium font-semibold text-[19px] medium capitalize` }>{props.label}</label>}
       <div
         className={twMerge(
           `transition-all duration-200 ${
             focus && !hasError && "ring-2 ring-blue-400"
           }
           ${hasError && "ring-2 ring-red-400 text-red-400"}
-          ${valid && "ring-2 ring-primary"}
-          items-center flex justify-between h-[65px] px-4 rounded-lg outline-none bg-white dark:bg-gray-700 w-full text-text-darker dark:text-text-ligther font-medium`,
+          ${valid && "ring-2  ring-primary"}
+          items-center flex justify-between h-[62px] px-4 rounded-md outline-none bg-white dark:bg-gray-700 w-full text-text-darker dark:text-text-ligther font-medium`,
           props.className,
         )}
       >
         <input
           {...props}
           {...field}
-          className="bg-transparent w-full outline-none"
+          className="bg-transparent w-full text-sm  outline-none"
           onFocus={() => setFocus(true)}
           onBlur={() => setFocus(false)}
         />
