@@ -9,15 +9,9 @@ from .models import Patient
 from .serializers import PatientSerializer
 
 
-
-@api_view(["GET", "POST"])
+@api_view(["GET"])
 def patients_list(request):
     patients = Patient.objects.all()
-    if request.method == "POST":
-        data = request.POST
-        # to complete
-        pass
-
     serializer = PatientSerializer(patients, many=True)
     if not serializer.is_valid:
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
