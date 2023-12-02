@@ -2,10 +2,12 @@ from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from .serializers import (AccountDeletionSerializer, UserCreationSerializer,
-                          UserProfileSerializer,PatientProfileSerializer)
+
+from patients.models import Patient
 
 from .models import CustomUser as User
+from .serializers import (AccountDeletionSerializer, PatientProfileSerializer,
+                          UserCreationSerializer, UserProfileSerializer)
 
 # Create your views here.
 
@@ -25,13 +27,19 @@ def get_update_profile(request):
     user = request.user
     if request.method == "PUT":
         if request.user.user_type == User.UserTypes.PAITENT:
-
             serializer = PatientProfileSerializer(user, data=request.data)
             if serializer.is_valid():
                 serializer.save(owner=user)
                 return Response(serializer.data, status=status.HTTP_201_CREATED)
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    serializer = PatientProfileSerializer(user.patient)
+
+    try:
+        patient = Patient.objects.get(user=user)
+    except Patient.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    serializer = PatientProfileSerializer(patient)
+        
     return Response(serializer.data)
 
 
