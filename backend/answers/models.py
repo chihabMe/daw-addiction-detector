@@ -22,6 +22,6 @@ class Answer(models.Model):
 class AnswerItem(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     answer = models.ForeignKey(Answer, on_delete=models.CASCADE,related_name="items")
-    quetion_response_option = models.ForeignKey(
+    question_response_option = models.ForeignKey(
         QuestionResponseOptions, on_delete=models.CASCADE
     )

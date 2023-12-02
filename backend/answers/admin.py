@@ -13,7 +13,7 @@ class AnswerAdmin(admin.ModelAdmin):
         return obj.items.count()
 
 class AnswerItemAdmin(admin.ModelAdmin):
-    list_display = ["answer","quetion_response_option"]
+    list_display = ["answer","question_response_option"]
 
 admin.site.register(Answer,AnswerAdmin)
 admin.site.register(AnswerItem,AnswerItemAdmin)
