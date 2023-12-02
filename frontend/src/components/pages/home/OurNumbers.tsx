@@ -23,7 +23,7 @@ const ourNumbersData = [
 const OurNumbers = () => {
   const animate = useAnimation();
   const ref = useRef(null);
-  const inView = useInView(ref, { once: false, amount: "all" });
+  const inView = useInView(ref, {  amount: "all" });
   useEffect(() => {
     if (inView) {
       animate.start({
@@ -31,14 +31,7 @@ const OurNumbers = () => {
         scale: 1,
         y: 0,
       });
-    } else {
-      animate.start({
-        y: 40,
-        opacity: 0,
-        x: -10,
-        scale: 0.8,
-      });
-    }
+    }  
   }, [inView]);
 
   return (

@@ -64,7 +64,11 @@ const Reviews = () => {
 
         <ul className="grid gap-6 grid-cols-1 sm:grid-cols-2  lg:grid-cols-3  ">
           {reviews.map((review, idx) => (
-            <ReviewItem key={`review_item_${idx}`} index={idx} review={review} />
+            <ReviewItem
+              key={`review_item_${idx}`}
+              index={idx}
+              review={review}
+            />
           ))}
         </ul>
       </section>
@@ -75,7 +79,7 @@ const Reviews = () => {
 const ReviewItem = ({ review, index }: { review: IReview; index: number }) => {
   const animate = useAnimation();
   const ref = useRef(null);
-  const inView = useInView(ref, { once: false,amount:"all" });
+  const inView = useInView(ref, { amount: "all" });
   useEffect(() => {
     if (inView) {
       animate.start({
@@ -83,17 +87,13 @@ const ReviewItem = ({ review, index }: { review: IReview; index: number }) => {
         scale: 1,
         y: 0,
         transition: {
-          delay: (0.1 * index) ,
+          delay: 0.1 * index,
           type: "tween",
           duration: 0.5,
         },
       });
-    } else {
-      animate.start({
-        opacity: 0,
-        scale: 0.8,
-      });
-    }
+    }  
+
   }, [inView]);
 
   const starts = [];
