@@ -5,7 +5,7 @@ interface IUser {
   last_name: string;
   phone: string;
   gender: "M" | "F";
-  user_type:"paitent"|"doctor",
+  user_type:"PATIENT"|"DOCTOR",
   created: string;
   updated: string;
   is_active: boolean;

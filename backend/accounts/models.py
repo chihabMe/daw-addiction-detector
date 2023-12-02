@@ -35,7 +35,7 @@ def user_image_namer(instance, name):
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     class UserTypes(models.TextChoices):
-        PAITENT = "PAITENT", "paitent"
+        PATIENT = "PATIENT", "patient"
         DOCTOR = "DOCTOR", "doctor"
         ADMIN = "ADMIN", "admin"
 
@@ -54,7 +54,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField("active", default=True)
     is_staff = models.BooleanField("is staff", default=False)
     user_type = models.CharField(
-        max_length=10, choices=UserTypes.choices, default=UserTypes.PAITENT
+        max_length=10, choices=UserTypes.choices, default=UserTypes.PATIENT
     )
     objects = UserManager()
 
@@ -73,7 +73,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
 @receiver(post_save,sender=CustomUser)
 def create_patient(sender,instance,created,**kwargs):
-    if created and instance.user_type==CustomUser.UserTypes.PAITENT:
+    if created and instance.user_type==CustomUser.UserTypes.PATIENT:
          Patient.objects.create(user=instance)
 
 @receiver(post_save,sender=CustomUser)
