@@ -14,4 +14,4 @@ class Contact (models.Model):
     
     
     def __str__(self) -> str:
-        return self.first_name+self.last_name
+        return self.email
