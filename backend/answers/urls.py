@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import get_all_answers,AnswersListView
+from .views import AnswersListView
 
 
 app_name = "answers"
