@@ -2,7 +2,7 @@ import { Outlet, useLocation } from "react-router-dom";
 import Header from "../components/layout/Header/Header";
 import Footer from "../components/layout/Footer/Footer";
 import { Toaster } from "react-hot-toast";
-const excludeLayoutPaths = ["/quiz"];
+const excludeLayoutPaths = ["/quiz","/accounts/profile"];
 export function Root() {
   const pathname = useLocation().pathname;
   if (excludeLayoutPaths.includes(pathname)) {
