@@ -6,6 +6,7 @@ class UiSettingsSerializer(serializers.ModelSerializer):
         model = UiSettings
         fields = [
             "theme",
+            "language",
             "qt_display_type",
             "qt_show_alph",
         ]

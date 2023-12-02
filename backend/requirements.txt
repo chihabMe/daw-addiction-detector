@@ -6,3 +6,6 @@ djangorestframework-simplejwt==5.3.0
 whitenoise==6.6.0
 django-volt-admin
 pillow
+gunicorn
+
+
