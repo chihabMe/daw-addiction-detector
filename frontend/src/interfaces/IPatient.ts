@@ -1,4 +1,5 @@
 export default interface IPatient {
+  id: string;
   addiction_level: number;
   average_hours_of_play_per_week: number;
   average_month_of_play: number;

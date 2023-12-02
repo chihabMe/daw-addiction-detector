@@ -22,8 +22,8 @@ const PaitentProfile = () => {
     </div>;
   return (
     <section>
-      <h1> {profile?.data.email} </h1>
-      <h1> {profile?.data.user_type} </h1>
+      <h1> {profile?.data.user.email} </h1>
+      <h1> {profile?.data.user.user_type} </h1>
     </section>
   );
 };
