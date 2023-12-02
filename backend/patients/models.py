@@ -62,3 +62,5 @@ class Patient(models.Model):
             MaxValueValidator(100, message="Value must be less than or equal to 100"),
         ],
     )
+    def __str__(self):
+        return str(self.user)

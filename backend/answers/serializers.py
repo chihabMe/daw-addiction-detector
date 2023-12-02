@@ -15,9 +15,9 @@ class AnswerItemSerializer(serializers.ModelSerializer):
 
 
 class AnswerSerializer(serializers.ModelSerializer):
-    items = AnswerItemSerializer(many=True,read_only=True)
+    answers = AnswerItemSerializer(many=True,read_only=True)
 
     class Meta:
         model = Answer
-        fields = ["items", "created_at", "updated_at"]
+        fields = ["answers", "created_at", "updated_at"]
 
