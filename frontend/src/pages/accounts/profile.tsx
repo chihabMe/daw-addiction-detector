@@ -5,7 +5,7 @@ const ProfilePage = () => {
   const { user } = useAuth();
 
   return (
-    <div className="w-full">
+    <div className="w-full  py-2">
       {user?.user_type == "PATIENT" && <PaitentProfile />}
     </div>
   );

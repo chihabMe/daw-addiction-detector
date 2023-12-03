@@ -1,6 +1,8 @@
 interface IUser {
   id:string;
   email: string;
+  image:string;
+  address:string;
   first_name: string;
   last_name: string;
   phone: string;
