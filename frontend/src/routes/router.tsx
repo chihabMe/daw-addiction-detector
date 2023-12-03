@@ -13,6 +13,8 @@ import SignupPage from "../pages/accounts/signup";
 import ProtectedRoute from "../components/wrappers/ProtectedRoute";
 import ProfilePage from "../pages/accounts/profile";
 import SettingsPage from "../pages/accounts/settings";
+import ProfileLayout from "../components/layout/ProfileLayout";
+import DashBoardLayout from "../components/layout/DashBoardLayout";
 
 export const router = createBrowserRouter([
   {
@@ -76,12 +78,24 @@ export const router = createBrowserRouter([
         element: <ProtectedRoute />,
         children: [
           {
-            path: "profile",
-            element: <ProfilePage />,
-          },
-          {
-            path: "settings",
-            element: <SettingsPage />,
+            path: "",
+            element: <DashBoardLayout />,
+            children: [
+              {
+                path: "profile",
+                element: <ProfileLayout />,
+                children: [
+                  {
+                    path: "",
+                    element: <ProfilePage />,
+                  },
+                  {
+                    path: "settings",
+                    element: <SettingsPage />,
+                  },
+                ],
+              },
+            ],
           },
         ],
       },

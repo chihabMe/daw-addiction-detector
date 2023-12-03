@@ -61,7 +61,7 @@ const SideBar = () => {
         hide: {x:"-100%",opacity:0},
         show: {x:0,opacity:1},
       }}
-      className=" bg-bg-light dark:bg-dark h-screen w-72 shadow-lg"
+      className=" bg-light dark:bg-dark h-screen w-72 shadow-lg"
     >
       <div className=" pl-4 py-6">
         <Link to="/" className="text-text-darker dark:text-text-ligther ">

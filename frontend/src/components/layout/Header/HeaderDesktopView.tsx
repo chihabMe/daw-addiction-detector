@@ -1,5 +1,6 @@
 import { NavLink, useLocation } from "react-router-dom";
 import HeaderAuthUnAuthView from "./HeaderAuthUnAuthView";
+import { motion } from "framer-motion";
 
 interface Props {
   links: {
