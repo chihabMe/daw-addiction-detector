@@ -3,6 +3,7 @@ from django.contrib.auth.models import PermissionsMixin
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+
 from patients.models import Patient
 from uisettings.models import UiSettings
 
@@ -64,6 +65,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     class Meta:
         verbose_name = "user"
         verbose_name_plural = "users"
+
 
     def get_full_name(self):
         return str(self.first_name) + " " + str(self.last_name)

@@ -38,7 +38,7 @@ def get_update_profile(request):
     except Patient.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
-    serializer = PatientProfileSerializer(patient)
+    serializer = PatientProfileSerializer(patient,context={"request":request})
         
     return Response(serializer.data)
 

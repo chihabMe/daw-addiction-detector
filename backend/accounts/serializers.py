@@ -1,6 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.base_user import check_password
 from rest_framework.schemas.coreapi import serializers
+
 from patients.models import Patient
 
 User = get_user_model()
@@ -28,14 +29,16 @@ class UserCreationSerializer(serializers.ModelSerializer):
 
 
 class UserProfileSerializer(serializers.ModelSerializer):
-    email = serializers.CharField( read_only=True)
-    user_type = serializers.CharField( read_only=True)
+    email = serializers.CharField(read_only=True)
+    image = serializers.SerializerMethodField(source="get_image")
+    user_type = serializers.CharField(read_only=True)
 
     class Meta:
         model = User
         fields = [
             "first_name",
             "last_name",
+            "image",
             "email",
             "phone",
             "user_type",
@@ -46,6 +49,12 @@ class UserProfileSerializer(serializers.ModelSerializer):
         extra_kwargs = {
             "phone": {"required": False, "allow_blank": True},
         }
+
+    def get_image(self, obj):
+        request = self.context["request"]
+        if obj.image:
+            return request.build_absolute_uri(obj.image.url)
+        return None
 
     def update(self, instance, validated_data):
         instance.first_name = validated_data.get("first_name", instance.first_name)
