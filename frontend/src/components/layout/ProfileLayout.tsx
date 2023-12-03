@@ -6,7 +6,7 @@ const ProfileLayout = () => {
       <h1 className="font-bold text-black dark:text-white text-2xl captialize py-4">
         User
       </h1>
-      <div className=" bg-white  dark:bg-dark   w-full  rounded-sm flex  min-h-[65vh]">
+      <div className=" bg-white  dark:bg-dark  px-4  w-full  rounded-sm flex  min-h-[65vh]">
         <ul className="flex flex-col w-56 gap-1 py-6 px-2 ">
           <ProfileLayoutListItem text="infos" />
           <ProfileLayoutListItem text="security" />

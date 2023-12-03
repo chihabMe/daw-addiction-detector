@@ -11,6 +11,7 @@ import { AnimatePresence, motion, useAnimationControls } from "framer-motion";
 import { ReactNode, useEffect, useState } from "react";
 import { useAuth } from "../../../hooks/useAuth";
 
+          // <UserIcon className="w-5 h-5 text-gray-600 dark:text-gray-200 " />
 const HeaderProfileDropMenu = () => {
   const { user, logout } = useAuth();
   const [open, setOpen] = useState(false);
@@ -24,7 +25,7 @@ const HeaderProfileDropMenu = () => {
     <DropdownMenu.Root open={open} onOpenChange={setOpen}>
       <DropdownMenu.Trigger>
         <Button className="bg-transparent  my-2  flex items-center gap-2  rounded-lg active:bg-blue-200  px-6 ">
-          <UserIcon className="w-5 h-5 text-gray-600 dark:text-gray-200 " />
+          <img className="w-8 h-8 rounded-full" src={user?.image}/>
           <span className="capitalize text-text-darker dark:text-text-ligther">
             {user?.first_name}
           </span>
