@@ -1,4 +1,4 @@
-import { PencilIcon } from "@heroicons/react/24/solid";
+import { PencilIcon } from "@heroicons/react/24/outline";
 import Button from "../../ui/Button";
 import IPatient from "../../../interfaces/IPatient";
 interface Props {

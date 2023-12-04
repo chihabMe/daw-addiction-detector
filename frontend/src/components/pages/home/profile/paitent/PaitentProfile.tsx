@@ -3,6 +3,7 @@ import Spinner from "../../../../ui/Spinner";
 import { getPaitentProfile } from "../../../../../services/profile.services";
 import ProfileImageInfos from "../../../profile/ProfieImageInfos";
 import PersonalInfos from "../../../profile/PersonalInfos";
+import { motion } from "framer-motion";
 const PaitentProfile = () => {
   const {
     isLoading,
@@ -27,20 +28,22 @@ const PaitentProfile = () => {
   if (!profile) return <></>;
   const user = profile.data.user;
   return (
-    <section className="text-black px-4 dark:text-white w-full ">
-      <h1 className="text-gray-600 text-lg py-4 font-bold">
-        Profle Infos
-      </h1>
+    <motion.section
+      initial={{ opacity: 0.6 }}
+      animate={{ opacity: 1 }}
+      className="text-black  px-4 dark:text-white w-full "
+    >
+      <h1 className="text-gray-600 text-lg py-4 font-bold">Profle Infos</h1>
       <ul className="flex flex-col gap-6">
-      <ProfileImageInfos
-        first_name={user.first_name}
-        image={user.image}
-        last_name={user.last_name}
-        address={user.address}
-      />
-      <PersonalInfos profile={profile.data} />
+        <ProfileImageInfos
+          first_name={user.first_name}
+          image={user.image}
+          last_name={user.last_name}
+          address={user.address}
+        />
+        <PersonalInfos profile={profile.data} />
       </ul>
-    </section>
+    </motion.section>
   );
 };
 

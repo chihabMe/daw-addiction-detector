@@ -5,9 +5,13 @@ type Props = Pick<IUser, "first_name" | "last_name" | "image" | "address">;
 const ProfileImageInfos = (props: Props) => {
   return (
     <div className="outline-1 outline w-full outline-gray-200   rounded-md px-4 py-4 flex items-start justify-between ">
-      <div className="flex gap-4 ">
+      <div className="flex gap-8 ">
         <div>
-          <img alt={`${props.first_name} profle image`} src={props.image} className="w-[110px] h-[110px] rounded-full " />
+          <img
+            alt={`${props.first_name} profle image`}
+            src={props.image}
+            className="w-[90px] h-[90px] rounded-full "
+          />
         </div>
         <div className="flex  flex-col ">
           <h2 className=" text-gray-700 py-1 font-bold capitalize dark:text-text-lighter">

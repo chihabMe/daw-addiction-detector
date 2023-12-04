@@ -1,18 +1,48 @@
-import { Outlet } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
+import { motion } from "framer-motion";
+
+const links = [
+  {
+    text: "infos",
+    link: "/accounts/profile",
+  },
+  {
+    text: "security",
+    link: "/accounts/profile/security",
+  },
+  {
+    text: "notifications",
+    link: "/accounts/proifle/notifications",
+  },
+  {
+    text: "settings",
+    link: "/accounts/profile/settings",
+  },
+  {
+    text: "delete account",
+    link: "/accounts/proifle/delete-account",
+  },
+];
 
 const ProfileLayout = () => {
+  const pathname = useLocation().pathname;
   return (
     <main className="">
-      <h1 className="font-bold text-black dark:text-white text-2xl captialize py-4">
-        User
-      </h1>
-      <div className=" bg-white  dark:bg-dark  px-4  w-full  rounded-sm flex  min-h-[65vh]">
-        <ul className="flex flex-col w-56 gap-1 py-6 px-2 ">
-          <ProfileLayoutListItem text="infos" />
-          <ProfileLayoutListItem text="security" />
-          <ProfileLayoutListItem text="notifications" />
-          <ProfileLayoutListItem text="settings" />
-          <ProfileLayoutListItem text="delete account" />
+      <div className="bg-white dark:bg-dark pt-12 px-4 w-full rounded-sm flex min-h-[82vh]">
+        <ul className="flex flex-col w-72 gap-1 py-6 px-2 ">
+          {links.map(({ text, link }, idx) => (
+            <motion.li
+              initial={{  opacity: 0}}
+              animate={{  opacity: 1}}
+              transition={{ delay: 0.1 * idx }}
+              className={`${
+                pathname == link && "bg-blue-50 w-full   text-primary"
+              }   hover:bg-blue-50  text-gray-500 rounded-md font-medium px-2 py-2 hover:text-primary capitalize transition-all  duration-300 cursor-pointer`}
+              key={text}
+            >
+              <ProfileLayoutListItem text={text} to={link} />
+            </motion.li>
+          ))}
         </ul>
         <div className="w-full">
           <Outlet />
@@ -22,11 +52,11 @@ const ProfileLayout = () => {
   );
 };
 
-const ProfileLayoutListItem = ({ text }: { text: string }) => {
+const ProfileLayoutListItem = ({ text, to }: { text: string; to: string }) => {
   return (
-    <li className="py-2 hover:bg-blue-50 text-gray-500 rounded-md font-medium px-2 hover:text-primary capitalize transition-all duration-300 cursor-pointer">
+    <Link className="" to={to}>
       {text}
-    </li>
+    </Link>
   );
 };
 

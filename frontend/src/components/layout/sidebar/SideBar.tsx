@@ -23,7 +23,7 @@ const sidebarItems = [
 
   {
     link: "/accounts/profile",
-    text: "proifle",
+    text: "profile",
     Icon: UserIcon,
   },
 
