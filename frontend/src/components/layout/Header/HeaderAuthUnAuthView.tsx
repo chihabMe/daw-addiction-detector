@@ -41,7 +41,7 @@ const HeaderAuthUnAuthView = () => {
 
 const AuthencatedUserHeaderView = () => {
   return (
-    <div className="flex items-center ">
+    <div className="flex  items-center ">
       <DarkLightThemeToggler />
       <HeaderMessagesMenu />
       <HeaderNotificationsMenu />
@@ -51,7 +51,7 @@ const AuthencatedUserHeaderView = () => {
 };
 const UnAuthencatedUserHeaderView = () => {
   return (
-    <div className="flex gap-4 items-center">
+    <div className="flex   items-center">
       <DarkLightThemeToggler />
       <Link to="/accounts/login">
         <Button className="rounded-xl px-8 py-3.5 bg-transparent text-gray-700 dark:text-text-ligther hover:text-primary  capitalize  hover:ring-2  hover:ring-primary-500">

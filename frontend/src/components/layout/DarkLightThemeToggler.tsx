@@ -19,7 +19,7 @@ const DarkLightThemeToggler = (props: Props) => {
               props.className,
             )}
           >
-            <SunIcon className="w-6 h-6 text-yellow-500" />
+            <SunIcon className="w-5 h-5 text-yellow-500" />
           </Button>
         </motion.div>
       )}
@@ -31,7 +31,7 @@ const DarkLightThemeToggler = (props: Props) => {
               props.className,
             )}
           >
-            <MoonIcon className="w-6 h-6 text-gray-200" />
+            <MoonIcon className="w-4 h-4 text-gray-200" />
           </Button>
         </motion.div>
       )}

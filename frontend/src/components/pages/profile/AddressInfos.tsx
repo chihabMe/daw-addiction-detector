@@ -4,18 +4,16 @@ import IPatient from "../../../interfaces/IPatient";
 interface Props {
   profile: IPatient;
 }
-const PersonalInfos = ({ profile }: Props) => {
+const AddressInfos = ({ profile }: Props) => {
   return (
     <div className="outline-1 outline w-full outline-gray-200   rounded-md px-4 py-4 flex items-start justify-between ">
       <div className="flex flex-col gap-2 w-full">
 
-        <h2 className="text-gray-800     py-4   font-bold ">Personal informations</h2>
+        <h2 className="text-gray-800     py-4   font-bold ">Address</h2>
         <ul className="grid grid-cols-2 gap-4 w-full ">
-        <ProfilePersonalInfoItem name="First Name" value={profile.user.first_name} />
-        <ProfilePersonalInfoItem name="Last Name" value={profile.user.last_name} />
-        <ProfilePersonalInfoItem name="Email address" value={profile.user.email} />
-        <ProfilePersonalInfoItem name="Phone" value={profile.user.phone} />
-        <ProfilePersonalInfoItem name="Gender" value={profile.user.gender} />
+        <ProfileAddressItem name="Country" value={profile.user.country??"USA"} />
+        <ProfileAddressItem name="City/State" value={profile.user.city??"New York"} />
+        <ProfileAddressItem name="Address" value={profile.user.address??"NY 10011, USA. 20 Cooper Square"} />
         </ul>
       </div>
       <div className="">
@@ -27,7 +25,7 @@ const PersonalInfos = ({ profile }: Props) => {
     </div>
   );
 };
-const ProfilePersonalInfoItem = ({name,value}:{name:string,value:string})=>{
+const ProfileAddressItem = ({name,value}:{name:string,value:string})=>{
   return (
   <li className=" flex flex-col gap-4 ">
       <span className="text-gray-400 text-sm font-bold">{name}</span>
@@ -37,4 +35,4 @@ const ProfilePersonalInfoItem = ({name,value}:{name:string,value:string})=>{
 
 }
 
-export default PersonalInfos;
+export default AddressInfos;

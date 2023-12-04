@@ -4,6 +4,7 @@ import { getPaitentProfile } from "../../../../../services/profile.services";
 import ProfileImageInfos from "../../../profile/ProfieImageInfos";
 import PersonalInfos from "../../../profile/PersonalInfos";
 import { motion } from "framer-motion";
+import AddressInfos from "../../../profile/AddressInfos";
 const PaitentProfile = () => {
   const {
     isLoading,
@@ -42,6 +43,7 @@ const PaitentProfile = () => {
           address={user.address}
         />
         <PersonalInfos profile={profile.data} />
+        <AddressInfos profile={profile.data}/>
       </ul>
     </motion.section>
   );

@@ -41,7 +41,7 @@ const HeaderMessagesMenu = () => {
     <DropdownMenu.Root open={open} onOpenChange={setOpen}>
       <DropdownMenu.Trigger>
         <Button className="bg-transparent  px-6 relative ">
-          <EnvelopeIcon className="w-5 h-5 text-gray-600 dark:text-gray-200 " />
+          <EnvelopeIcon className="w-4 h-4 text-gray-600 dark:text-gray-200 " />
           <span className=" bg-red-400 w-2 rounded-full text-center text-[13px] h-2  absolute top-1/4 right-4">
           </span>
         </Button>

@@ -12,6 +12,9 @@ interface IUser {
   updated: string;
   is_active: boolean;
   is_staff: boolean;
+  country:string;
+  city:string;
+
 }
 
 interface GENDER_CHOICES {
