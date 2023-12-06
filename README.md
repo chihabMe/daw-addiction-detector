@@ -8,6 +8,8 @@
 - **Database**: Produciton/MySQL Development/Sqlite
 - **Containerization**: Docker
 - **Version Control**: Git/GitHub
+- **Caching**: Redis
+
 
 ## Hosting Options
 

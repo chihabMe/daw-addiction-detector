@@ -16,7 +16,7 @@ from .serializers import (AccountDeletionSerializer, PatientProfileSerializer,
 def create_user_view(request):
     serializer = UserCreationSerializer(data=request.data)
     if serializer.is_valid():
-        user = serializer.save()
+        serializer.save()
         return Response("success", status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
@@ -26,7 +26,7 @@ def create_user_view(request):
 def get_update_profile(request):
     user = request.user
     if request.method == "PUT":
-        if request.user.user_type == User.UserTypes.PAITENT:
+        if request.user.user_type == User.UserTypes.PATIENT:
             serializer = PatientProfileSerializer(user, data=request.data)
             if serializer.is_valid():
                 serializer.save(owner=user)

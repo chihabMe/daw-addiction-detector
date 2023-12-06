@@ -5,7 +5,6 @@ import DoctorsPage from "../pages/doctors";
 import HomePage from "../pages/home";
 import PatientsPage from "../pages/patients";
 import QuizPage from "../pages/quiz";
-import ServicesPage from "../pages/services";
 import ErrorPage from "./error-page";
 import { Root } from "./root";
 import LoginPage from "../pages/accounts/login";
@@ -25,11 +24,6 @@ export const router = createBrowserRouter([
       {
         path: "",
         element: <HomePage />,
-      },
-
-      {
-        path: "services",
-        element: <ServicesPage />,
       },
       {
         path: "contact",
