@@ -1,4 +1,3 @@
-import { MagnifyingGlassIcon } from '@heroicons/react/24/solid'
 import Container from '../Container'
 import HeaderAuthUnAuthView from './HeaderAuthUnAuthView'
 
