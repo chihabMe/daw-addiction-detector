@@ -1,17 +1,17 @@
 import { useQuery } from "react-query";
-import Spinner from "../../../../ui/Spinner";
-import { getPaitentProfile } from "../../../../../services/profile.services";
-import ProfileImageInfos from "../../../profile/ProfieImageInfos";
-import PersonalInfos from "../../../profile/PersonalInfos";
+import Spinner from "../../../ui/Spinner";
+import { getProfile } from "../../../../services/profile.services";
+import ProfileImageInfos from "../../profile/ProfieImageInfos";
+import PersonalInfos from "../../profile/PersonalInfos";
 import { motion } from "framer-motion";
-import AddressInfos from "../../../profile/AddressInfos";
-const PaitentProfile = () => {
+import AddressInfos from "../../profile/AddressInfos";
+const UserProfile = () => {
   const {
     isLoading,
     data: profile,
     isError,
     error,
-  } = useQuery("profile", getPaitentProfile, {
+  } = useQuery("profile", getProfile, {
     refetchOnWindowFocus: "always",
   });
   if (isLoading)
@@ -27,13 +27,14 @@ const PaitentProfile = () => {
       </div>
     );
   if (!profile) return <></>;
-  const user = profile.data.user;
+  const user = profile.data;
   return (
     <motion.section
       initial={{ opacity: 0.6 }}
       animate={{ opacity: 1 }}
       className="text-black  px-4 dark:text-white w-full "
     >
+
       <h1 className="text-gray-600 text-lg py-4 font-bold">Profle Infos</h1>
       <ul className="flex flex-col gap-6">
         <ProfileImageInfos
@@ -42,11 +43,11 @@ const PaitentProfile = () => {
           last_name={user.last_name}
           address={user.address}
         />
-        <PersonalInfos profile={profile.data} />
-        <AddressInfos profile={profile.data}/>
+        <PersonalInfos profile={user} />
+        <AddressInfos profile={user} />
       </ul>
     </motion.section>
   );
 };
 
-export default PaitentProfile;
+export default UserProfile;

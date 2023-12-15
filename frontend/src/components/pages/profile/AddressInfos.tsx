@@ -1,8 +1,7 @@
 import { PencilIcon } from "@heroicons/react/24/outline";
 import Button from "../../ui/Button";
-import IPatient from "../../../interfaces/IPatient";
 interface Props {
-  profile: IPatient;
+  profile: IUser;
 }
 const AddressInfos = ({ profile }: Props) => {
   return (
@@ -11,9 +10,9 @@ const AddressInfos = ({ profile }: Props) => {
 
         <h2 className="text-gray-800     py-4   font-bold ">Address</h2>
         <ul className="grid grid-cols-2 gap-4 w-full ">
-        <ProfileAddressItem name="Country" value={profile.user.country??"USA"} />
-        <ProfileAddressItem name="City/State" value={profile.user.city??"New York"} />
-        <ProfileAddressItem name="Address" value={profile.user.address??"NY 10011, USA. 20 Cooper Square"} />
+        <ProfileAddressItem name="Country" value={profile.country??"USA"} />
+        <ProfileAddressItem name="City/State" value={profile.city??"New York"} />
+        <ProfileAddressItem name="Address" value={profile.address??"NY 10011, USA. 20 Cooper Square"} />
         </ul>
       </div>
       <div className="">

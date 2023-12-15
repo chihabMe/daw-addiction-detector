@@ -26,19 +26,13 @@ def create_user_view(request):
 def get_update_profile(request):
     user = request.user
     if request.method == "PUT":
-        if request.user.user_type == User.UserTypes.PATIENT:
-            serializer = PatientProfileSerializer(user, data=request.data)
-            if serializer.is_valid():
-                serializer.save(owner=user)
-                return Response(serializer.data, status=status.HTTP_201_CREATED)
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        serializer = UserProfileSerializer(user, data=request.data)
+        if serializer.is_valid():
+            serializer.save(owner=user)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    try:
-        patient = Patient.objects.get(user=user)
-    except Patient.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
-
-    serializer = PatientProfileSerializer(patient,context={"request":request})
+    serializer = UserProfileSerializer(user,context={"request":request})
         
     return Response(serializer.data)
 

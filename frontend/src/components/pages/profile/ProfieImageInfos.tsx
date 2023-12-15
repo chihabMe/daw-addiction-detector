@@ -3,6 +3,7 @@ import Button from "../../ui/Button";
 
 type Props = Pick<IUser, "first_name" | "last_name" | "image" | "address">;
 const ProfileImageInfos = (props: Props) => {
+  console.log(props)
   return (
     <div className="outline-1 outline w-full outline-gray-200   rounded-md px-4 py-4 flex items-start justify-between ">
       <div className="flex gap-8 ">

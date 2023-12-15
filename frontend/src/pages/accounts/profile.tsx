@@ -1,12 +1,13 @@
-import PaitentProfile from "../../components/pages/home/profile/paitent/PaitentProfile";
-import { useAuth } from "../../hooks/useAuth";
+// import { useAuth } from "../../hooks/useAuth";
+
+import UserProfile from "../../components/pages/home/profile/UserProfile";
 
 const ProfilePage = () => {
-  const { user } = useAuth();
+  // const { user } = useAuth();
 
   return (
     <div className="w-full  py-2">
-      {user?.user_type == "PATIENT" && <PaitentProfile />}
+      <UserProfile/>
     </div>
   );
 };

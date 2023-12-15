@@ -1,8 +1,7 @@
 import { PencilIcon } from "@heroicons/react/24/outline";
 import Button from "../../ui/Button";
-import IPatient from "../../../interfaces/IPatient";
 interface Props {
-  profile: IPatient;
+  profile: IUser;
 }
 const PersonalInfos = ({ profile }: Props) => {
   return (
@@ -11,11 +10,11 @@ const PersonalInfos = ({ profile }: Props) => {
 
         <h2 className="text-gray-800     py-4   font-bold ">Personal informations</h2>
         <ul className="grid grid-cols-2 gap-4 w-full ">
-        <ProfilePersonalInfoItem name="First Name" value={profile.user.first_name} />
-        <ProfilePersonalInfoItem name="Last Name" value={profile.user.last_name} />
-        <ProfilePersonalInfoItem name="Email address" value={profile.user.email} />
-        <ProfilePersonalInfoItem name="Phone" value={profile.user.phone} />
-        <ProfilePersonalInfoItem name="Gender" value={profile.user.gender} />
+        <ProfilePersonalInfoItem name="First Name" value={profile.first_name} />
+        <ProfilePersonalInfoItem name="Last Name" value={profile.last_name} />
+        <ProfilePersonalInfoItem name="Email address" value={profile.email} />
+        <ProfilePersonalInfoItem name="Phone" value={profile.phone} />
+        <ProfilePersonalInfoItem name="Gender" value={profile.gender} />
         </ul>
       </div>
       <div className="">
