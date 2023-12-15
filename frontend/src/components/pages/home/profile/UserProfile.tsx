@@ -32,11 +32,23 @@ const UserProfile = () => {
     <motion.section
       initial={{ opacity: 0.6 }}
       animate={{ opacity: 1 }}
+      transition={{delay:0}}
       className="text-black  px-4 dark:text-white w-full "
     >
-
-      <h1 className="text-gray-600 text-lg py-4 font-bold">Profle Infos</h1>
-      <ul className="flex flex-col gap-6">
+      <motion.h1
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+      transition={{delay:0.1}}
+        className="text-gray-600 text-lg py-4 font-bold"
+      >
+        Profle Infos
+      </motion.h1>
+      <motion.ul
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+      transition={{delay:0.2}}
+        className="flex flex-col gap-6"
+      >
         <ProfileImageInfos
           first_name={user.first_name}
           image={user.image}
@@ -45,7 +57,7 @@ const UserProfile = () => {
         />
         <PersonalInfos profile={user} />
         <AddressInfos profile={user} />
-      </ul>
+      </motion.ul>
     </motion.section>
   );
 };
