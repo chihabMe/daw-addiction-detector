@@ -12,7 +12,7 @@ const links = [
   },
   {
     text: "notifications",
-    link: "/accounts/proifle/notifications",
+    link: "/accounts/profile/notifications",
   },
   {
     text: "settings",
@@ -20,7 +20,7 @@ const links = [
   },
   {
     text: "delete account",
-    link: "/accounts/proifle/delete-account",
+    link: "/accounts/profile/delete-account",
   },
 ];
 
@@ -35,12 +35,18 @@ const ProfileLayout = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.1 * idx }}
-              className={`${
-                pathname == link && "bg-blue-50 w-full   text-primary"
-              }   hover:bg-blue-50  text-gray-500 rounded-md font-bold text-[18px] pl-4 py-3 hover:text-primary capitalize transition-all  duration-300 cursor-pointer`}
               key={text}
+              className="w-full "
             >
-              <ProfileLayoutListItem text={text} to={link} />
+              <Link
+                className={`${
+                  pathname == link && "bg-blue-50     text-primary"
+                } flex  hover:bg-blue-50  text-gray-500 rounded-md font-bold text-[18px] pl-4 py-3 hover:text-primary capitalize  transition-all  duration-300 cursor-pointer`}
+
+                to={link}
+              >
+                {text}
+              </Link>
             </motion.li>
           ))}
         </ul>

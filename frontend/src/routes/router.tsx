@@ -11,9 +11,12 @@ import LoginPage from "../pages/accounts/login";
 import SignupPage from "../pages/accounts/signup";
 import ProtectedRoute from "../components/wrappers/ProtectedRoute";
 import ProfilePage from "../pages/accounts/profile";
-import SettingsPage from "../pages/accounts/settings";
 import ProfileLayout from "../components/layout/ProfileLayout";
 import DashBoardLayout from "../components/layout/DashBoardLayout";
+import ProfileSettings from "../components/pages/home/profile/ProfileSettings";
+import ProfileNotifications from "../components/pages/home/profile/ProfileNotifications";
+import ProfileDeleteAccount from "../components/pages/home/profile/ProfileDeleteAccount";
+import ProfileSecurity from "../components/pages/home/profile/ProfileSecurity";
 
 export const router = createBrowserRouter([
   {
@@ -85,7 +88,21 @@ export const router = createBrowserRouter([
                   },
                   {
                     path: "settings",
-                    element: <SettingsPage />,
+                    element: <ProfileSettings />,
+                  },
+
+                  {
+                    path: "notifications",
+                    element: <ProfileNotifications />,
+                  },
+                  {
+                    path: "security",
+                    element: <ProfileSecurity />,
+                  },
+
+                  {
+                    path: "delete-account",
+                    element: <ProfileDeleteAccount />,
                   },
                 ],
               },

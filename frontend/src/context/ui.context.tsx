@@ -7,17 +7,21 @@ type ITheme = "dark" | "light";
 type IQuestionDisplayType = "letters" | "none";
 interface UiContextInitialState {
   theme: ITheme;
+  showDashBoardSideBar: boolean;
   questionMode: IQuestionType;
   questionDisplayType: IQuestionDisplayType;
   toggleThemeMode: () => void;
   changeQuestionModeToList: () => void;
   changeQuestionModeToGrid: () => void;
-
   toggleQuestionsDisplaytype: () => void;
+  hideDashBoardSideBarFunc: () => void;
+  showDashBoardSideBarFunc: () => void;
+  toggleDashBoardSideBarFunc: () => void;
 }
 
 const initialState: UiContextInitialState = {
   theme: (localStorage.getItem("theme") as ITheme) ?? "light",
+  showDashBoardSideBar: true,
   questionMode:
     (localStorage.getItem("questionMode") as IQuestionType) ?? "list",
   questionDisplayType:
@@ -27,17 +31,29 @@ const initialState: UiContextInitialState = {
   changeQuestionModeToList: () => {},
   changeQuestionModeToGrid: () => {},
   toggleQuestionsDisplaytype: () => {},
+
+  hideDashBoardSideBarFunc: () => {},
+  showDashBoardSideBarFunc: () => {},
+
+  toggleDashBoardSideBarFunc: () => {},
 };
 
 export const uiContext = createContext(initialState);
 
 export const UiContextProvider = ({ children }: { children: ReactNode }) => {
   const [theme, setTheme] = useState(initialState.theme);
+  const [showDashBoardSideBar, setShowDashBoardSideBar] = useState(
+    initialState.showDashBoardSideBar,
+  );
   const [questionMode, setQuestionMode] = useState(initialState.questionMode);
   const [questionDisplayType, setQuestionDisplayType] = useState(
     initialState.questionDisplayType,
   );
 
+  const hideDashBoardSideBarFunc = () => setShowDashBoardSideBar(false);
+  const showDashBoardSideBarFunc = () => setShowDashBoardSideBar(true);
+  const toggleDashBoardSideBarFunc = () =>
+    setShowDashBoardSideBar((prev) => !prev);
   const toggleThemeMode = () => {
     setTheme((p) => {
       const isLight = p == "light";
@@ -95,6 +111,10 @@ export const UiContextProvider = ({ children }: { children: ReactNode }) => {
     changeQuestionModeToGrid,
     toggleQuestionsDisplaytype,
     questionDisplayType,
+    showDashBoardSideBar,
+    showDashBoardSideBarFunc,
+    hideDashBoardSideBarFunc,
+    toggleDashBoardSideBarFunc
   };
   return <uiContext.Provider value={value}>{children}</uiContext.Provider>;
 };
