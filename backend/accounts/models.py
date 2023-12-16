@@ -75,7 +75,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
 @receiver(post_save,sender=CustomUser)
 def create_patient(sender,instance,created,**kwargs):
-    if created and instance.user_type==CustomUser.UserTypes.PAITENT:
+    if created and instance.user_type==CustomUser.UserTypes.PATIENT:
          Patient.objects.create(user=instance)
 
 @receiver(post_save,sender=CustomUser)

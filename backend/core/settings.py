@@ -29,6 +29,7 @@ SECRET_KEY = os.environ.get(
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("MODE") != "PRODUCTION"
+print(DEBUG)
 
 ALLOWED_HOSTS = [
     "localhost:8000",
@@ -229,6 +230,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://192.168.43.87:3000",
     "http://192.168.0.171:3000",
 ]
+
 if RENDER_EXTERNAL_HOSTNAME:
     CORS_ALLOWED_ORIGINS.append(RENDER_EXTERNAL_HOSTNAME)
 if not DEBUG:
