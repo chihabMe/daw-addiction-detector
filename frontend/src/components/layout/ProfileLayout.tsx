@@ -58,12 +58,5 @@ const ProfileLayout = () => {
   );
 };
 
-const ProfileLayoutListItem = ({ text, to }: { text: string; to: string }) => {
-  return (
-    <Link className="" to={to}>
-      {text}
-    </Link>
-  );
-};
 
 export default ProfileLayout;
