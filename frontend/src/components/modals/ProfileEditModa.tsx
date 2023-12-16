@@ -9,7 +9,7 @@ interface Props {
   openModal: () => void;
   user: IUser;
 }
-const ProfileEdit = ({ closeModal, openModal, isOpen, user }: Props) => {
+const ProfileEdit = ({ closeModal,  isOpen, user }: Props) => {
   return (
     <>
       <Transition appear show={isOpen} as={Fragment}>
@@ -47,7 +47,9 @@ const ProfileEdit = ({ closeModal, openModal, isOpen, user }: Props) => {
                   <div className="mt-8">
                     <Formik
                       initialValues={{ ...user }}
-                      onSubmit={(values, actions) => {}}
+                      onSubmit={(values) => {
+                        console.log(values);
+                      }}
                     >
                       {(props) => (
                         <form
@@ -109,13 +111,8 @@ const ProfileEdit = ({ closeModal, openModal, isOpen, user }: Props) => {
                   </div>
 
                   <div className="mt-4 flex justify-end gap-4">
-
-                    <Button className="bg-red-300">
-                      close
-                    </Button>
-                    <Button>
-                      save
-                    </Button>
+                    <Button className="bg-red-300">close</Button>
+                    <Button>save</Button>
                   </div>
                 </Dialog.Panel>
               </Transition.Child>
