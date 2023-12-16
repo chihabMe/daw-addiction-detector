@@ -11,7 +11,7 @@ import { AnimatePresence, motion, useAnimation } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
 import { useUiContext } from "../../../hooks/useUiContext";
 import Button from "../../ui/Button";
-import { Bars3Icon } from "@heroicons/react/20/solid";
+import { Bars3Icon,ArrowLeftIcon } from "@heroicons/react/20/solid";
 import { useEffect, useRef } from "react";
 const sidebarItems = [
   {
@@ -86,7 +86,11 @@ const SideBar = () => {
             className="bg-tranparent px-4 py-2 "
             onClick={toggleDashBoardSideBarFunc}
           >
+            {showDashBoardSideBar ?
+            <ArrowLeftIcon className="w-6 h-6 text-gray-400" />
+              :
             <Bars3Icon className="w-6 h-6 text-gray-400" />
+            }
           </Button>
         </div>
         <div className=" pl-4 py-6 h-24">
@@ -94,8 +98,9 @@ const SideBar = () => {
             <AnimatePresence>
               <motion.div
                 exit={{ opacity: 0 }}
+                initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 0.3 }}
+                transition={{ delay: 0.2}}
               >
                 <Link
                   to="/"
@@ -155,8 +160,8 @@ const SidBarItem = ({
             <AnimatePresence>
               <motion.span
                 exit={{ opacity: 0, width: 400, backgroundColor: "gren" }}
-                initial={{opacity:0}}
-                animate={{ opacity: 1}}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
                 transition={{ delay: 0.25 }}
                 className={`capitalize  transition-all duration-300 text-gray-600  dark:text-gray-100 ${
                   isActive && "!text-white"

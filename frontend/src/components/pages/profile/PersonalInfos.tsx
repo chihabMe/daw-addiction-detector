@@ -2,8 +2,9 @@ import { PencilIcon } from "@heroicons/react/24/outline";
 import Button from "../../ui/Button";
 interface Props {
   profile: IUser;
+  openModal:()=>void
 }
-const PersonalInfos = ({ profile }: Props) => {
+const PersonalInfos = ({ profile,openModal }: Props) => {
   return (
     <div className="outline-1 outline w-full outline-gray-200   rounded-md px-4 py-4 flex items-start justify-between ">
       <div className="flex flex-col gap-2 w-full">
@@ -20,7 +21,7 @@ const PersonalInfos = ({ profile }: Props) => {
       <div className="">
         <Button className="bg-transparent flex items-center gap-2 px-2 py-2 ">
           <PencilIcon className="w-3 h-3 text-gray-400" />
-          <span className="text-gray-400 text-sm">Edite</span>
+          <span className="text-gray-400 text-sm" onClick={openModal}>Edite</span>
         </Button>
       </div>
     </div>
