@@ -68,6 +68,7 @@ INSTALLED_APPS = [
     "livemessages",
     "answers",
     "questions",
+    "management",
     # seth
     "contacts",
     # seth/massi

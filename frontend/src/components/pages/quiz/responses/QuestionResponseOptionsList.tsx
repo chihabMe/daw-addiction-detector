@@ -5,7 +5,7 @@ import QuestionResponsesListSkeleton from "./skeletons/QuestionResponsesListSkel
 import { useUiContext } from "../../../../hooks/useUiContext";
 import { motion } from "framer-motion";
 import { useQuery } from "react-query";
-import { getQuestionRespones } from "../../../../services/questions.services";
+import { getQuestionRespones } from "../../../../utils/services/questions.services";
 
 interface Props {
   questionId: string;

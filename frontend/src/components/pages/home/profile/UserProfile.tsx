@@ -1,12 +1,12 @@
 import { useQuery } from "react-query";
 import Spinner from "../../../ui/Spinner";
-import { getProfile } from "../../../../services/profile.services";
 import ProfileImageInfos from "../../profile/ProfieImageInfos";
 import PersonalInfos from "../../profile/PersonalInfos";
 import { motion } from "framer-motion";
 import AddressInfos from "../../profile/AddressInfos";
 import ProfileEditModal from "../../../modals/ProfileEditModa";
 import { useState } from "react";
+import { getProfile } from "../../../../utils/services/profile.services";
 const UserProfile = () => {
   const [showEditModal, setShowEditModal] = useState(false);
   const closeEditModal = () => setShowEditModal(false);

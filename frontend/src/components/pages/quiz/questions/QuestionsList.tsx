@@ -7,7 +7,7 @@ import { useUiContext } from "../../../../hooks/useUiContext";
 import Button from "../../../ui/Button";
 import DarkLightThemeToggler from "../../../layout/DarkLightThemeToggler";
 import { useQuery } from "react-query";
-import { getAllQuestions } from "../../../../services/questions.services";
+import { getAllQuestions } from "../../../../utils/services/questions.services";
 
 const QuestionsList = () => {
   const { isError, error, isLoading, data } = useQuery(
