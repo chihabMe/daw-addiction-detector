@@ -10,7 +10,7 @@ class AnswerItemInline(admin.TabularInline):
     extra = 1
 
 class AnswerAdmin(admin.ModelAdmin):
-    list_display = ["patient", "get_answers_count", "created_at", "updated_at"]
+    list_display = ["patient","reviewed", "get_answers_count", "created_at", "updated_at"]
     readonly_fields = ["created_at", "updated_at"]
     inlines = [AnswerItemInline]
 

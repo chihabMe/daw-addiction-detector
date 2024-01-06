@@ -23,7 +23,12 @@ const SubmittedQuizzesList = () => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: idx * 0.1, duration: 0.3 }}
           >
-            <SubmittedQuizItem user={item.user} quizId={item.id} />
+            <SubmittedQuizItem
+              user={item.user}
+              quizId={item.id}
+              createdAt={item.created_at}
+              reviewed={item.reviewed}
+            />
           </motion.div>
         ))}
       </ul>

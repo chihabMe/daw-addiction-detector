@@ -9,6 +9,7 @@ interface ISubmittedQuiz {
   created_at: string;
   updated_at: string;
   id: string;
+  reviewed:boolean;
 }
 export const getAllSubmittedQuizzes = () =>
   axiosClient.get<ISubmittedQuiz[]>(getAllSubmittedQuizzesPath);
