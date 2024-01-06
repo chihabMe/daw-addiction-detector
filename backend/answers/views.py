@@ -4,16 +4,32 @@ from rest_framework.decorators import api_view
 from rest_framework.generics import ListAPIView, RetrieveAPIView
 from rest_framework.response import Response
 from rest_framework.views import status
+from django.http import Http404
 
 from .models import Answer
-from .serializers import AnswerSerializer
+from .serializers import AnswerSerializer,AnswersListSerializer
 
 
 # Create your views here.
-class AnswersListView(RetrieveAPIView):
+class  AnswersListView(ListAPIView):
     queryset = Answer.objects.all()
+    serializer_class = AnswersListSerializer
+    
+class AnswersDetailView(RetrieveAPIView):
     serializer_class = AnswerSerializer
-    lookup_field = "patient_id"
+    lookup_field = "id"
+    def get_object(self):
+        patient_id = self.kwargs.get(self.lookup_field)
+        print(patient_id)
+        try:
+            return Answer.objects.get(patient__id=patient_id)
+        except Answer.DoesNotExist:
+            raise Http404("Answer not found for the specified  ID.")
+
+    def retrieve(self, request, *args, **kwargs):
+        instance = self.get_object()
+        serializer = self.get_serializer(instance)
+        return Response(serializer.data)
 
 
 # @api_view(["GET"])

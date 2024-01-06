@@ -10,6 +10,7 @@ export const logoutTokenPath = API_URL + "/api/v1/auth/token/logout/";
 export const getUserPath = API_URL + "/api/v1/auth/me/";
 
 export const getProfilePath = API_URL+"/api/v1/accounts/profile/";
+export const getAnswers = API_URL+"/api/v1/answers/"; //add the user id;
 
 export const userRegistrationpath = API_URL + "/api/v1/accounts/register/";
 
