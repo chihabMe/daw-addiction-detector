@@ -9,7 +9,7 @@ interface Props {
   openModal: () => void;
   user: IUser;
 }
-const ProfileEdit = ({ closeModal,  isOpen, user }: Props) => {
+const ProfileEdit = ({ closeModal, isOpen, user }: Props) => {
   return (
     <>
       <Transition appear show={isOpen} as={Fragment}>
@@ -57,7 +57,6 @@ const ProfileEdit = ({ closeModal,  isOpen, user }: Props) => {
                           className="grid grid-cols-2 gap-2"
                         >
                           <Input
-
                             name="first_name"
                             label="First Name"
                             type="text"
