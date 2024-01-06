@@ -3,7 +3,7 @@ import { CheckIcon } from "@heroicons/react/24/solid";
 import { Link } from "react-router-dom";
 
 interface Props {
-  quiz: { id: string };
+  quizId: string;
   user: IUser;
 }
 const SubmittedQuizItem = (props: Props) => {
@@ -11,7 +11,7 @@ const SubmittedQuizItem = (props: Props) => {
   return (
     <li>
       <Link
-        to={`/dashboard/submitted/${props.quiz.id}`}
+        to={`/dashboard/submitted/${props.quizId}`}
         className={` ${
           reviewed ? "outline-red-300" : " outline-blue-400"
         } outline outline-1 cursor-pointer shadow w-full h-[70px] justify-between  rounded-lg p-4 flex items-center bg-light dark:bg-dark text-title-dark dark:text-light `}
@@ -20,6 +20,10 @@ const SubmittedQuizItem = (props: Props) => {
           <img className="w-10 h-10 rounded-full" src={props.user.image} />
           <span className="capitalize">
             {props.user.first_name} {props.user.last_name}
+          </span>
+
+          <span className="capitalize">
+            {props.user.email}
           </span>
           <span className="">2024-1-10</span>
         </div>

@@ -34,7 +34,7 @@ const LoginPage = () => {
           duration: 0.5,
           ease: "linear",
         }}
-        className="w-full mt-4 h-[750px] relative        mx-auto max-w-[1500px]        rounded-xl shadow      flex justify-between     "
+        className="w-full mt-4 h-[600px] relative        mx-auto max-w-[1200px]        rounded-xl shadow      flex justify-between     "
       >
         <div className="w-1/2 relative flex justify-center items-center bg-primary p-2 rounded-l-xl  hidden  backdrop-blur  lg:flex    ">
           <div className="   flex    flex-col gap-2">

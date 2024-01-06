@@ -1,8 +1,16 @@
 from rest_framework import serializers
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
+
 
 from .models import Answer, AnswerItem
+class AnswerUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields  =["first_name","last_name","email","image"]
 class AnswersListSerializer(serializers.ModelSerializer):
-    user = serializers.CharField(source="patient.user.first_name")
+    user = AnswerUserSerializer(source="patient.user")
     class Meta:
         model = Answer
         fields = ["user","id", "created_at", "updated_at"]
