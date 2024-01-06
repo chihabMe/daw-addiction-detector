@@ -20,6 +20,7 @@ import DashBoardPage from "../pages/dashboard";
 import QuizzesPage from "../pages/dashboard/quizzes";
 import SubmittedPage from "../pages/dashboard/submitted";
 import DashBoardPatientsPage from "../pages/dashboard/patients";
+import SubmittedQuizDetails from "../pages/dashboard/submitted/submittedQuizDetails";
 
 export const router = createBrowserRouter([
   {
@@ -57,6 +58,7 @@ export const router = createBrowserRouter([
               { path: "patients", element: <DashBoardPatientsPage /> },
               { path: "quizzes", element: <QuizzesPage /> },
               { path: "submitted", element: <SubmittedPage /> },
+              { path: "submitted/:submissionId", element: <SubmittedQuizDetails /> },
             ],
           },
           {
