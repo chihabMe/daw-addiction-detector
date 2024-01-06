@@ -76,7 +76,7 @@ const Hero = () => {
           >
             <div className="bg-blue-300 dark:bg-blue-900 absolute -z-10 lg:w-[450px] -translate-y-1/2 lg:h-[350px] top-1/2 bottom-1/2 blur-[100px]" />
             <motion.img
-              className="w-[590px] h-[590px]"
+              className="w-[500px] h-[500px]"
               src="/images/home/doctor.svg"
               alt="doctor image"
             />
