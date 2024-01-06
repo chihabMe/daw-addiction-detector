@@ -1,4 +1,5 @@
 import { useAuth } from "../../../../hooks/useAuth";
+import Button from "../../../ui/Button";
 import SubmittedQuizItem from "./SubmittedQuizItem";
 import { motion } from "framer-motion";
 
@@ -40,9 +41,6 @@ const SubmittedQuizzesList = () => {
           </motion.div>
         ))}
       </ul>
-      <div className="bg-blue-50 rounded-lg max-w-[280px] flex-[20%]">
-        <h1>Filters</h1>
-      </div>
     </div>
   );
 };

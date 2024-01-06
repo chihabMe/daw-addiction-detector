@@ -79,8 +79,28 @@ const SubmittedQuizDetails = () => {
             ))}
           </ul>
         </div>
-        <div className="bg-blue-50 flex-[20%] max-w-[400px] rounded-lg">
-          <h1>review</h1>
+        <div className=" rounded-lg max-w-[450px] flex-[30%]">
+          <div className="flex flex-col gap-2">
+            <input
+              className="flex justify-between   focus:outline-primary focus:outline focus:outline-1   h-[52px] px-4 rounded-md outline-none bg-white dark:bg-gray-700 w-full text-text-darker dark:text-text-ligther font-medium"
+              placeholder="addiction level"
+            />
+
+            <input
+              className="flex justify-between focus:outline-primary focus:outline focus:outline-1  h-[52px] px-4 rounded-md outline-none bg-white dark:bg-gray-700 w-full text-text-darker dark:text-text-ligther font-medium"
+              placeholder="depression score"
+            />
+
+            <input
+              className="flex focus:outline-primary focus:outline focus:outline-1  justify-between h-[52px] px-4 rounded-md outline-none bg-white dark:bg-gray-700 w-full text-text-darker dark:text-text-ligther font-medium"
+              placeholder="anxiety level"
+            />
+            <textarea
+              placeholder="Note"
+              className="w-full  outline-primary focus:outline outline-1 rounded-lg p-2 h-40 resize-none rounded-md"
+            />
+            <Button className="w-full mt-6">review</Button>
+          </div>
         </div>
       </section>
     </main>
