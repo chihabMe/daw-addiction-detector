@@ -20,37 +20,37 @@ const sidebarItems = [
     Icon: HomeIcon,
   },
   {
-    link: "/accounts/dashboard",
+    link: "/dashboard",
     text: "dashboard",
     Icon: HashtagIcon,
   },
 
   {
-    link: "/accounts/profile",
+    link: "/dashboard/accounts/profile",
     text: "profile",
     Icon: UserIcon,
   },
 
   {
-    link: "/accounts/quiz/submited",
+    link: "/dashboard/submitted",
     text: "submited",
     Icon: CheckCircleIcon,
   },
 
   {
-    link: "/accounts/quiz/list",
+    link: "/dashboard/quizzes",
     text: "quizzes",
     Icon: QueueListIcon,
   },
 
   {
-    link: "/accounts/patients",
+    link: "/dashboard/patients",
     text: "patients",
     Icon: FaceSmileIcon,
   },
 
   {
-    link: "/accounts/profile/notifications",
+    link: "/dashboard/accounts/profile/notifications",
     text: "notifications",
     Icon: BellIcon,
   },
@@ -139,8 +139,10 @@ const SidBarItem = ({
 }) => {
   const { showDashBoardSideBar } = useUiContext();
   const pathname = useLocation().pathname;
-  const isActive =
-    pathname == link || (link != "/" && pathname.startsWith(link));
+  // Check if pathname is in the array of valid paths
+  const isActive = (pathname === link && link !== "/dashboard") || (pathname === "/dashboard" && link === "/dashboard") || (link !== "/" && link !== "/dashboard" && pathname.startsWith(link));
+  
+  
   return (
     <li
       className={`py-3.5 mt-1 px-2 transition-all duration-300 cursor-pointer ${

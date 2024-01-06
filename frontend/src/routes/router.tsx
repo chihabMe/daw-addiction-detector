@@ -3,7 +3,6 @@ import AboutPage from "../pages/about";
 import ContactPage from "../pages/contact";
 import DoctorsPage from "../pages/doctors";
 import HomePage from "../pages/home";
-import PatientsPage from "../pages/patients";
 import QuizPage from "../pages/quiz";
 import ErrorPage from "./error-page";
 import { Root } from "./root";
@@ -17,6 +16,10 @@ import ProfileSettings from "../components/pages/home/profile/ProfileSettings";
 import ProfileNotifications from "../components/pages/home/profile/ProfileNotifications";
 import ProfileDeleteAccount from "../components/pages/home/profile/ProfileDeleteAccount";
 import ProfileSecurity from "../components/pages/home/profile/ProfileSecurity";
+import DashBoardPage from "../pages/dashboard";
+import QuizzesPage from "../pages/dashboard/quizzes";
+import SubmittedPage from "../pages/dashboard/submitted";
+import DashBoardPatientsPage from "../pages/dashboard/patients";
 
 export const router = createBrowserRouter([
   {
@@ -24,85 +27,62 @@ export const router = createBrowserRouter([
     element: <Root />,
     errorElement: <ErrorPage />,
     children: [
+      { path: "", element: <HomePage /> },
+      { path: "contact", element: <ContactPage /> },
+      { path: "about", element: <AboutPage /> },
       {
-        path: "",
-        element: <HomePage />,
-      },
-      {
-        path: "contact",
-        element: <ContactPage />,
-      },
-
-      {
-        path: "about",
-        element: <AboutPage />,
-      },
-      {
-        path: "",
-        element: <ProtectedRoute />,
+        path: "accounts",
         children: [
+          { path: "login", element: <LoginPage /> },
+          { path: "signup", element: <SignupPage /> },
           {
-            path: "quiz",
-            element: <QuizPage />,
-          },
-          {
-            path: "patients",
-            element: <PatientsPage />,
-          },
-          {
-            path: "doctors",
-            element: <DoctorsPage />,
+            path: "",
+            element: <ProtectedRoute />,
+            children: [
+              { path: "quiz", element: <QuizPage /> },
+              { path: "doctors", element: <DoctorsPage /> },
+            ],
           },
         ],
       },
       {
-        path: "accounts",
-        children: [
-          {
-            path: "login",
-            element: <LoginPage />,
-          },
-
-          {
-            path: "signup",
-            element: <SignupPage />,
-          },
-        ],
-      },
-
-      {
-        path: "accounts",
+        path: "dashboard",
         element: <ProtectedRoute />,
         children: [
           {
             path: "",
             element: <DashBoardLayout />,
             children: [
+              { path: "", element: <DashBoardPage /> },
+              { path: "patients", element: <DashBoardPatientsPage /> },
+              { path: "quizzes", element: <QuizzesPage /> },
+              { path: "submitted", element: <SubmittedPage /> },
+            ],
+          },
+          {
+            path: "accounts",
+            element: <ProtectedRoute />,
+            children: [
               {
-                path: "profile",
-                element: <ProfileLayout />,
+                path: "",
+                element: <DashBoardLayout />,
                 children: [
                   {
-                    path: "",
-                    element: <ProfilePage />,
-                  },
-                  {
-                    path: "settings",
-                    element: <ProfileSettings />,
-                  },
-
-                  {
-                    path: "notifications",
-                    element: <ProfileNotifications />,
-                  },
-                  {
-                    path: "security",
-                    element: <ProfileSecurity />,
-                  },
-
-                  {
-                    path: "delete-account",
-                    element: <ProfileDeleteAccount />,
+                    path: "profile",
+                    element: <ProfileLayout />,
+                    children: [
+                      { path: "", element: <ProfilePage /> },
+                      { path: "settings", element: <ProfileSettings /> },
+                      {
+                        path: "notifications",
+                        element: <ProfileNotifications />,
+                      },
+                      { path: "security", element: <ProfileSecurity /> },
+                      {
+                        path: "delete-account",
+                        element: <ProfileDeleteAccount />,
+                      },
+                    ],
                   },
                 ],
               },

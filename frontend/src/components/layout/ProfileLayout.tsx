@@ -4,23 +4,23 @@ import { motion } from "framer-motion";
 const links = [
   {
     text: "infos",
-    link: "/accounts/profile",
+    link: "/dashboard/accounts/profile",
   },
   {
     text: "security",
-    link: "/accounts/profile/security",
+    link: "/dashboard/accounts/profile/security",
   },
   {
     text: "notifications",
-    link: "/accounts/profile/notifications",
+    link: "/dashboard/accounts/profile/notifications",
   },
   {
     text: "settings",
-    link: "/accounts/profile/settings",
+    link: "/dashboard/accounts/profile/settings",
   },
   {
     text: "delete account",
-    link: "/accounts/profile/delete-account",
+    link: "/dashboard/accounts/profile/delete-account",
   },
 ];
 
