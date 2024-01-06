@@ -6,6 +6,7 @@ import { useUiContext } from "../../../../hooks/useUiContext";
 import { motion } from "framer-motion";
 import { useQuery } from "react-query";
 import { getQuestionRespones } from "../../../../utils/services/questions.services";
+import { useQuiz } from "../../../../hooks/useQuiz";
 
 interface Props {
   questionId: string;
@@ -19,10 +20,12 @@ const QuestionResponseOptionsList = ({ questionId }: Props) => {
     data: options,
   } = useQuery(
     `question_reponses_${questionId}`,
-    getQuestionRespones.bind(null, questionId),
+    getQuestionRespones.bind(null, questionId)
   );
+  const { addAnswer } = useQuiz();
   const [chosedOption, setChosedOption] = useState("");
   const changeChosedResponse = (id: string) => {
+    addAnswer(questionId, id);
     setChosedOption(id);
   };
 
@@ -42,9 +45,10 @@ const QuestionResponseOptionsList = ({ questionId }: Props) => {
       }    py-4 gap-4 font-medium `}
     >
       {options?.data.map((option, idx) => (
-        <motion.div layout >
+        <motion.div layout>
           <QuestionResponseOptionListItem
             key={`quesiton_respones_item_${option.id}`}
+            questionId={questionId}
             index={idx}
             setResponseOption={changeChosedResponse}
             chosedQuestionId={chosedOption}

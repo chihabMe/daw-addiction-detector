@@ -8,11 +8,13 @@ interface Props {
   chosedQuestionId: string;
   index: number;
   setResponseOption: (id: string) => void;
+  questionId: string;
 }
 const QuestionResponseOptionListItem = ({
   option,
   chosedQuestionId,
   setResponseOption,
+  questionId,
   index,
 }: Props) => {
   const isActive = option.id == chosedQuestionId;
@@ -44,7 +46,7 @@ const QuestionResponseOptionListItem = ({
                 <motion.div
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
-                  exit={{scale:0.85}}
+                  exit={{ scale: 0.85 }}
                   className={` 
                group-hover:bg-white bg-white group-active:animate-ping    rounded-full w-3 h-3  `}
                 ></motion.div>
