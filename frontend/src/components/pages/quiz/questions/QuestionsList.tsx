@@ -38,7 +38,7 @@ const QuestionsList = () => {
 
   return (
     <>
-      <div className="flex  gap-4 py-4 justify-end px-2">
+      <div className="flex  gap-4 py-4  justify-end px-2">
         <DarkLightThemeToggler className="!px-3 !py-2.5 " />
 
         <Button
@@ -67,7 +67,7 @@ const QuestionsList = () => {
           <TableCellsIcon className="w-5 h-5" />
         </Button>
       </div>
-      <ul className="flex flex-col gap-2 ">
+      <ul className="flex flex-col gap-2   ">
         {data?.data.map((question, idx) => (
           <motion.div
             key={`quesiton_list_item_${question.id}`}

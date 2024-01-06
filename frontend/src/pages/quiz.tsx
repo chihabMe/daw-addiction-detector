@@ -16,8 +16,8 @@ const QuizPage = () => {
   }
 
   return (
-    <main className="min-h-screen">
-      <section className="w-full max-w-screen-md  mx-auto py-6 px-2">
+    <main className="min-h-screen  ">
+      <section className="w-full max-w-screen-sm  mx-auto py-6 px-2">
         <motion.div
             transition={{ delay: 0.1,duration:0.3 }}
             initial={{  opacity: 0,x:-10}}

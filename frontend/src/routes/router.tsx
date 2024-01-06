@@ -32,18 +32,17 @@ export const router = createBrowserRouter([
       { path: "contact", element: <ContactPage /> },
       { path: "about", element: <AboutPage /> },
       {
-        path: "accounts",
+        path: "",
+        element: <ProtectedRoute />,
         children: [
-          { path: "login", element: <LoginPage /> },
-          { path: "signup", element: <SignupPage /> },
           {
-            path: "",
-            element: <ProtectedRoute />,
+            path: "accounts",
             children: [
-              { path: "quiz", element: <QuizPage /> },
-              { path: "doctors", element: <DoctorsPage /> },
+              { path: "login", element: <LoginPage /> },
+              { path: "signup", element: <SignupPage /> },
             ],
           },
+          { path: "quiz", element: <QuizPage /> },
         ],
       },
       {
@@ -58,7 +57,10 @@ export const router = createBrowserRouter([
               { path: "patients", element: <DashBoardPatientsPage /> },
               { path: "quizzes", element: <QuizzesPage /> },
               { path: "submitted", element: <SubmittedPage /> },
-              { path: "submitted/:submissionId", element: <SubmittedQuizDetails /> },
+              {
+                path: "submitted/:submissionId",
+                element: <SubmittedQuizDetails />,
+              },
             ],
           },
           {

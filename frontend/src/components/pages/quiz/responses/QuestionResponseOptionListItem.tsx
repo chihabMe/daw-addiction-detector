@@ -30,7 +30,7 @@ const QuestionResponseOptionListItem = ({
         } active:ring-[4px]   transition duration-300  active:ring-primary p-px rounded-md ring-1 ring-white `}
       >
         <div
-          className={`  py-[22px] group rounded-md px-4 text-text-darker dark:text-text-ligther bg-bg-light   dark:bg-dark   flex gap-4  items-center duration-200 cursor-pointer  bg-gray-100  hover:bg-primary hover:!text-white font-medium ${
+          className={`  py-[15px] group rounded-md px-4 text-text-darker dark:text-text-ligther bg-bg-light   dark:bg-dark   flex gap-4  items-center duration-200 cursor-pointer  bg-gray-100  hover:bg-primary hover:!text-white font-medium ${
             isActive && "!text-white !bg-primary"
           }  `}
         >
