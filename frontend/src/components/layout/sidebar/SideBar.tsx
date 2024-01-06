@@ -11,9 +11,10 @@ import { AnimatePresence, motion, useAnimation } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
 import { useUiContext } from "../../../hooks/useUiContext";
 import Button from "../../ui/Button";
-import { Bars3Icon,ArrowLeftIcon } from "@heroicons/react/20/solid";
+import { Bars3Icon, ArrowLeftIcon } from "@heroicons/react/20/solid";
 import { useEffect, useRef } from "react";
-const sidebarItems = [
+import { useAuth } from "../../../hooks/useAuth";
+const doctorSideBarItems = [
   {
     link: "/",
     text: "home",
@@ -56,6 +57,7 @@ const sidebarItems = [
   },
 ];
 const SideBar = () => {
+  const { user } = useAuth();
   const { showDashBoardSideBar, toggleDashBoardSideBarFunc } = useUiContext();
   const ref = useRef(null);
   const animate = useAnimation();
@@ -65,6 +67,7 @@ const SideBar = () => {
       animate.start("hide");
     }
   }, [showDashBoardSideBar]);
+  if (!user) return <span>error</span>;
   return (
     <motion.div layout ref={ref} transition={{ duration: 2 }}>
       <motion.aside
@@ -86,11 +89,11 @@ const SideBar = () => {
             className="bg-tranparent px-4 py-2 "
             onClick={toggleDashBoardSideBarFunc}
           >
-            {showDashBoardSideBar ?
-            <ArrowLeftIcon className="w-6 h-6 text-gray-400" />
-              :
-            <Bars3Icon className="w-6 h-6 text-gray-400" />
-            }
+            {showDashBoardSideBar ? (
+              <ArrowLeftIcon className="w-6 h-6 text-gray-400" />
+            ) : (
+              <Bars3Icon className="w-6 h-6 text-gray-400" />
+            )}
           </Button>
         </div>
         <div className=" pl-4 py-6 h-24">
@@ -100,7 +103,7 @@ const SideBar = () => {
                 exit={{ opacity: 0 }}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 0.2}}
+                transition={{ delay: 0.2 }}
               >
                 <Link
                   to="/"
@@ -115,19 +118,53 @@ const SideBar = () => {
           )}
         </div>
         <ul className="flex flex-col px-2 gap-1 ">
-          {sidebarItems.map((item, idx) => (
-            <SidBarItem
-              key={`sidebar_item_${idx}`}
-              Icon={item.Icon}
-              text={item.text}
-              link={item.link}
-            />
-          ))}
+          {user.user_type == "DOCTOR" &&
+            doctorSideBarItems.map((item, idx) => (
+              <SidBarItem
+                key={`sidebar_item_${idx}`}
+                Icon={item.Icon}
+                text={item.text}
+                link={item.link}
+              />
+            ))}
+          {user.user_type == "PATIENT" &&
+            paitentSideBarItems.map((item, idx) => (
+              <SidBarItem
+                key={`sidebar_item_${idx}`}
+                Icon={item.Icon}
+                text={item.text}
+                link={item.link}
+              />
+            ))}
         </ul>
       </motion.aside>
     </motion.div>
   );
 };
+const paitentSideBarItems = [
+  {
+    link: "/",
+    text: "home",
+    Icon: HomeIcon,
+  },
+  {
+    link: "/dashboard",
+    text: "dashboard",
+    Icon: HashtagIcon,
+  },
+
+  {
+    link: "/dashboard/accounts/profile",
+    text: "profile",
+    Icon: UserIcon,
+  },
+
+  {
+    link: "/dashboard/accounts/profile/notifications",
+    text: "notifications",
+    Icon: BellIcon,
+  },
+];
 const SidBarItem = ({
   text,
   link,
@@ -140,9 +177,11 @@ const SidBarItem = ({
   const { showDashBoardSideBar } = useUiContext();
   const pathname = useLocation().pathname;
   // Check if pathname is in the array of valid paths
-  const isActive = (pathname === link && link !== "/dashboard") || (pathname === "/dashboard" && link === "/dashboard") || (link !== "/" && link !== "/dashboard" && pathname.startsWith(link));
-  
-  
+  const isActive =
+    (pathname === link && link !== "/dashboard") ||
+    (pathname === "/dashboard" && link === "/dashboard") ||
+    (link !== "/" && link !== "/dashboard" && pathname.startsWith(link));
+
   return (
     <li
       className={`py-3.5 mt-1 px-2 transition-all duration-300 cursor-pointer ${
