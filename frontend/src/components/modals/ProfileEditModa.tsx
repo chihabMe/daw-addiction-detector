@@ -54,7 +54,7 @@ const ProfileEdit = ({ closeModal, isOpen, user }: Props) => {
                       {(props) => (
                         <form
                           onSubmit={props.handleSubmit}
-                          className="grid grid-cols-2 gap-2"
+                          className="grid grid-cols-2 gap-x-2"
                         >
                           <Input
                             name="first_name"
