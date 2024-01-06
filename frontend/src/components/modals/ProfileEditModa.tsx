@@ -57,53 +57,55 @@ const ProfileEdit = ({ closeModal,  isOpen, user }: Props) => {
                           className="grid grid-cols-2 gap-2"
                         >
                           <Input
+
                             name="first_name"
                             label="First Name"
                             type="text"
-                            className="bg-blue-50 my-2"
+                            className="bg-blue-50 my-2 h-14"
                           />
                           <Input
                             name="last_name"
                             label="Last Name"
                             type="text"
-                            className="bg-blue-50 my-2"
+                            className="bg-blue-50 my-2 h-14"
                           />
-                          <Input
-                            name="address"
-                            label="Address"
-                            type="text"
-                            className="bg-blue-50 my-2"
-                          />
-                          <Input
-                            name="phone"
-                            label="Phone"
-                            type="tel"
-                            className="bg-blue-50 my-2"
-                          />
-                          <Input
-                            name="gender"
-                            label="Gender"
-                            type="text"
-                            className="bg-blue-50 my-2"
-                          />
-                          <Input
-                            name="country"
-                            label="Country"
-                            type="text"
-                            className="bg-blue-50 my-2"
-                          />
-                          <Input
-                            name="city"
-                            label="City"
-                            type="text"
-                            className="bg-blue-50 my-2"
-                          />
+
                           <Input
                             disabled
                             name="email"
                             label="Email"
                             type="email"
-                            className="bg-blue-50 my-2"
+                            className="bg-blue-50 my-2 h-14"
+                          />
+                          <Input
+                            name="address"
+                            label="Address"
+                            type="text"
+                            className="bg-blue-50 my-2 h-14"
+                          />
+                          <Input
+                            name="phone"
+                            label="Phone"
+                            type="tel"
+                            className="bg-blue-50 my-2 h-14"
+                          />
+                          <Input
+                            name="gender"
+                            label="Gender"
+                            type="text"
+                            className="bg-blue-50 my-2 h-14"
+                          />
+                          <Input
+                            name="country"
+                            label="Country"
+                            type="text"
+                            className="bg-blue-50 my-2 h-14"
+                          />
+                          <Input
+                            name="city"
+                            label="City"
+                            type="text"
+                            className="bg-blue-50 my-2 h-14"
                           />
                         </form>
                       )}

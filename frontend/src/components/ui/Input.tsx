@@ -14,7 +14,7 @@ const Input = ({ Icon, name,disabled, ...props }: Props) => {
 
   return (
     <div className={ `  w-full flex flex-col gap-px  py-2` }>
-      {props.label && <label className={ `${hasError&&"!text-red-400"} text-text-darker dark:text-text-ligther font-medium font-semibold text-[19px] medium capitalize` }>{props.label}</label>}
+      {props.label && <label className={ `${hasError&&"!text-red-400"} text-text-darker dark:text-text-ligther font-medium font-semibold text-[16px] medium capitalize` }>{props.label}</label>}
       <div
         className={twMerge(
           `transition-all duration-200 ${
