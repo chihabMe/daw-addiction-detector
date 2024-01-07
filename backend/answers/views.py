@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.decorators import api_view
-from rest_framework.generics import ListAPIView, RetrieveAPIView
+from rest_framework.generics import ListAPIView, RetrieveAPIView,ListCreateAPIView
 from rest_framework.response import Response
 from rest_framework.views import status
 from django.http import Http404
@@ -11,7 +11,7 @@ from .serializers import AnswerSerializer,AnswersListSerializer
 
 
 # Create your views here.
-class  AnswersListView(ListAPIView):
+class  AnswersListView(ListCreateAPIView):
     queryset = Answer.objects.all()
     serializer_class = AnswersListSerializer
     
@@ -24,7 +24,7 @@ class AnswersDetailView(RetrieveAPIView):
         try:
             return Answer.objects.get(patient__id=patient_id)
         except Answer.DoesNotExist:
-            raise Http404("Answer not found for the specified  ID.")
+            raise Http404("Answer not found for the specified patient ID.")
 
     def retrieve(self, request, *args, **kwargs):
         instance = self.get_object()

@@ -10,7 +10,7 @@ class AnswerUserSerializer(serializers.ModelSerializer):
         model = User
         fields  =["first_name","last_name","email","image"]
 class AnswersListSerializer(serializers.ModelSerializer):
-    user = AnswerUserSerializer(source="patient.user")
+    user = AnswerUserSerializer(source="patient.user",read_only=True)
     class Meta:
         model = Answer
         fields = ["user","id", "created_at", "updated_at"]
