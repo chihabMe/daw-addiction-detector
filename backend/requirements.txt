@@ -4,8 +4,8 @@ django-filter==23.3
 djangorestframework==3.14.0
 djangorestframework-simplejwt==5.3.0
 whitenoise==6.6.0
-django-volt-admin
 pillow
 gunicorn
+django-admin-volt
 
 

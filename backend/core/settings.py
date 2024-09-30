@@ -29,8 +29,8 @@ SECRET_KEY = os.environ.get(
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("MODE") != "PRODUCTION"
-print(DEBUG)
-
+print("debug ",DEBUG)
+HOST = os.environ.get("HOST",None)
 ALLOWED_HOSTS = [
     "localhost:8000",
     "localhost",
@@ -38,6 +38,9 @@ ALLOWED_HOSTS = [
     "127.0.0.1:8000",
     "192.168.0.171",
 ]
+if HOST:
+    print("host ",HOST)
+    ALLOWED_HOSTS.append(HOST)
 RENDER_EXTERNAL_HOSTNAME = os.environ.get("RENDER_EXTERNAL_HOSTNAME")
 if RENDER_EXTERNAL_HOSTNAME:
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
@@ -169,7 +172,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = "static/"
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 MEDIA_URL = "media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 # Default primary key field type
@@ -225,12 +228,16 @@ SIMPLE_JWT = {
 
 
 ## django cors settings
+ORIGIN = os.environ.get("ORIGIN",None)
 CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:3000",
     "http://localhost:3000",
     "http://192.168.43.87:3000",
     "http://192.168.0.171:3000",
 ]
+if ORIGIN:
+    print("origin ",ORIGIN)
+    CORS_ALLOWED_ORIGINS.append(ORIGIN)
 
 if RENDER_EXTERNAL_HOSTNAME:
     CORS_ALLOWED_ORIGINS.append(RENDER_EXTERNAL_HOSTNAME)

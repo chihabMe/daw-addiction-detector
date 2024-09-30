@@ -4,12 +4,13 @@ services:
     container_name: mztool_backend
     build:
       context: ./backend
-    #ports:
-      #- "8000:8000"
-    # volumes:
-    #   - "./volumes/backend/static:/backend/static/"
+    ports:
+      - "8000:8000"
     env_file:
       - .env
+    volumes:
+      - "./backend/static:/backend/static"
+      - "./backend/media:/backend/media"
     restart: unless-stopped
     depends_on:
       - db
@@ -18,9 +19,9 @@ services:
     build:
       context: ./frontend
     # volumes:
-      # - "./frontend/dist:/web/dist"
-    #ports
-      #- "3000:3000"
+    #   - "./frontend/dist:/web/dist"
+    # ports:
+      # - "3000:3000"
   db:
     container_name: mztool_mysql
     image: mysql:8.0
@@ -31,3 +32,13 @@ services:
     volumes:
       - "./volumes/db:/var/lib/mysql"
     restart: unless-stopped
+  nginx:
+    image: nginx:latest
+    container_name: mztool_nginx
+    ports:
+      - "9000:80"
+    volumes:
+      - "./nginx:/etc/nginx"
+      - "./frontend/dist:/var/www/web/dist"
+      - "./backend/static:/var/www/backend/static"
+      - "./backend/media:/var/www/backend/media"
