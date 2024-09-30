@@ -1,0 +1,33 @@
+version: "3.8"
+services:
+  backend:
+    container_name: mztool_backend
+    build:
+      context: ./backend
+    #ports:
+      #- "8000:8000"
+    # volumes:
+    #   - "./volumes/backend/static:/backend/static/"
+    env_file:
+      - .env
+    restart: unless-stopped
+    depends_on:
+      - db
+  web:
+    container_name: mztool_web
+    build:
+      context: ./frontend
+    # volumes:
+      # - "./frontend/dist:/web/dist"
+    #ports
+      #- "3000:3000"
+  db:
+    container_name: mztool_mysql
+    image: mysql:8.0
+    #ports:
+      #"3306:3306"
+    env_file:
+      - .env
+    volumes:
+      - "./volumes/db:/var/lib/mysql"
+    restart: unless-stopped
