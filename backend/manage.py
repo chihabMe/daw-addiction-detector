@@ -2,6 +2,20 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
+
+# # Create a superuser only if it doesn't exist
+# if not User.objects.filter(username=os.getenv('DJANGO_SUPERUSER_USERNAME')).exists():
+#     username = os.getenv('DJANGO_SUPERUSER_USERNAME')
+#     email = os.getenv('DJANGO_SUPERUSER_EMAIL')
+#     print("created a super user ",email)
+#     User.objects.create_superuser(
+#         username=username,
+#         email=email,
+#         password=os.getenv('DJANGO_SUPERUSER_PASSWORD')
+#     )
 
 
 def main():
