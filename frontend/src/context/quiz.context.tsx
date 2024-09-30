@@ -9,7 +9,7 @@ interface QuizContextType {
 }
 const initialState: QuizContextType = {
   answers: [],
-  addAnswer: (questionId, responseId) => {},
+  addAnswer: (questionId, responseId) => [questionId,responseId],
 };
 
 export const quizContext = createContext(initialState);

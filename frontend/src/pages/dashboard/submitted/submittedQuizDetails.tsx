@@ -1,5 +1,5 @@
 import { ArrowLeftIcon } from "@heroicons/react/24/solid";
-import { Link, useParams } from "react-router-dom";
+import { Link  } from "react-router-dom";
 import Button from "../../../components/ui/Button";
 import { AnimatePresence } from "framer-motion";
 import { motion } from "framer-motion";
@@ -50,7 +50,7 @@ const submissions: SubmittedItem[] = [
   },
 ];
 const SubmittedQuizDetails = () => {
-  const { submissionId } = useParams();
+  // const { submissionId } = useParams();
   return (
     <main className="min-h-screen">
       <section>

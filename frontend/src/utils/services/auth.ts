@@ -1,5 +1,5 @@
-import axiosClient from "../utils/axios_client"
-import { refreshtokenPath } from "../utils/constants"
+import axiosClient from "../axios_client"
+import { refreshtokenPath } from "../constants"
 
 
 export const getRefreshToken = async  ()=>{

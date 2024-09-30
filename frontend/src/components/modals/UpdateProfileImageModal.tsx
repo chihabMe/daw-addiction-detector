@@ -1,5 +1,5 @@
 import { Dialog, Transition } from "@headlessui/react";
-import { Fragment, ReactNode } from "react";
+import { Fragment  } from "react";
 import Button from "../ui/Button";
 interface Props {
   isOpen: boolean;

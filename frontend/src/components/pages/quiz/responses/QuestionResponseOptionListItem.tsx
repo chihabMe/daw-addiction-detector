@@ -14,7 +14,6 @@ const QuestionResponseOptionListItem = ({
   option,
   chosedQuestionId,
   setResponseOption,
-  questionId,
   index,
 }: Props) => {
   const isActive = option.id == chosedQuestionId;
