@@ -30,17 +30,24 @@ SECRET_KEY = os.environ.get(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("MODE") != "PRODUCTION"
 print("debug ",DEBUG)
-HOST = os.environ.get("HOST",None)
 ALLOWED_HOSTS = [
     "localhost:8000",
     "localhost",
     "127.0.0.1",
     "127.0.0.1:8000",
-    "192.168.0.171",
 ]
-if HOST:
-    print("host ",HOST)
-    ALLOWED_HOSTS.append(HOST)
+# HOST  would be like that locahost9000,chihab.tech
+CSRF_TRUSTED_ORIGINS = ['https://*.127.0.0.1']
+CSRFS = os.environ.get("ALLOWED_CSRFS",None)
+if CSRFS:
+    print("csrfs ",CSRFS)
+    CSRF_TRUSTED_ORIGINS.extend(CSRFS.split(","))
+    
+HOSTS = os.environ.get("HOST",None)
+if HOSTS:
+    print("hosts ",HOSTS)
+    ALLOWED_HOSTS.extend(HOSTS.split(","))
+
 RENDER_EXTERNAL_HOSTNAME = os.environ.get("RENDER_EXTERNAL_HOSTNAME")
 if RENDER_EXTERNAL_HOSTNAME:
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
@@ -228,16 +235,16 @@ SIMPLE_JWT = {
 
 
 ## django cors settings
-ORIGIN = os.environ.get("ORIGIN",None)
+ORIGINS = os.environ.get("ALLOWED_ORIGINS",None)
 CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:3000",
     "http://localhost:3000",
     "http://192.168.43.87:3000",
     "http://192.168.0.171:3000",
 ]
-if ORIGIN:
-    print("origin ",ORIGIN)
-    CORS_ALLOWED_ORIGINS.append(ORIGIN)
+if ORIGINS:
+    print("origins ",ORIGINS)
+    CORS_ALLOWED_ORIGINS.extend(ORIGINS.split(","))
 
 if RENDER_EXTERNAL_HOSTNAME:
     CORS_ALLOWED_ORIGINS.append(RENDER_EXTERNAL_HOSTNAME)
