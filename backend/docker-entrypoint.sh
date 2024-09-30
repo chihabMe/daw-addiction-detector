@@ -10,7 +10,14 @@ done
 #migrte the django app
 python manage.py migrate
 python manage.py collectstatic --no-input
-
+if [ "$DJANGO_SUPERUSER_EMAIL" ]; then
+  echo "created a superuser"
+  echo $DJANGO_SUPERUSER_EMAIL
+  python manage.py createsuperuser --noinput \
+    --email "$DJANGO_SUPERUSER_EMAIL" \
+    --first_name "$DJANGO_SUPERUSER_FIRSTNAME" \
+    --last_name "$DJANGO_SUPERUSER_LASTNAME"
+fi
 
 # start the server
 gunicorn core.wsgi --bind 0.0.0.0:8000  
